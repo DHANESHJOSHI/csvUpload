@@ -17,6 +17,7 @@ export default function AdminLogin() {
   // Check if the user is already logged in (check for JWT token in cookies)
   useEffect(() => {
     const token = Cookies.get('token'); // Check if token exists in cookies
+    console.log("Token:", token); // Log the token value
     if (token) {
       router.push('/admin/dashboard'); // If logged in, redirect to dashboard
     }
@@ -24,7 +25,9 @@ export default function AdminLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
+      // Send the form data to the API for authentication
       const response = await fetch('/api/admin/login', {
         method: 'POST',
         headers: {
@@ -34,9 +37,14 @@ export default function AdminLogin() {
       });
       
       const data = await response.json();
-
+      console.log("Login response:", data); // Log the response
       if (response.ok) {
         toast.success('Login successful!');
+        
+        // Set the token in cookies with an expiration time (e.g., 1 day)
+        console.log("token:", data.token);
+        Cookies.set('authToken', data.token, { expires: 1, secure: true, sameSite: 'Strict' });
+        
         router.push('/admin/dashboard');
       } else {
         toast.error(data.message || 'Login failed');
