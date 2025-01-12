@@ -17,7 +17,7 @@ export function middleware(request) {
   // If user is already logged in and accessing the login page, redirect to dashboard
   if (token && isLoginPage) {
     const referrer = request.headers.get('referer');
-    if (referrer && (referrer.includes('/admin/scholarship') || referrer.includes('/admin/user'))) {
+    if (referrer && (referrer.includes('/admin/scholarship') || referrer.includes('/admin/user') || referrer.includes('/admin/dashboard'))) {
       return NextResponse.redirect(new URL(referrer, request.url));
     }
     return NextResponse.redirect(new URL('/admin/dashboard', request.url));

@@ -9,19 +9,20 @@ export default function AdminLogin() {
   const router = useRouter();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
-  const [checkingAuth, setCheckingAuth] = useState(true); // Prevent flickering while checking auth
+  const [checkingAuth, setCheckingAuth] = useState(true); // To prevent flickering
 
   useEffect(() => {
     const token = Cookies.get("authToken");
-    console.log("Token from cookies:", token);  // Verify token retrieval
+    console.log(token)
     if (token) {
-      // Redirect if already authenticated
+      // If token is found, it means the user is already logged in
       toast.info("You are already logged in. Redirecting to the dashboard...", {
         autoClose: 2000,
       });
+      // Redirect to the dashboard
       router.push("/admin/dashboard");
     } else {
-      setCheckingAuth(false); // Allow the login form to render if no token
+      setCheckingAuth(false); // Allow login form to render if not logged in
     }
   }, [router]);
 
@@ -39,14 +40,14 @@ export default function AdminLogin() {
       if (response.ok) {
         toast.success("Login successful!", { autoClose: 2000 });
         console.log("Login successful:", data);
-        // Store token in cookies after successful login
+        // Set the token in cookies after successful login
         Cookies.set("authToken", data.user.token, {
           expires: 1, // 1 day expiration
-          secure: process.env.NODE_ENV === "production", // Set secure cookie in production only
+          secure: process.env.NODE_ENV === "production", // Only set secure in production (over HTTPS)
           sameSite: "Strict", // For better security
         });
 
-        // Redirect to the dashboard after login
+        // Redirect to the dashboard after successful login
         router.push("/admin/dashboard");
       } else {
         toast.error(data.message || "Invalid email or password.");
@@ -64,7 +65,7 @@ export default function AdminLogin() {
   };
 
   if (checkingAuth) {
-    // Show loading or blank screen while checking authentication
+    // Show a loader or blank screen while checking authentication
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#070D19]">
         <p className="text-white">Checking authentication...</p>
@@ -74,7 +75,6 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#070D19]">
-      {/* Logo Section with Motion Animation */}
       <motion.div
         className="mb-8 self-center"
         initial={{ opacity: 0, y: -50 }}
@@ -88,13 +88,11 @@ export default function AdminLogin() {
         />
       </motion.div>
 
-      {/* Login Form */}
       <motion.div
         className="w-full max-w-md p-5 -mt-20 bg-white backdrop-blur-sm rounded-3xl shadow-2xl border border-green-500"
         whileHover={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Email Input */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -118,7 +116,6 @@ export default function AdminLogin() {
             />
           </motion.div>
 
-          {/* Password Input */}
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -142,7 +139,6 @@ export default function AdminLogin() {
             />
           </motion.div>
 
-          {/* Submit Button */}
           <motion.button
             type="submit"
             className={`w-full py-4 text-white text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 ${
@@ -159,7 +155,6 @@ export default function AdminLogin() {
         </form>
       </motion.div>
 
-      {/* Toast Notifications */}
       <ToastContainer
         position="top-right"
         autoClose={3000}

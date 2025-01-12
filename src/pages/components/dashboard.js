@@ -89,15 +89,6 @@ const Dashboard = () => {
             size: 14
           }
         }
-      },
-      title: {
-        display: true,
-        text: 'Dashboard Analytics',
-        font: {
-          size: 20,
-          weight: 'bold'
-        },
-        padding: 20
       }
     },
     scales: {
@@ -118,21 +109,21 @@ const Dashboard = () => {
   return (
     <div className="p-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div className="bg-white p-6 rounded-xl shadow-lg">
+        {/* <div className="bg-white p-6 rounded-xl shadow-lg">
           <div className="h-[400px]">
             <Line data={lineData} options={options} />
           </div>
-        </div>
+        </div> */}
         <div className="bg-white p-6 rounded-xl shadow-lg">
           <div className="h-[350px]">
             <Pie data={pieData} options={{...options, aspectRatio: 1}} />
           </div>
         </div>
-        <div className="bg-white p-6 rounded-xl shadow-lg">
+        {/* <div className="bg-white p-6 rounded-xl shadow-lg">
           <div className="h-[350px]">
             <Bar data={barData} options={options} />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

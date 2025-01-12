@@ -106,6 +106,7 @@ export default function UsersTable() {
                       {editingId === student.id ? (
                         <Input
                           value={editData[field]}
+                          key={field}
                           onChange={(e) => handleChange(e, field)}
                           className="bg-gray-700 text-gray-200"
                         />
