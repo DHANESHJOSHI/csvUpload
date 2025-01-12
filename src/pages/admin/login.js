@@ -1,113 +1,145 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter } from "next/router";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Cookies from 'js-cookie'; // Import the js-cookie package
+import { ToastContainer, toast } from "react-toastify";
+import Cookies from "js-cookie";
+import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 
 export default function AdminLogin() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
 
-  // Check if the user is already logged in (check for JWT token in cookies)
   useEffect(() => {
-    const token = Cookies.get('token'); // Check if token exists in cookies
-    console.log("Token:", token); // Log the token value
+    const token = Cookies.get("authToken");
     if (token) {
-      router.push('/admin/dashboard'); // If logged in, redirect to dashboard
+      toast.info("Welcome back! Redirecting to the dashboard.", {
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        router.push("/admin/dashboard");
+      }, 2000);
     }
   }, [router]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setLoading(true);
     try {
-      // Send the form data to the API for authentication
-      const response = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      
       const data = await response.json();
-      console.log("Login response:", data); // Log the response
       if (response.ok) {
-        toast.success('Login successful!');
-        
-        // Set the token in cookies with an expiration time (e.g., 1 day)
-        console.log("token:", data.token);
-        Cookies.set('authToken', data.token, { expires: 1, secure: true, sameSite: 'Strict' });
-        
-        router.push('/admin/dashboard');
+        toast.success("Login successful!", { autoClose: 2000 });
+        Cookies.set("authToken", data.token, {
+          expires: 1,
+          secure: true,
+          sameSite: "Strict",
+        });
+        router.push("/admin/dashboard");
       } else {
-        toast.error(data.message || 'Login failed');
+        toast.error(data.message || "Invalid email or password.");
       }
     } catch (error) {
-      console.error("Login failed:", error);
-      toast.error('Something went wrong. Please try again.');
+      toast.error("An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <Card className="w-[400px]">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">
-            Admin Login
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">
-                Email
-              </label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <label htmlFor="password" className="text-sm font-medium">
-                Password
-              </label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <Button type="submit" className="w-full bg-blue-500 text-white hover:bg-blue-600">
-              Login
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-      <ToastContainer />
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#070D19]">
+      <motion.div
+        className="mb-8 self-center"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <img
+          src="https://scholarsbox.in/images/Scholars%20Box-Logo-03-footer.png"
+          alt="ScholarsBox Logo"
+          className="w-48 h-48 object-contain"
+        />
+      </motion.div>
+      <motion.div
+        className="w-full max-w-md p-5 -mt-20 bg-white backdrop-blur-sm rounded-3xl shadow-2xl border border-green-500"
+        whileHover={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+      >
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            <label
+              htmlFor="email"
+              className="block text-sm font-semibold text-black mb-2"
+            >
+              Email Address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-3 rounded-xl bg-white/70 border border-green-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 text-black"              required
+            />
+          </motion.div>
+          <motion.div
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 1.2 }}
+          >
+            <label
+              htmlFor="password"
+              className="block text-sm font-semibold text-black mb-2"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              onChange={handleChange}
+              className="w-full px-4 py-3 rounded-xl bg-white/70 border border-green-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 text-black"
+              required
+            />
+          </motion.div>
+          <motion.button
+            type="submit"
+            className={`w-full py-4 text-white text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600 transform hover:-translate-y-1 hover:shadow-xl"
+            }`}
+            disabled={loading}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {loading ? "Authenticating..." : "Sign In"}
+          </motion.button>
+        </form>
+      </motion.div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
     </div>
   );
 }

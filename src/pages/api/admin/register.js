@@ -1,6 +1,6 @@
 import connectToDatabase from '../../lib/db';
 import bcrypt from 'bcryptjs';
-import Admin from '../../models/Admin';
+import Admin from '../../../models/Admin';
 
 const registerHandler = async (req, res) => {
   if (req.method === 'POST') {

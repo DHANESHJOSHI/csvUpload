@@ -1,7 +1,7 @@
 import connectToDatabase from '../../lib/db';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken'; // Make sure to install this package
-import Admin from '../../models/Admin';
+import Admin from '../../../models/Admin';
 
 const loginHandler = async (req, res) => {
   if (req.method === 'POST') {
@@ -30,7 +30,7 @@ const loginHandler = async (req, res) => {
       );
 
       // Set token in HTTP-only cookie
-      res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=3600; SameSite=Strict`);
+      res.setHeader('Set-Cookie', `authToken=${token}; HttpOnly; Max-Age=3600; SameSite=Strict`);
 
       // Send response with redirect
       res.status(200).json({
