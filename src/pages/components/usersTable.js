@@ -92,7 +92,7 @@ export default function UsersTable() {
                 <TableHead className="text-gray-200">Name</TableHead>
                 <TableHead className="text-gray-200">Email</TableHead>
                 <TableHead className="text-gray-200">Status</TableHead>
-                <TableHead className="text-gray-200">Actions</TableHead>
+                {/* <TableHead className="text-gray-200">Actions</TableHead> */}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -131,7 +131,7 @@ export default function UsersTable() {
                       </span>
                     )}
                   </TableCell>
-                  <TableCell>
+                  {/* <TableCell>
                     {editingId === student.id ? (
                       <Button
                         onClick={() => handleSave(student.id)}
@@ -149,7 +149,7 @@ export default function UsersTable() {
                         Edit
                       </Button>
                     )}
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               ))}
             </TableBody>

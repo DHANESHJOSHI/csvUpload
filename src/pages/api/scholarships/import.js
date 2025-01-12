@@ -61,6 +61,16 @@ apiRoute.post(async (req, res) => {
     fs.createReadStream(uploadedFiles[0].path)
       .pipe(csv())
       .on('data', (data) => {
+        // Check if email contains @ and . symbols
+        if (!data.email || !data.email.includes('@') || !data.email.includes('.')) {
+          // Return the error response if email format is invalid
+          return res.status(400).json({
+            error: 'Invalid email format. Email must contain @ and . symbols',
+            field: 'email', // Optional: specify the field causing the error
+            data: data // Optional: include the invalid data in the response
+          });
+        }
+
         // Handle missing description by providing a default value
         if (!data.description) {
           data.description = 'No description provided'; // Default value for missing descriptions
@@ -94,7 +104,7 @@ apiRoute.post(async (req, res) => {
           }
         } catch (error) {
           console.error('Database error:', error);
-          res.status(500).json({ error: 'Error inserting/updating data in database' });
+          res.status(500).json({ error: 'Error inserting/updating data in database', details: error.message });
         }
       });
   } catch (error) {

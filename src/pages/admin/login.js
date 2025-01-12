@@ -42,7 +42,7 @@ export default function AdminLogin() {
         console.log("Login successful:", data);
         // Set the token in cookies after successful login
         Cookies.set("authToken", data.user.token, {
-          expires: 1, // 1 day expiration
+          expires: 7, // 1 day expiration
           secure: process.env.NODE_ENV === "production", // Only set secure in production (over HTTPS)
           sameSite: "Strict", // For better security
         });
