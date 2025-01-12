@@ -1,36 +1,50 @@
 import { Card } from '@/components/ui/card';
-import { FaTachometerAlt, FaUser, FaCog } from 'react-icons/fa';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { FaFile, FaTachometerAlt, FaUser } from 'react-icons/fa';
+import { RxCross1 } from 'react-icons/rx';
 
 export default function Sidebar({ isOpen, toggleSidebar }) {
   return (
-    <div className={`fixed top-0 left-0 z-20 w-[250px] bg-gray-800 text-white h-full ${isOpen ? 'block' : 'hidden'}`}>
-      <Card className="h-full flex flex-col p-4">
-        <div className="flex justify-between items-center">
-          <h3 className="text-xl font-semibold">Admin Panel</h3>
-          <button onClick={toggleSidebar} className="text-white">
-            {isOpen ? 'Hide' : 'Show'}
-          </button>
+    <div
+      className={`fixed top-0 left-0 z-20 w-[250px] h-full transition-all duration-300 ease-in-out ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}
+    >
+      <Card className="h-full border-none rounded-none bg-[#04250c] backdrop-blur-xl text-white">
+        <div className="flex h-14 items-center justify-between border-b px-4">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold">Admin Panel</span>
+          </div>
+          <Button variant="ghost" size="icon" onClick={toggleSidebar}>
+            <RxCross1 className="h-4 w-4" />
+          </Button>
         </div>
-        <ul className="mt-6 space-y-4">
-          <li>
-            <a href="/admin/dashboard" className="flex items-center space-x-2">
-              <FaTachometerAlt />
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/users" className="flex items-center space-x-2">
-              <FaUser />
-              <span>Users</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/settings" className="flex items-center space-x-2">
-              <FaCog />
-              <span>Settings</span>
-            </a>
-          </li>
-        </ul>
+        <ScrollArea className="flex-1 px-3">
+          <div className="py-4">
+            <nav className="grid gap-1">
+              <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+                <a href="/admin/dashboard">
+                  <FaTachometerAlt className="h-4 w-4" />
+                  Dashboard
+                </a>
+              </Button>
+              <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+                <a href="/admin/scholarship">
+                  <FaUser className="h-4 w-4" />
+                  Scholarships Data
+                </a>
+              </Button>
+
+              <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+                <a href="/admin/upload">
+                  <FaFile className="h-4 w-4" />
+                  CSV Upload
+                </a>
+              </Button>
+            </nav>
+          </div>
+        </ScrollArea>
       </Card>
     </div>
   );

@@ -1,4 +1,3 @@
-// pages/api/scholarships/import.js
 import nextConnect from 'next-connect';
 import multer from 'multer';
 import Papa from 'papaparse';
@@ -65,3 +64,4 @@ handler.post(async (req, res) => {
 });
 
 export default handler;
+4

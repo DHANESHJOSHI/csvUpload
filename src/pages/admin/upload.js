@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie'; 
 import Layout from '../components/Layout';
 import Dash from '../components/dashboard';
+import UsersTable from '../components/usersTable';
 
 const Dashboard = () => {
   const [adminData, setAdminData] = useState(null);
@@ -39,7 +40,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <Dash />
+      <UsersTable/>
     </Layout>
   );
 };
