@@ -1,67 +1,109 @@
 import nextConnect from 'next-connect';
 import multer from 'multer';
-import Papa from 'papaparse';
 import fs from 'fs';
-import path from 'path';
-import Scholarship from '../../models/Scholarship';
-import connectDB from '../../utils/connectDB';
+import csv from 'csv-parser'; // CSV parser
+import Scholarship from '@/pages/models/Scholarship';
+import connectToDatabase from '../../lib/db';
 
-// Setup multer to store uploaded files temporarily in the 'uploads' directory
-const upload = multer({ dest: 'uploads/' });
+// Choose storage option: Disk or Memory
+const useDiskStorage = true;
 
-const handler = nextConnect();
+const storage = useDiskStorage
+  ? multer.diskStorage({
+    destination: './uploads',
+    filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`), // Unique filenames
+  })
+  : multer.memoryStorage(); // In-memory storage for temporary files
 
-// Middleware to handle the file upload
-handler.use(upload.single('file')); // 'file' is the name attribute from the form
-
-handler.post(async (req, res) => {
-  if (req.method === 'POST') {
-    try {
-      // Check if the file is uploaded
-      if (!req.file) {
-        return res.status(400).json({ message: 'No file uploaded' });
-      }
-
-      // Get the uploaded file path
-      const filePath = path.join(process.cwd(), 'uploads', req.file.filename);
-
-      // Read the file content
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-
-      // Parse the CSV file
-      Papa.parse(fileContent, {
-        header: true,
-        skipEmptyLines: true,
-        complete: async (results) => {
-          try {
-            // Connect to the database
-            await connectDB();
-
-            // Get the parsed CSV data
-            const scholarships = results.data;
-
-            // Bulk insert the scholarships data into MongoDB
-            await Scholarship.insertMany(scholarships);
-
-            // Respond with success
-            res.status(200).json({ message: 'Scholarships imported successfully' });
-          } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Error while inserting data into the database' });
-          } finally {
-            // Clean up the uploaded file from the server
-            fs.unlinkSync(filePath); // Delete the temporary file after processing
-          }
-        },
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server error' });
+const upload = multer({
+  storage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB file size limit
+  fileFilter: (req, file, cb) => {
+    // Optional: Restrict file types (e.g., CSV only)
+    const allowedTypes = ['text/csv', 'application/vnd.ms-excel'];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only CSV files are allowed'), false);
     }
-  } else {
-    res.status(405).json({ message: 'Method Not Allowed' });
+  },
+});
+
+const apiRoute = nextConnect({
+  onError(error, req, res) {
+    console.error('Error occurred:', error);
+    res.status(500).json({ error: `There was an error! ${error.message}` });
+  },
+  onNoMatch(req, res) {
+    res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
+  },
+});
+
+// Middleware to handle file uploads
+apiRoute.use(upload.array('files')); // Accept multiple files, 'files' matches the form's input name
+
+apiRoute.post(async (req, res) => {
+  try {
+    // Check if files are uploaded
+    if (!req.files || req.files.length === 0) {
+      return res.status(400).json({ error: 'No files uploaded' });
+    }
+    await connectToDatabase();
+
+    const uploadedFiles = req.files.map((file) => ({
+      originalName: file.originalname,
+      size: file.size,
+      path: file.path || 'In-Memory', // In-memory files won't have a path
+    }));
+
+    // Parse the CSV and insert/update data in MongoDB
+    const results = [];
+    fs.createReadStream(uploadedFiles[0].path)
+      .pipe(csv())
+      .on('data', (data) => {
+        results.push(data);
+      })
+      .on('end', async () => {
+        try {
+          // Process each record to check for duplicate email and update status if necessary
+          for (const record of results) {
+            const existingRecord = await Scholarship.findOne({ email: record.email });
+
+            if (existingRecord) {
+              // If the status has changed, update the status
+              if (existingRecord.status !== record.status) {
+                existingRecord.status = record.status;
+                await existingRecord.save();
+              }
+            } else {
+              // Insert a new record if email doesn't exist
+              await Scholarship.create(record);
+            }
+          }
+
+          // Respond with success
+          res.status(200).json({ message: 'Data processed successfully' });
+
+          // Clean up the file after processing (optional)
+          if (fs.existsSync(uploadedFiles[0].path)) {
+            fs.unlinkSync(uploadedFiles[0].path);
+          }
+        } catch (error) {
+          console.error('Database error:', error);
+          res.status(500).json({ error: 'Error inserting/updating data in database' });
+        }
+      });
+  } catch (error) {
+    console.error('Processing error:', error);
+    res.status(500).json({ error: 'An error occurred during file processing' });
   }
 });
 
-export default handler;
-4
+
+export default apiRoute;
+
+export const config = {
+  api: {
+    bodyParser: false, // Disable body parsing for file uploads
+  },
+};
