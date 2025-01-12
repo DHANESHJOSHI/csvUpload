@@ -20,8 +20,8 @@ const userHandler = async (req, res) => {
 
     await connectToDatabase(); // Establish connection to MongoDB
 
-    
-    const admin = await Admin.findOne(decoded.email).select('-password'); // Exclude password from response
+    const admin = await Admin.findOne(decoded.email).select('-password');
+
     if (!admin) {
       return res.status(401).json({ error: 'User not found' });
     }

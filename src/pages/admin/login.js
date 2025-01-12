@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"; // For checking the cookie on frontend
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 
@@ -9,16 +9,19 @@ export default function AdminLogin() {
   const router = useRouter();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true); // Prevent flickering while checking auth
 
   useEffect(() => {
     const token = Cookies.get("authToken");
+    console.log("Token from cookies:", token);  // Verify token retrieval
     if (token) {
-      toast.info("Welcome back! Redirecting to the dashboard.", {
+      // Redirect if already authenticated
+      toast.info("You are already logged in. Redirecting to the dashboard...", {
         autoClose: 2000,
       });
-      setTimeout(() => {
-        router.push("/admin/dashboard");
-      }, 2000);
+      router.push("/admin/dashboard");
+    } else {
+      setCheckingAuth(false); // Allow the login form to render if no token
     }
   }, [router]);
 
@@ -32,13 +35,18 @@ export default function AdminLogin() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
+
       if (response.ok) {
         toast.success("Login successful!", { autoClose: 2000 });
-        Cookies.set("authToken", data.token, {
-          expires: 1,
-          secure: true,
-          sameSite: "Strict",
+        console.log("Login successful:", data);
+        // Store token in cookies after successful login
+        Cookies.set("authToken", data.user.token, {
+          expires: 1, // 1 day expiration
+          secure: process.env.NODE_ENV === "production", // Set secure cookie in production only
+          sameSite: "Strict", // For better security
         });
+
+        // Redirect to the dashboard after login
         router.push("/admin/dashboard");
       } else {
         toast.error(data.message || "Invalid email or password.");
@@ -55,8 +63,18 @@ export default function AdminLogin() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  if (checkingAuth) {
+    // Show loading or blank screen while checking authentication
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#070D19]">
+        <p className="text-white">Checking authentication...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#070D19]">
+      {/* Logo Section with Motion Animation */}
       <motion.div
         className="mb-8 self-center"
         initial={{ opacity: 0, y: -50 }}
@@ -69,11 +87,14 @@ export default function AdminLogin() {
           className="w-48 h-48 object-contain"
         />
       </motion.div>
+
+      {/* Login Form */}
       <motion.div
         className="w-full max-w-md p-5 -mt-20 bg-white backdrop-blur-sm rounded-3xl shadow-2xl border border-green-500"
         whileHover={{ boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
       >
         <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Email Input */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -92,9 +113,12 @@ export default function AdminLogin() {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl bg-white/70 border border-green-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 text-black"              required
+              className="w-full px-4 py-3 rounded-xl bg-white/70 border border-green-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200 text-black"
+              required
             />
           </motion.div>
+
+          {/* Password Input */}
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -117,6 +141,8 @@ export default function AdminLogin() {
               required
             />
           </motion.div>
+
+          {/* Submit Button */}
           <motion.button
             type="submit"
             className={`w-full py-4 text-white text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 ${
@@ -132,6 +158,8 @@ export default function AdminLogin() {
           </motion.button>
         </form>
       </motion.div>
+
+      {/* Toast Notifications */}
       <ToastContainer
         position="top-right"
         autoClose={3000}

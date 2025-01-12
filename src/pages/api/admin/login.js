@@ -1,7 +1,7 @@
-import connectToDatabase from '../../lib/db';
+import connectToDatabase from '../../lib/db'; // Your database connection logic
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import Admin from '../../../models/Admin';
+import Admin from '../../../models/Admin'; // Your Admin model
 
 const loginHandler = async (req, res) => {
   if (req.method !== 'POST') {
@@ -15,40 +15,43 @@ const loginHandler = async (req, res) => {
   }
 
   try {
-    await connectToDatabase(); // Establish connection to MongoDB
+    // Establish connection to MongoDB
+    await connectToDatabase();
 
-    // Check if admin exists
+    // Check if admin exists in the database
     const existingAdmin = await Admin.findOne({ email });
     if (!existingAdmin) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    // Check if password is correct
+    // Compare provided password with the stored hashed password
     const isPasswordCorrect = await bcrypt.compare(password, existingAdmin.password);
     if (!isPasswordCorrect) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    // Generate JWT token
+    // Generate JWT token with user details and a short expiration time (1 hour)
     const token = jwt.sign(
       { id: existingAdmin._id, email: existingAdmin.email, role: existingAdmin.role },
-      process.env.JWT_SECRET, // Ensure JWT_SECRET is set in the .env file
-      { expiresIn: '1h' } // Token expires in 1 hour
+      process.env.JWT_SECRET, // Ensure the secret key is set in your .env
+      { expiresIn: '1h' }
     );
 
-    // Set the token in an HTTP-only cookie with security options
+    // Set the token in an HTTP-only cookie with security attributes
+    const isProd = process.env.NODE_ENV === 'production'; // Check if it's production environment
     res.setHeader(
       'Set-Cookie',
-      `authToken=${token}; HttpOnly; Max-Age=3600; Path=/; Secure; SameSite=Strict`
+      `authToken=${token}; HttpOnly; Max-Age=3600; Path=/; ${isProd ? 'Secure;' : ''} SameSite=None`
     );
 
-    // Send response with additional user details
+    // Respond with a success message and user details (excluding password)
     res.status(200).json({
       message: 'Login successful',
       user: {
         id: existingAdmin._id,
         email: existingAdmin.email,
         role: existingAdmin.role,
+        token,
       },
     });
   } catch (error) {
