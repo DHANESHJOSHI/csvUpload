@@ -10,6 +10,7 @@ const userHandler = async (req, res) => {
   try {
     // Extract token from cookies
     const token = req.headers.cookie?.split('authToken=')[1];
+    console.log('Received token:', token); // Debug log
 
     if (!token) {
       return res.status(401).json({ error: 'Not authenticated' });
@@ -20,17 +21,17 @@ const userHandler = async (req, res) => {
 
     await connectToDatabase(); // Establish connection to MongoDB
 
-    const admin = await Admin.findOne(decoded.email).select('-password');
+    const users = await Admin.find().select('-password');
 
-    if (!admin) {
-      return res.status(401).json({ error: 'User not found' });
+    if (!users) {
+      return res.status(404).json({ error: 'No users found' });
     }
 
-    // Return user details
-    res.status(200).json({ user: admin });
+    // Return all users
+    res.status(200).json({ users: users });
   } catch (error) {
-    console.error('Error verifying token:', error);
-    res.status(401).json({ error: 'Invalid or expired token' });
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Error fetching users' });
   }
 };
 

@@ -5,23 +5,27 @@ import jwt from 'jsonwebtoken';
 const Studentshandler = async (req, res) => {
     if (req.method === 'GET') {
         try {
-            // Verify JWT token from the Authorization header
-            const token = req.headers.authorization?.split(' ')[1]; // Extract the token from 'Bearer <token>'
+            const token = req.headers.authorization?.split(' ')[1];
 
             if (!token) {
                 return res.status(401).json({ error: 'No token provided' });
             }
 
-            // Verify the token using your JWT secret
-            const decoded = jwt.verify(token, process.env.JWT_SECRET); // Replace with your secret key
-
-            // If the token is valid, proceed with fetching the data
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
             await connectToDatabase();
 
-            // Fetch students from the database
-            const students = await Scholarship.find();
-
-            res.status(200).json(students);
+            if (req.query.email) {
+                // Get user by email
+                const student = await Scholarship.findOne({ email: req.query.email });
+                if (!student) {
+                    return res.status(404).json({ error: 'Student not found' });
+                }
+                return res.status(200).json(student);
+            } else {
+                // Get all users
+                const students = await Scholarship.find();
+                return res.status(200).json(students);
+            }
         } catch (err) {
             if (err.name === 'JsonWebTokenError') {
                 return res.status(401).json({ error: 'Invalid or expired token' });

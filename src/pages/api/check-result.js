@@ -1,35 +1,43 @@
-import clientPromise from '../lib/db';
+import Scholarship from '@/pages/models/Scholarship';
+import connectToDatabase from '../lib/db';
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ status: 'error', message: 'Method Not Allowed' });
-  }
+const Studentshandler = async (req, res) => {
+    if (req.method === 'GET') {
+        try {
+            if (!req.query.email) {
+                return res.status(400).json({ error: 'Email is required' });
+            }
 
-  const { email } = req.body;
+            await connectToDatabase();
 
-  if (!email) {
-    return res.status(400).json({ status: 'error', message: 'Email and Scholarship ID are required' });
-  }
+            // Get user by email with specific fields only
+            const student = await Scholarship.findOne(
+                { email: req.query.email },
+                { password: 0, __v: 0 } // Exclude sensitive fields
+            );
 
-  try {
-    const client = await clientPromise;
-    const db = client.db('scholarships');
-    const collection = db.collection('results'); 
+            if (!student) {
+                return res.status(404).json({ error: 'Student not found' });
+            }
 
-    const result = await collection.findOne({ email });
-    console.log(result);
-    if (result) {
-      res.status(200).json({
-        status: 'success',
-        data: {
-          email,
-          isSelected: result.isSelected,},
-      });
+            // Add the logic to include the scholarship status
+            console.log("Student: ", student);
+            const scholarshipStatus = student.status || 'Not Found';
+            console.log(scholarshipStatus);
+
+            return res.status(200).json({
+                data: {
+                    ...student.toObject(),
+                    isSelected: scholarshipStatus === 'Selected'  // Return a boolean indicating the status
+                }
+            });
+            
+        } catch (err) {
+            res.status(500).json({ error: 'Error fetching student data' });
+        }
     } else {
-      res.status(404).json({ status: 'error', message: 'No record found' });
+        res.status(405).json({ error: 'Method Not Allowed' });
     }
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: 'error', message: 'Server error' });
-  }
-}
+};
+
+export default Studentshandler;

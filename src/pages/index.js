@@ -47,7 +47,8 @@ function Home() {
   const handleCheckResult = (scholarship) => {
     setSelectedScholarship(scholarship);
     setShowResult(true);
-    setEmailVisible(true); // Make email input visible after clicking Check Result
+    setEmail('');
+    setResult(null);
   };
 
   const handleSubmit = async (e) => {
@@ -56,19 +57,15 @@ function Home() {
     setIsLoading(true);
   
     try {
-      const response = await fetch('/api/check-result', {
-        method: 'POST',
+      const response = await fetch(`/api/check-result?email=${encodeURIComponent(email)}`, {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-        }),
+        }
       });
-
-      // Handle non-JSON response
+      
       if (!response.ok) {
-        const errorText = await response.text();  // Read the error response as text
+        const errorText = await response.text(); 
         console.error('Error from API:', errorText);
         toast.error('There was an error with your request. Please try again later.');
         setResult('error');
@@ -76,14 +73,14 @@ function Home() {
         return;
       }
 
-      // Ensure the response is valid JSON
       const data = await response.json();
-
+      
       if (data && data.data) {
-        setResult(data.data.isSelected ? 'Selected' : 'Not Selected');
+        setResult(data.data.isSelected ? 'Selected' : 'Not Selected' || data.data.status);
       } else {
         setResult('Not Found');
       }
+      
     } catch (error) {
       console.error('Error checking result:', error);
       toast.error('Something went wrong. Please try again later.');
@@ -92,6 +89,13 @@ function Home() {
     }
   
     setIsLoading(false);
+    setEmail('');
+};
+
+  const closeModal = () => {
+    setShowResult(false);
+    setEmail('');
+    setResult(null);
   };
 
   const toggleMenu = () => {
@@ -102,7 +106,7 @@ function Home() {
     <div className="min-h-screen bg-[#001B3D]">
       <header className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center justify-between py-4">
+          <nav className="flex items-center font-bold justify-between py-4">
             <div className="flex items-center space-x-4">
               <img
                 src="https://hyundai.scholarsbox.in/uploads/HMIF%20LOGO-1.jpg"
@@ -121,7 +125,7 @@ function Home() {
             </div>
             <ul className={`${isMenuOpen ? 'block' : 'hidden'} absolute md:relative bg-white top-16 left-0 w-full md:w-auto md:flex md:space-x-6 md:items-center md:top-auto md:left-auto z-50 shadow-md md:shadow-none`}>
               {navItems.map((item) => (
-                <li key={item.name} className="text-sm">
+                <li key={item.name} className="text-xl font-bold md:text-base">
                   <a href={item.href} className="block py-3 px-4 md:py-0 md:px-0 text-gray-600 hover:text-[#BADEA5] font-medium transition-colors duration-200">
                     {item.name}
                   </a>
@@ -133,8 +137,15 @@ function Home() {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Scholarships</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="w-full h-[400px] mb-12 overflow-hidden cursor-pointer" onClick={() => document.getElementById('scholarships').scrollIntoView({ behavior: 'smooth' })}>
+          <img
+            src="/image.jpg"
+            alt="Banner"
+            className="w-full h-full object-cover object-center"
+          />
+        </div>
+        <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Scholarships Results</h1>
+        <div id='scholarships' className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {scholarships.map((scholarship) => (
             <div key={scholarship.id} className="bg-white rounded-lg overflow-hidden">
               <div className="p-6">
@@ -166,31 +177,33 @@ function Home() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 transition-all duration-500 transform translate-y-0">
           <div className="bg-white rounded-xl max-w-md w-full p-6 relative transition-all transform translate-y-0">
             <button
-              onClick={() => setShowResult(false)}
+              onClick={closeModal}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
             >
               <X className="h-6 w-6" />
             </button>
             <div className="text-center">
-              {emailVisible && (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <span className="block text-lg font-semibold text-black">Enter Your registered Email ID </span>
+              {!result && (
+                <form onSubmit={handleSubmit} className="space-y-4 text-black">
+                  <p className="text-lg text-black font-bold mb-4">Please Enter Your Registered Email</p>
                   <input
                     type="email"
-                    placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 text-black rounded-md"
+                    placeholder="Enter your email"
+                    className="w-full px-4 py-2 border rounded-md"
+                    required
                   />
                   <button
                     type="submit"
-                    className="w-full bg-[#001B3D] text-white py-2 px-4 rounded-md hover:bg-blue-900"
+                    className="bg-[#001B3D] text-white px-6 py-2 rounded-md"
+                    disabled={isLoading}
                   >
-                    Submit
+                    {isLoading ? 'Checking...' : 'Check'}
                   </button>
                 </form>
               )}
-              {result === 'Selected' ? (
+              {result === 'Selected' && (
                 <div className="space-y-4">
                   <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto" />
                   <h3 className="text-xl font-semibold text-gray-900">
@@ -199,8 +212,10 @@ function Home() {
                   <p className="text-gray-600">
                     You have been selected for the scholarship.
                   </p>
+                  
                 </div>
-              ) : result === 'Not Selected' ? (
+              )}
+              {result === 'Not Selected' && (
                 <div className="space-y-4">
                   <AlertCircle className="h-16 w-16 text-red-500 mx-auto" />
                   <h3 className="text-xl font-semibold text-gray-900">
@@ -210,13 +225,13 @@ function Home() {
                     You were not selected for the scholarship. We wish you better luck for future scholarships.
                   </p>
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
       )}
 
-      <ToastContainer />  {/* Toast container for displaying notifications */}
+      <ToastContainer />
     </div>
   );
 }

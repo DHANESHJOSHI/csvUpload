@@ -10,9 +10,9 @@ const useDiskStorage = true;
 
 const storage = useDiskStorage
   ? multer.diskStorage({
-    destination: './uploads',
-    filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`), // Unique filenames
-  })
+      destination: './uploads',
+      filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
+    })
   : multer.memoryStorage(); // In-memory storage for temporary files
 
 const upload = multer({
@@ -61,6 +61,10 @@ apiRoute.post(async (req, res) => {
     fs.createReadStream(uploadedFiles[0].path)
       .pipe(csv())
       .on('data', (data) => {
+        // Handle missing description by providing a default value
+        if (!data.description) {
+          data.description = 'No description provided'; // Default value for missing descriptions
+        }
         results.push(data);
       })
       .on('end', async () => {
@@ -98,7 +102,6 @@ apiRoute.post(async (req, res) => {
     res.status(500).json({ error: 'An error occurred during file processing' });
   }
 });
-
 
 export default apiRoute;
 

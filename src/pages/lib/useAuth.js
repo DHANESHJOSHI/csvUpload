@@ -28,17 +28,6 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get('/api/admin/user');
-        setUser(response.data.user);
-      } catch (error) {
-        setUser(null);
-      }
-    };
-    fetchUser();
-  }, []);
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
