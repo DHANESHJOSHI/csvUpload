@@ -1,6 +1,5 @@
 import Layout from '../components/Layout';
 import Dash from '../components/dashboard';
-import { withAuth } from '../lib/withAuth';
 
 const Dashboard = () => {
   return (
@@ -10,4 +9,4 @@ const Dashboard = () => {
   );
 };
 
-export default withAuth(Dashboard);
+export default Dashboard;

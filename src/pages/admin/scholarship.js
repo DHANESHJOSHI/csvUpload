@@ -18,7 +18,7 @@ const Dashboard = () => {
       // If token exists, fetch admin data
       const fetchAdminData = async () => {
         try {
-          const response = await axios.get('/api/admin/dashboard', {
+          const response = await axios.get('/api/admin/scholarship', {
             headers: {
               Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
             },
