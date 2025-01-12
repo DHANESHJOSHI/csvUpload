@@ -2,6 +2,7 @@ import Layout from '../components/Layout';
 import Dash from '../components/dashboard';
 import { parseCookies } from 'nookies';
 import jwt from 'jsonwebtoken';
+import Cookies from 'js-cookie';
 
 const Dashboard = () => {
   return (
@@ -31,6 +32,7 @@ export async function getServerSideProps(context) {
     return { props: {} }; 
   } catch (err) {
     console.error('Token verification failed:', err);
+    Cookies.remove('authToken');
     return {
       redirect: {
         destination: '/admin/login',

@@ -38,6 +38,7 @@ export async function getServerSideProps(context) {
     return { props: {} }; 
   } catch (err) {
     console.error('Token verification failed:', err);
+    Cookies.remove('authToken');
     return {
       redirect: {
         destination: '/admin/login',
