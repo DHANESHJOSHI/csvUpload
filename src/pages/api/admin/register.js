@@ -1,4 +1,4 @@
-import connectToDatabase from '../../lib/db';
+import connectToDatabase from '../../../lib/db';
 import bcrypt from 'bcryptjs';
 import Admin from '../../../models/Admin';
 

@@ -2,8 +2,8 @@ import nextConnect from 'next-connect';
 import multer from 'multer';
 import fs from 'fs';
 import csv from 'csv-parser'; // CSV parser
-import Scholarship from '@/pages/models/Scholarship';
-import connectToDatabase from '../../lib/db';
+import Scholarship from '@/models/Scholarship';
+import connectToDatabase from '../../../lib/db';
 
 // Choose storage option: Disk or Memory
 const useDiskStorage = true;

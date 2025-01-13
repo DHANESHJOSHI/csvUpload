@@ -1,5 +1,5 @@
-import Scholarship from '@/pages/models/Scholarship';
-import connectToDatabase from '../lib/db';
+import Scholarship from '@/models/Scholarship';
+import connectToDatabase from '../../lib/db';
 
 const Studentshandler = async (req, res) => {
     if (req.method === 'GET') {

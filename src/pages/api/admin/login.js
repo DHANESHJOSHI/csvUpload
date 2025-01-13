@@ -1,4 +1,4 @@
-import connectToDatabase from '../../lib/db'; // Your database connection logic
+import connectToDatabase from '../../../lib/db'; // Your database connection logic
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Admin from '../../../models/Admin'; // Your Admin model

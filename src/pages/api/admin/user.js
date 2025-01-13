@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import Admin from '../../../models/Admin';
-import connectToDatabase from '../../lib/db';
+import connectToDatabase from '../../../lib/db';
 
 const userHandler = async (req, res) => {
   if (req.method !== 'GET') {

@@ -1,11 +1,11 @@
-import { AuthProvider } from "./lib/useAuth";
+// import { AuthProvider } from "./lib/useAuth";
 import "@/styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthProvider>
+    // <AuthProvider>
       <Component {...pageProps} />
-    </AuthProvider>
+    // </AuthProvider>
   );
 }
 
