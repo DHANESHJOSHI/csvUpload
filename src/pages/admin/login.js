@@ -44,7 +44,9 @@ export default function AdminLogin() {
         Cookies.set("authToken", data.user.token, {
           expires: 7, // 1 day expiration
           secure: process.env.NODE_ENV === "production", // Only set secure in production (over HTTPS)
+          HttpOnly: true, // For better security
           sameSite: "Strict", // For better security
+          maxAge: 60 * 60 * 24, // 1 day expiration
         });
 
         // Redirect to the dashboard after successful login
