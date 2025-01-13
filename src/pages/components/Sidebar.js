@@ -3,8 +3,11 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { FaFile, FaTachometerAlt, FaUser } from 'react-icons/fa';
 import { RxCross1 } from 'react-icons/rx';
+import { usePathname } from 'next/navigation';
 
 export default function Sidebar({ isOpen, toggleSidebar }) {
+  const pathname = usePathname();
+
   return (
     <div
       className={`fixed top-0 left-0 z-20 w-[250px] h-full transition-all duration-300 ease-in-out ${
@@ -23,20 +26,20 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
         <ScrollArea className="flex-1 px-3">
           <div className="py-4">
             <nav className="grid gap-1">
-              <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <Button variant={pathname === '/admin/dashboard' ? 'secondary' : 'ghost'} className="w-full justify-start gap-2" asChild>
                 <a href="/admin/dashboard">
                   <FaTachometerAlt className="h-4 w-4" />
                   Dashboard
                 </a>
               </Button>
-              <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <Button variant={pathname === '/admin/scholarship' ? 'secondary' : 'ghost'} className="w-full justify-start gap-2" asChild>
                 <a href="/admin/scholarship">
                   <FaUser className="h-4 w-4" />
                   Scholarships Data
                 </a>
               </Button>
 
-              <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+              <Button variant={pathname === '/admin/upload' ? 'secondary' : 'ghost'} className="w-full justify-start gap-2" asChild>
                 <a href="/admin/upload">
                   <FaFile className="h-4 w-4" />
                   CSV Upload
