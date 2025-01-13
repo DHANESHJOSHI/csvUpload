@@ -60,10 +60,10 @@ const Dashboard = () => {
   });
 
   const [barData, setBarData] = useState({
-    labels: ['Total Scholarships'],
+    labels: ['Total Students Count'],
     datasets: [
       {
-        label: 'Total Scholarships',
+        label: 'Total Students',
         data: [0],
         backgroundColor: 'rgba(54, 162, 235, 0.8)',
         borderColor: 'rgba(54, 162, 235, 1)',

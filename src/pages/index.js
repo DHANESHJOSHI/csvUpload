@@ -147,8 +147,8 @@ function Home() {
         <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">Scholarships Results</h1>
         <div id='scholarships' className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {scholarships.map((scholarship) => (
-            <div key={scholarship.id} className="bg-white rounded-lg overflow-hidden">
-              <div className="p-6">
+            <div key={scholarship.id} className="bg-white rounded-lg overflow-hidden flex flex-col h-full">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="flex justify-center mb-6">
                   <img
                     src="https://hyundai.scholarsbox.in/uploads/HMIF%20LOGO-1.jpg"
@@ -156,13 +156,13 @@ function Home() {
                     className="h-20 sm:h-24"
                   />
                 </div>
-                <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-4">
+                <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-4 flex-grow">
                   {scholarship.title}
                 </h3>
-                <div className="flex items-center justify-between">
+                <div className="mt-4">
                   <button
                     onClick={() => handleCheckResult(scholarship)}
-                    className="bg-[#001B3D] text-white px-4 py-2 text-sm rounded hover:bg-blue-900 transition-colors duration-200"
+                    className="w-full bg-[#001B3D] text-white px-4 py-2 text-sm rounded hover:bg-blue-900 transition-colors duration-200"
                   >
                     Check Result
                   </button>
