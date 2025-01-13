@@ -13,7 +13,6 @@ export default function AdminLogin() {
 
   useEffect(() => {
     const token = Cookies.get("authToken");
-    console.log(token)
     if (token) {
       // If token is found, it means the user is already logged in
       toast.info("You are already logged in. Redirecting to the dashboard...", {
@@ -44,6 +43,7 @@ export default function AdminLogin() {
         Cookies.set("authToken", data.user.token, {
           expires: 7, // 1 day expiration
           secure: process.env.NODE_ENV === "production", // Only set secure in production (over HTTPS)
+          httpOnly: true, // Ensure the cookie is not accessible via client-side scripts
           sameSite: "Strict", // For better security
         });
 

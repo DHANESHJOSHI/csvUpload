@@ -7,7 +7,8 @@ const Studentshandler = async (req, res) => {
 
     try {
         // Authenticate token
-        const token = headers.authorization?.split(' ')[1];
+        // const token = headers.authorization?.split('')[1];
+        const token = req.headers.cookie?.split('authToken=')[1];
         if (!token) {
             return res.status(401).json({ error: 'No token provided' });
         }
@@ -28,6 +29,7 @@ const Studentshandler = async (req, res) => {
             } else {
                 // Get all students
                 const students = await Scholarship.find();
+                
                 return res.status(200).json(students);
             }
         } else if (method === 'PUT') {

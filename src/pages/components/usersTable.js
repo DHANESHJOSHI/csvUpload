@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Cookies from "js-cookie";
 
+
 export default function UsersTable() {
   const [students, setStudents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,7 +25,7 @@ export default function UsersTable() {
 
   useEffect(() => {
     const fetchStudents = async () => {
-      const token = Cookies.get("authToken");
+      const token = Cookies.get('authToken');
       try {
         const response = await axios.get("/api/scholarships/studentlist", {
           headers: {

@@ -41,7 +41,7 @@ const loginHandler = async (req, res) => {
     const isProd = process.env.NODE_ENV === 'production'; // Check if it's production environment
     res.setHeader(
       'Set-Cookie',
-      `authToken=${token}; HttpOnly; Max-Age=604800; Path=/; ${isProd ? 'Secure;' : ''} SameSite=Strict`
+      `authToken=${token}; HttpOnly; Max-Age=604800; Path=/; 'Secure; SameSite=None`
     );
 
     // Respond with a success message and user details (excluding password)
