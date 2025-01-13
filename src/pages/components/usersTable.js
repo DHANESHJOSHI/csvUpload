@@ -13,6 +13,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Cookies from "js-cookie";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+
+
 
 export default function UsersTable() {
   const [students, setStudents] = useState([]);
@@ -23,6 +28,7 @@ export default function UsersTable() {
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  const MySwal = withReactContent(Swal);
 
   const fetchStudents = async (page = 1, limit = itemsPerPage) => {
     setLoading(true);
@@ -71,7 +77,55 @@ export default function UsersTable() {
     });
   };
 
-  const getStatusStyle = (status) => {
+  const handleDelete = async (email) => {
+    const token = Cookies.get("authToken");
+  
+    // Show confirmation dialog
+    const result = await MySwal.fire({
+      title: 'Are you sure?',
+      text: "Do you want to delete this student? This action cannot be undone.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
+      reverseButtons: true,
+    });
+  
+    if (result.isConfirmed) {
+      try {
+        const response = await axios.delete(`/api/scholarships/studentlist?email=${email}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (response.status === 200) {
+          MySwal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: 'The student has been deleted successfully.',
+          });
+  
+          // Reload the table data
+          fetchStudents(currentPage, itemsPerPage);
+        }
+      } catch (error) {
+        MySwal.fire({
+          icon: 'error',
+          title: 'Error!',
+          text: error.response?.data?.message || 'Failed to delete the student.',
+        });
+      }
+    } else {
+      MySwal.fire({
+        icon: 'info',
+        title: 'Cancelled',
+        text: 'The student was not deleted.',
+      });
+    }
+  };
+  
+  
+    const getStatusStyle = (status) => {
     return status.toLowerCase() === "selected"
       ? "bg-green-500/20 text-green-500 px-2 py-1 rounded-full"
       : "bg-red-500/20 text-red-500 px-2 py-1 rounded-full";
@@ -101,6 +155,7 @@ export default function UsersTable() {
                   <TableHead className="text-gray-200">Name</TableHead>
                   <TableHead className="text-gray-200">Email</TableHead>
                   <TableHead className="text-gray-200">Status</TableHead>
+                  <TableHead className="text-gray-200">Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -138,6 +193,16 @@ export default function UsersTable() {
                           {student.status}
                         </span>
                       )}
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        onClick={() => handleDelete(student.email)}
+                        variant="destructive"
+                        size="sm"
+                        className="bg-red-500 hover:bg-red-600"
+                      >
+                        Delete
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}

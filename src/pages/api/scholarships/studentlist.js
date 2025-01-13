@@ -62,6 +62,7 @@ const Studentshandler = async (req, res) => {
                 return res.status(404).json({ error: 'Student not found' });
             }
             return res.status(200).json(updatedStudent);
+            
         } else if (method === 'DELETE') {
             // Delete student
             if (!query.email) {
