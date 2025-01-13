@@ -17,21 +17,20 @@ import { CloudUpload } from '@mui/icons-material';
 const UploadCSV = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState('');
+  const [statusData, setStatusData] = useState('');
+  const [errors, setErrors] = useState([]);
   const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
 
-  // Handle file input change
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
-      // Validate file type
       if (selectedFile.type !== 'text/csv' && selectedFile.type !== 'application/vnd.ms-excel') {
         setStatus('Invalid file type. Please upload a CSV file.');
         setOpen(true);
         return;
       }
-      // Validate file size (10MB max)
       if (selectedFile.size > 10 * 1024 * 1024) {
         setStatus('File size exceeds the 10MB limit.');
         setOpen(true);
@@ -42,7 +41,6 @@ const UploadCSV = () => {
     }
   };
 
-  // Handle file upload
   const handleUpload = async () => {
     if (!file) {
       setStatus('Please select a file to upload.');
@@ -55,35 +53,35 @@ const UploadCSV = () => {
     formData.append('files', file);
 
     try {
-      setIsUploading(true); // Disable upload button during the upload process
+      setIsUploading(true);
       const response = await axios.post('/api/scholarships/import', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
         onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / progressEvent.total
-          );
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
           setProgress(percentCompleted);
         },
       });
 
-      setStatus(response.data.message || 'File uploaded successfully!');
+      setStatus('File uploaded successfully!');
+      setErrors([]); // Clear errors on success
       setOpen(true);
     } catch (error) {
-      console.log('File upload error:', error.response); 
-      const errorMessage = error.response?.data?.details || error.response?.data?.error || 'Error uploading file.';
-      setStatus(errorMessage);
+      const errorMessage = error.response?.data?.error || 'Error uploading file.';
+      const errorDetails = error.response?.data?.data || [];
+      setStatus(`Error in Row ${error.response?.data?.data?.['S.No']}: ${errorMessage}`);
+      setStatusData(`Error in Row ${error.response?.data?.data}`);
+      setErrors(Array.isArray(errorDetails) ? errorDetails : []);
       setOpen(true);
     } finally {
       setProgress(0);
       setIsUploading(false);
-      setFile(null); // Reset the file input after upload
+      setFile(null);
     }
   };
 
-  // Handle Snackbar close
   const handleClose = () => {
     setOpen(false);
   };
@@ -110,7 +108,6 @@ const UploadCSV = () => {
             sx={{ mb: 2 }}
             fullWidth
             aria-label="File input"
-            inputProps={{ 'aria-label': 'Upload CSV file' }}
           />
           <Button
             variant="contained"
@@ -119,9 +116,7 @@ const UploadCSV = () => {
             disabled={!file || isUploading}
             sx={{
               backgroundColor: isUploading ? '#b0bec5' : '#1976d2',
-              '&:hover': {
-                backgroundColor: !isUploading ? '#115293' : undefined,
-              },
+              '&:hover': { backgroundColor: !isUploading ? '#115293' : undefined },
               px: 4,
               py: 1.5,
             }}
@@ -134,21 +129,40 @@ const UploadCSV = () => {
             variant="determinate"
             value={progress}
             sx={{ mb: 2 }}
-            aria-valuenow={progress}
-            aria-valuemin={0}
-            aria-valuemax={100}
           />
         )}
-        <Snackbar open={open} onClose={handleClose}>
-          <Alert
-            onClose={handleClose}
-            severity={status.includes('Failed') ? 'details' : 'success' || status.includes('Error') ? 'error' : 'success' || status.includes('path') ? 'details' : 'success'}
-            sx={{ width: '100%' }}
-          >
-            {status}
-          </Alert>
-        </Snackbar>
       </Paper>
+        <Paper elevation={3} sx={{ p: 4, mt: 4, borderRadius: 2 }}>
+          <Typography variant="h6" color="error" gutterBottom>
+            Validation Errors:
+          </Typography>
+          <Box sx={{ textAlign: 'left' }}>
+            {status}
+            {errors.map((err, index) => (
+              <Box key={index} sx={{ mt: 1, p: 2, bgcolor: '#fff3f3', borderRadius: 1 }}>
+                <Typography color="error" fontWeight="bold">
+                  Row {err['S.No']}:
+                </Typography>
+                <Typography>
+                  Name: {err.name}<br/>
+                  Email: {err.email}<br/>
+                  Status: {err.status}<br/>
+                  Scholarship: {err.scholarshipName}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Paper>
+      <Snackbar open={open} onClose={handleClose}>
+        
+        <Alert
+          onClose={handleClose}
+          severity={status.includes('Error') ? 'error' : 'success' || status.includes('details') ? 'error' : 'success'}
+          sx={{ width: '100%' }}
+          >
+          {status}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
