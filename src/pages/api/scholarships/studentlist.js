@@ -7,7 +7,6 @@ const Studentshandler = async (req, res) => {
 
     try {
         // Authenticate token
-        // const token = headers.authorization?.split('')[1];
         const token = req.headers.cookie?.split('authToken=')[1];
         if (!token) {
             return res.status(401).json({ error: 'No token provided' });
@@ -27,10 +26,27 @@ const Studentshandler = async (req, res) => {
                 }
                 return res.status(200).json(student);
             } else {
-                // Get all students
-                const students = await Scholarship.find();
+                // Get all students with pagination
+                const page = parseInt(query.page) || 1;
+                const limit = parseInt(query.limit) || 10;
+                const skip = (page - 1) * limit;
+
+                const students = await Scholarship.find()
+                    .skip(skip)
+                    .limit(limit);
                 
-                return res.status(200).json(students);
+                const total = await Scholarship.countDocuments();
+                const totalPages = Math.ceil(total / limit);
+                
+                return res.status(200).json({
+                    students,
+                    pagination: {
+                        currentPage: page,
+                        totalPages,
+                        totalItems: total,
+                        itemsPerPage: limit
+                    }
+                });
             }
         } else if (method === 'PUT') {
             // Update student
