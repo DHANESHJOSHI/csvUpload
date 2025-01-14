@@ -233,7 +233,7 @@ const Dashboard = () => {
 
         <div className="bg-white p-6 rounded-xl shadow-lg">
           <h3 className="text-center text-lg font-bold mb-4">Scholarship Analytics</h3>
-          <div className="h-[350px]">
+          <div className="h-[350px]"> 
             <Bar data={scholarshipData} options={options} />
           </div>
         </div>
