@@ -328,6 +328,19 @@ const StudentsTable = () => {
     return () => clearTimeout(debounceTimer);
   }, [searchTerm]);
 
+  const customLoader = (
+    <div className="flex flex-col items-center justify-center p-8">
+      <div className="w-16 h-16 border-t-4 border-b-4 border-indigo-500 rounded-full animate-spin"></div>
+      <div className="mt-4 text-lg font-semibold text-indigo-600 animate-pulse">Loading Data...</div>
+      <div className="mt-2 text-sm text-gray-500">Please wait while we fetch the latest information</div>
+      <div className="flex space-x-2 mt-4">
+        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce"></div>
+        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Scholarships Students</h2>
@@ -345,6 +358,7 @@ const StudentsTable = () => {
         columns={columns}
         data={students}
         progressPending={loading}
+        progressComponent={customLoader}
         pagination
         paginationServer
         paginationTotalRows={totalRows}
