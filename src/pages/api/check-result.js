@@ -21,10 +21,9 @@ const Studentshandler = async (req, res) => {
             }
 
             // Add the logic to include the scholarship status
-            console.log("Student: ", student);
+            
             const scholarshipStatus = student.status || 'Not Found';
-            console.log(scholarshipStatus);
-
+            
             return res.status(200).json({
                 data: {
                     ...student.toObject(),

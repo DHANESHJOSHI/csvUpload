@@ -1,23 +1,24 @@
-import Layout from '../components/Layout';
-import Dash from '../components/dashboard';
 import { parseCookies } from 'nookies';
-import jwt from 'jsonwebtoken';
-import Cookies from 'js-cookie';
+
+import Dash from '../components/dashboard';
+import Navigation from '../components/navigation';
 
 const Dashboard = () => {
+
   return (
-    <Layout>
+    <Navigation>
       <Dash />
-    </Layout>
+    </Navigation>
   );
 };
 
+// Server-side authentication check
 export async function getServerSideProps(context) {
   const cookies = parseCookies(context);
-  const token = cookies.authToken;
-
-  if (!token) {
-    // Redirect to login if no token
+  
+  // Check if the token exists in the cookies
+  if (!cookies.authToken) {
+    // Redirect to login page if no token found
     return {
       redirect: {
         destination: '/admin/login',
@@ -26,20 +27,10 @@ export async function getServerSideProps(context) {
     };
   }
 
-  try {
-    // Verify the token
-    jwt.verify(token, process.env.JWT_SECRET);
-    return { props: {} }; 
-  } catch (err) {
-    console.error('Token verification failed:', err);
-    Cookies.remove('authToken');
-    return {
-      redirect: {
-        destination: '/admin/login',
-        permanent: false,
-      },
-    };
-  }
+  // If token exists, render the page
+  return {
+    props: {}, // You can pass additional props if needed
+  };
 }
 
 export default Dashboard;

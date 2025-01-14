@@ -1,3 +1,9 @@
+import Dash from '../components/dashboard';
+import { parseCookies } from 'nookies';
+import jwt from 'jsonwebtoken';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Line, Pie, Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -9,10 +15,8 @@ import {
   Tooltip,
   Legend,
   ArcElement,
-  BarElement
+  BarElement,
 } from 'chart.js';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 
 ChartJS.register(
   CategoryScale,
@@ -27,20 +31,9 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
-  // const lineData = {
-  //   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  //   datasets: [
-  //     {
-  //       label: 'Monthly Data',
-  //       data: [65, 59, 80, 81, 56, 55, 40, 70, 75, 85, 90, 100],
-  //       fill: true,
-  //       backgroundColor: 'rgba(75, 192, 192, 0.2)',
-  //       borderColor: 'rgb(75, 192, 192)',
-  //       tension: 0.4
-  //     }
-  //   ]
-  // };
-
+  const [selectedStatus, setSelectedStatus] = useState('all');
+  const [selectedType, setSelectedType] = useState('all');
+  const [scholarshipTypes, setScholarshipTypes] = useState([]);
   const [pieData, setPieData] = useState({
     labels: ['Selected', 'Not Selected'],
     datasets: [
@@ -73,35 +66,55 @@ const Dashboard = () => {
     ],
   });
 
+  // const router = useRouter();
+
+  // // Check if the token exists and is valid (client-side)
+  // useEffect(() => {
+  //   const token = parseCookies().authToken;
+  //   if (!token) {
+  //     // If no token, redirect to login
+  //     router.push('/admin/login');
+  //     return;
+  //   }
+
+  //   try {
+  //     jwt.verify(token, process.env.JWT_SECRET);
+  //   } catch (err) {
+  //     // If token is invalid, clear it and redirect to login
+  //     router.push('/admin/login');
+  //   }
+  // }, [router]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/admin/analytics');
+        // Fetch the data with the selected filters
+        const response = await axios.get(`/api/admin/analytics?status=${selectedStatus}&type=${selectedType}`);
+        
+        // Update Pie Chart data
         setPieData(prevData => ({
           ...prevData,
           datasets: [{
             ...prevData.datasets[0],
             data: [response.data.selectCount, response.data.notSelectCount],
-          }]
+          }],
         }));
         
+        // Update Bar Chart data
         setBarData(prevData => ({
           ...prevData,
           datasets: [{
             ...prevData.datasets[0],
-            data: [response.data.totalScholarships]
-          }]
+            data: [response.data.totalScholarships],
+          }],
         }));
       } catch (error) {
-        console.error('Error fetching pie data:', error);
+        console.error('Error fetching analytics data:', error);
       }
     };
 
     fetchData();
-  }, []);
-
-
-  
+  }, [selectedStatus, selectedType]);
 
   const options = {
     responsive: true,
@@ -142,17 +155,39 @@ const Dashboard = () => {
 
   return (
     <div className="p-8">
+      <div className="mb-6 flex gap-4">
+        {/* Dropdown for selecting Status */}
+        <select 
+          className="px-4 py-2 border rounded-lg text-black"
+          value={selectedStatus}
+          onChange={(e) => setSelectedStatus(e.target.value)}
+        >
+          <option value="all">All Status</option>
+          <option value="selected">Selected</option>
+          <option value="notSelected">Not Selected</option>
+        </select>
+        
+        {/* Dropdown for selecting Scholarship Type */}
+        <select 
+          className="px-4 py-2 border rounded-lg text-black"
+          value={selectedType}
+          onChange={(e) => setSelectedType(e.target.value)}
+        >
+          <option value="all">All Types</option>
+          {scholarshipTypes.map((type) => (
+            <option key={type._id} value={type._id}>{type.name}</option>
+          ))}
+        </select>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* <div className="bg-white p-6 rounded-xl shadow-lg">
-          <div className="h-[400px]">
-            <Line data={lineData} options={options} />
-          </div>
-        </div> */}
+        {/* Pie Chart showing selected vs not selected count */}
         <div className="bg-white p-6 rounded-xl shadow-lg">
           <div className="h-[350px]">
             <Pie data={pieData} options={{...options, aspectRatio: 1}} />
           </div>
         </div>
+        
+        {/* Bar Chart showing total student count */}
         <div className="bg-white p-6 rounded-xl shadow-lg">
           <div className="h-[350px]">
             <Bar data={barData} options={options} />

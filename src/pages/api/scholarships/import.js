@@ -1,25 +1,18 @@
 import nextConnect from 'next-connect';
 import multer from 'multer';
 import fs from 'fs';
-import csv from 'csv-parser'; // CSV parser
+import csv from 'csv-parser';
 import Scholarship from '@/models/Scholarship';
-import connectToDatabase from '../../../lib/db';
+import connectToDatabase from '@/lib/db';
 
-// Choose storage option: Disk or Memory
-const useDiskStorage = true;
-
-const storage = useDiskStorage
-  ? multer.diskStorage({
-      destination: './uploads',
-      filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
-    })
-  : multer.memoryStorage(); // In-memory storage for temporary files
-
+// Multer configuration
 const upload = multer({
-  storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB file size limit
+  storage: multer.diskStorage({
+    destination: './uploads',
+    filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
+  }),
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
   fileFilter: (req, file, cb) => {
-    // Optional: Restrict file types (e.g., CSV only)
     const allowedTypes = ['text/csv', 'application/vnd.ms-excel'];
     if (allowedTypes.includes(file.mimetype)) {
       cb(null, true);
@@ -31,85 +24,78 @@ const upload = multer({
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
-    console.error('Error occurred:', error);
-    res.status(500).json({ error: `There was an error! ${error.message}` });
+    console.error('Error:', error.message);
+    console.log('Error:', error);
+    res.status(500).json({ error: error.message });
   },
   onNoMatch(req, res) {
     res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
   },
 });
 
-// Middleware to handle file uploads
-apiRoute.use(upload.array('files')); // Accept multiple files, 'files' matches the form's input name
+apiRoute.use(upload.single('files')); // Single file upload
 
 apiRoute.post(async (req, res) => {
   try {
-    // Check if files are uploaded
-    if (!req.files || req.files.length === 0) {
-      return res.status(400).json({ error: 'No files uploaded' });
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
     }
+
     await connectToDatabase();
 
-    const uploadedFiles = req.files.map((file) => ({
-      originalName: file.originalname,
-      size: file.size,
-      path: file.path || 'In-Memory', // In-memory files won't have a path
-    }));
-
-    // Parse the CSV and insert/update data in MongoDB
     const results = [];
-    fs.createReadStream(uploadedFiles[0].path)
+    fs.createReadStream(req.file.path)
       .pipe(csv())
       .on('data', (data) => {
-        // Check if email contains @ and . symbols
-        if (!data.email || !data.email.includes('@') || !data.email.includes('.')) {
-          // Return the error response if email format is invalid
-          return res.status(400).json({
-            error: 'Invalid email format. Email must contain @ and . symbols',
-            field: 'email', // Optional: specify the field causing the error
-            data: data // Optional: include the invalid data in the response
+        // Field validation
+        const { name, email, status, scholarshipName, gender, state } = data;
+        const errors = [];
+
+        if (!name) errors.push('Name is required');
+        if (!email || !email.includes('@') || !email.includes('.')) errors.push('Invalid email format');
+        if (!scholarshipName) errors.push('Scholarship Name is required');
+        if (!gender || !['male', 'female', 'other'].includes(gender.toLowerCase())) errors.push('Invalid gender');
+        if (!state) errors.push('State is required');
+
+        if (errors.length > 0) {
+          results.push({ ...data, errors });
+        } else {
+          results.push({
+            name,
+            email,
+            status: status || 'Not Selected',
+            scholarshipName,
+            gender: gender.toLowerCase(),
+            state,
           });
         }
-
-        // Handle missing description by providing a default value
-        if (!data.description) {
-          data.description = 'No description provided'; // Default value for missing descriptions
-        }
-        results.push(data);
       })
       .on('end', async () => {
         try {
-          // Process each record to check for duplicate email and update status if necessary
           for (const record of results) {
-            const existingRecord = await Scholarship.findOne({ email: record.email });
+            if (record.errors) continue; // Skip invalid records
 
-            if (existingRecord) {
-              // If the status has changed, update the status
-              if (existingRecord.status !== record.status) {
-                existingRecord.status = record.status;
-                await existingRecord.save();
-              }
+            const existing = await Scholarship.findOne({ email: record.email });
+            if (existing) {
+              // Update existing record if needed
+              Object.assign(existing, record);
+              await existing.save();
             } else {
-              // Insert a new record if email doesn't exist
+              // Create new record
               await Scholarship.create(record);
             }
           }
 
-          // Respond with success
-          res.status(200).json({ message: 'Data processed successfully' });
-
-          // Clean up the file after processing (optional)
-          if (fs.existsSync(uploadedFiles[0].path)) {
-            fs.unlinkSync(uploadedFiles[0].path);
-          }
-        } catch (error) {
-          console.error('Database error:', error);
-          res.status(500).json({ error: 'Error inserting/updating data in database', details: error.message });
+          fs.unlinkSync(req.file.path); // Delete the uploaded file
+          res.status(200).json({ message: 'Upload processed successfully', results });
+        } catch (err) {
+          console.error('Database Error:', err.message);
+          res.status(500).json({ error: 'Error saving data to the database' });
         }
       });
   } catch (error) {
-    console.error('Processing error:', error);
-    res.status(500).json({ error: 'An error occurred during file processing' });
+    console.error('File Processing Error:', error.message);
+    res.status(500).json({ error: 'File processing failed' });
   }
 });
 
@@ -117,6 +103,6 @@ export default apiRoute;
 
 export const config = {
   api: {
-    bodyParser: false, // Disable body parsing for file uploads
+    bodyParser: false, // Disables body parsing, because we are handling file upload manually
   },
 };

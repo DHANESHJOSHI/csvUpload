@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
-import Cookies from "js-cookie"; // For checking the cookie on frontend
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
-
+import cookie from "cookie"; // Correctly import the 'cookie' package
+import axios from "axios";
 export default function AdminLogin() {
   const router = useRouter();
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -12,18 +12,33 @@ export default function AdminLogin() {
   const [checkingAuth, setCheckingAuth] = useState(true); // To prevent flickering
 
   useEffect(() => {
-    const token = Cookies.get("authToken");
-    if (token) {
-      // If token is found, it means the user is already logged in
-      toast.info("You are already logged in. Redirecting to the dashboard...", {
-        autoClose: 2000,
-      });
-      // Redirect to the dashboard
-      router.push("/admin/dashboard");
-    } else {
-      setCheckingAuth(false); // Allow login form to render if not logged in
-    }
+    // Check if the user is already authenticated using axios
+    const checkAuth = async () => {
+      try {
+        const response = await axios.get("/api/admin/check-auth", {
+          withCredentials: true, // Ensure cookies are sent with the request
+        });
+
+        if (response.status === 200) {
+          // If authenticated, redirect to the dashboard
+          toast.info("You are already logged in. Redirecting to the dashboard...", {
+            autoClose: 2000,
+          });
+          router.push("/admin/dashboard");
+        } else {
+          setCheckingAuth(false); // Allow login form to render if not authenticated
+        }
+      } catch (error) {
+        console.error("Error checking auth:", error);
+        setCheckingAuth(false); // Allow login form to render if there's an error
+      }
+    };
+    
+    checkAuth(); // Call the function to check authentication status
+
   }, [router]);
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,13 +54,6 @@ export default function AdminLogin() {
       if (response.ok) {
         toast.success("Login successful!", { autoClose: 2000 });
         console.log("Login successful:", data);
-        // Set the token in cookies after successful login
-        Cookies.set("authToken", data.user.token, {
-          expires: 7, // 1 day expiration
-          secure: process.env.NODE_ENV === "production", // Only set secure in production (over HTTPS)
-          httpOnly: true, // Ensure the cookie is not accessible via client-side scripts
-          sameSite: "Strict", // For better security
-        });
 
         // Redirect to the dashboard after successful login
         router.push("/admin/dashboard");
@@ -68,9 +76,12 @@ export default function AdminLogin() {
     // Show a loader or blank screen while checking authentication
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#070D19]">
-        <p className="text-white">Checking authentication...</p>
-      </div>
-    );
+        <div className="flex flex-col items-center space-y-4">
+          <div className="w-12 h-12 border-t-4 border-green-500 border-solid rounded-full animate-spin"></div>
+          <p className="text-xl font-semibold text-white/90">Verifying credentials...</p>
+          <p className="text-sm text-white/60">Please wait while we authenticate your session</p>
+        </div>
+      </div>    );
   }
 
   return (

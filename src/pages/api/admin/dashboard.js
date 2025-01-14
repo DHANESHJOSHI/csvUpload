@@ -1,33 +1,32 @@
-const { db } = await connectToDatabase();
-const Admin = require('../../../models/Admin');
-const jwt = require('jsonwebtoken');
+import authenticateToken from '@/lib/authMiddleware';
+import { connectToDatabase } from '../../../lib/db';
+import Admin from '../../../models/Admin';
 
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   try {
-    const token = req.headers.authorization?.split(' ')[1];
-
-    if (!token) {
-      return res.status(401).json({ error: 'Unauthorized' });
+    // Check if the request method is GET
+    if (req.method !== 'GET') {
+      return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    // Verify the token (replace 'your-secret-key' with your actual secret key)
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (err) {
-      return res.status(401).json({ error: 'Invalid token' });
-    }
+    // Access the user data attached by the middleware (authenticateToken)
+    const user = req.user;
 
-    // Check if the admin exists
-    const adminData = await Admin.findOne({ _id: decoded.id });
+    // Connect to MongoDB and find the admin data based on the user ID
+    const { db } = await connectToDatabase();
+    const adminData = await Admin.findOne({ _id: user.id });
 
     if (!adminData) {
       return res.status(404).json({ error: 'Admin not found' });
     }
 
+    // Respond with the admin data
     res.status(200).json(adminData);
   } catch (error) {
     console.error('Error in /api/admin/dashboard:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-}
+};
+
+// Wrap the handler with authentication middleware
+export default authenticateToken(handler);

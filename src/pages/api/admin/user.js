@@ -1,23 +1,17 @@
 import jwt from 'jsonwebtoken';
 import Admin from '../../../models/Admin';
 import connectToDatabase from '../../../lib/db';
+import authenticateToken from '@/lib/authMiddleware';
 
-const userHandler = async (req, res) => {
+const userHandler = async (req, res, token) => {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
   try {
-    // Extract token from cookies
-    const token = req.headers.cookie?.split('authToken=')[1];
-    console.log('Received token:', token); // Debug log
-
     if (!token) {
       return res.status(401).json({ error: 'Not authenticated' });
     }
-
-    // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Ensure JWT_SECRET is set in .env
 
     await connectToDatabase(); // Establish connection to MongoDB
 
@@ -35,4 +29,4 @@ const userHandler = async (req, res) => {
   }
 };
 
-export default userHandler;
+export default authenticateToken(userHandler);

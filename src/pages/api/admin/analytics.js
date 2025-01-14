@@ -1,44 +1,68 @@
 import jwt from 'jsonwebtoken';
-import Admin from '../../../models/Admin';
 import Scholarship from '../../../models/Scholarship';
 import connectToDatabase from '../../../lib/db';
+import authenticateToken from '@/lib/authMiddleware';
 
-const userHandler = async (req, res) => {
+const userHandler = async (req, res, token) => {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
   try {
-    // Extract token from cookies
-    const token = req.headers.cookie?.split('authToken=')[1];
-    console.log('Received token:', token); // Debug log
-
     if (!token) {
       return res.status(401).json({ error: 'Not authenticated' });
     }
-
-    // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Ensure JWT_SECRET is set in .env
-
+    // Connect to the database
     await connectToDatabase(); // Establish connection to MongoDB
-    const totalScholarshipCount = await Scholarship.countDocuments();
-    const selectCount = await Scholarship.countDocuments({ status: 'Selected' });
-    const notSelectCount = await Scholarship.countDocuments({ status: 'Not Selected' });
-    
-    if (!totalScholarshipCount && totalScholarshipCount !== 0) {
-      return res.status(404).json({ error: 'Error counting scholarships' });
+
+    // Extract parameters from the query (scholarshipName, status)
+    const { scholarshipName, status } = req.query;
+
+    // Create a filter object for scholarshipName and status if provided
+    let filter = {};
+    if (scholarshipName) {
+      filter.scholarshipName = scholarshipName;
+    }
+    if (status) {
+      filter.status = status;
     }
 
-    // Return scholarship counts
-    res.status(200).json({ 
+    // Fetch scholarship counts based on the filter
+    const totalScholarshipCount = await Scholarship.countDocuments(filter);
+    const selectCount = await Scholarship.countDocuments({ ...filter, status: 'Selected' });
+    const notSelectCount = await Scholarship.countDocuments({ ...filter, status: 'Not Selected' });
+
+    // Gender-based analytics with the scholarshipName and status filter
+    const maleApplications = await Scholarship.countDocuments({ ...filter, gender: 'male' });
+    const femaleApplications = await Scholarship.countDocuments({ ...filter, gender: 'female' });
+    const otherGenderApplications = await Scholarship.countDocuments({ ...filter, gender: 'other' });
+
+    // State-wise analytics with the scholarshipName and status filter
+    const stateWiseAnalytics = await Scholarship.aggregate([
+      { $match: filter },
+      { $group: { _id: '$state', count: { $sum: 1 } } },
+    ]);
+
+    // Response payload
+    const responsePayload = {
       totalScholarships: totalScholarshipCount,
-      selectCount: selectCount,
-      notSelectCount: notSelectCount,
-    });
+      selectCount,
+      notSelectCount,
+      genderAnalytics: {
+        maleApplications,
+        femaleApplications,
+        otherGenderApplications,
+      },
+      stateWiseAnalytics, // Example: [{ _id: 'Gujarat', count: 50 }, { _id: 'Delhi', count: 30 }]
+    };
+
+    // Return analytics
+    res.status(200).json(responsePayload);
   } catch (error) {
     console.error('Error:', error);
-    res.status(500).json({ error: 'Error fetching scholarship count' });
+    res.status(500).json({ error: 'Error fetching scholarship analytics' });
   }
 };
 
-export default userHandler;
+// Exporting the middleware wrapped around the user handler
+export default authenticateToken(userHandler);
