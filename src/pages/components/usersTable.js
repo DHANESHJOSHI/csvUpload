@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DataTable from "react-data-table-component";
-import { toast } from "react-hot-toast";
 import { FaEdit, FaTrash, FaSave, FaTimes } from 'react-icons/fa';
 import Swal from "sweetalert2";
 

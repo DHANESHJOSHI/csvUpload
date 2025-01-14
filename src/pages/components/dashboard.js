@@ -1,120 +1,143 @@
-import Dash from '../components/dashboard';
-import { parseCookies } from 'nookies';
-import jwt from 'jsonwebtoken';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Line, Pie, Bar } from 'react-chartjs-2';
+import { Bar, Pie, Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend,
   ArcElement,
-  BarElement,
 } from 'chart.js';
+import { FaUsers, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend,
-  ArcElement,
-  BarElement
+  ArcElement
 );
 
 const Dashboard = () => {
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [selectedType, setSelectedType] = useState('all');
   const [scholarshipTypes, setScholarshipTypes] = useState([]);
-  const [pieData, setPieData] = useState({
+  const [analytics, setAnalytics] = useState({
+    totalScholarships: 0,
+    selectCount: 0,
+    notSelectCount: 0,
+    allScholarshipNames: [],
+    genderAnalytics: { maleApplications: 0, femaleApplications: 0, otherGenderApplications: 0 },
+    stateWiseAnalytics: [],
+    scholarshipAnalytics: [],
+  });
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`/api/admin/analytics?status=${selectedStatus}&type=${selectedType}`);
+      setAnalytics(response.data);
+
+      const scholarshipResponse = await axios.get(`/api/admin/analytics?type=all`);
+      setScholarshipTypes(scholarshipResponse.data.allScholarshipNames || []);
+    } catch (error) {
+      console.error('Error fetching analytics data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedStatus, selectedType]);
+
+  // Data for Pie Chart (Selected vs Not Selected)
+  const pieData = {
     labels: ['Selected', 'Not Selected'],
     datasets: [
       {
-        data: [0, 0],
+        data: [analytics.selectCount, analytics.notSelectCount],
+        backgroundColor: ['rgba(75, 192, 192, 0.8)', 'rgba(255, 99, 132, 0.8)'],
+        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+        borderWidth: 2,
+      },
+    ],
+  };
+
+  // Data for Bar Chart (Gender Analytics)
+  const genderData = {
+    labels: ['Male', 'Female', 'Other'],
+    datasets: [
+      {
+        label: 'Applications',
+        data: [
+          analytics.genderAnalytics.maleApplications,
+          analytics.genderAnalytics.femaleApplications,
+          analytics.genderAnalytics.otherGenderApplications,
+        ],
         backgroundColor: [
-          'rgba(75, 192, 192, 0.8)',
+          'rgba(54, 162, 235, 0.8)',
           'rgba(255, 99, 132, 0.8)',
+          'rgba(153, 102, 255, 0.8)',
         ],
         borderColor: [
-          'rgba(75, 192, 192, 1)',
+          'rgba(54, 162, 235, 1)',
           'rgba(255, 99, 132, 1)',
+          'rgba(153, 102, 255, 1)',
         ],
         borderWidth: 2,
       },
     ],
-  });
+  };
 
-  const [barData, setBarData] = useState({
-    labels: ['Total Students Count'],
+  // Data for Line Chart (State-wise Analytics)
+  const stateData = {
+    labels: analytics.stateWiseAnalytics.map((item) => item._id),
     datasets: [
       {
-        label: 'Total Students',
-        data: [0],
+        label: 'Applications per State',
+        data: analytics.stateWiseAnalytics.map((item) => item.count),
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderWidth: 2,
+        tension: 0.4,
+      },
+    ],
+  };
+
+  // Data for Bar Chart (Scholarship-wise Analytics)
+  const scholarshipData = {
+    labels: analytics.scholarshipAnalytics.map((item) => item._id),
+    datasets: [
+      {
+        label: 'Total Applications',
+        data: analytics.scholarshipAnalytics.map((item) => item.total),
         backgroundColor: 'rgba(54, 162, 235, 0.8)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 2,
-        borderRadius: 5,
+      },
+      {
+        label: 'Selected Applications',
+        data: analytics.scholarshipAnalytics.map((item) => item.selected),
+        backgroundColor: 'rgba(75, 192, 192, 0.8)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 2,
+      },
+      {
+        label: 'Not Selected Applications',
+        data: analytics.scholarshipAnalytics.map((item) => item.notSelected),
+        backgroundColor: 'rgba(255, 99, 132, 0.8)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 2,
       },
     ],
-  });
-
-  // const router = useRouter();
-
-  // // Check if the token exists and is valid (client-side)
-  // useEffect(() => {
-  //   const token = parseCookies().authToken;
-  //   if (!token) {
-  //     // If no token, redirect to login
-  //     router.push('/admin/login');
-  //     return;
-  //   }
-
-  //   try {
-  //     jwt.verify(token, process.env.JWT_SECRET);
-  //   } catch (err) {
-  //     // If token is invalid, clear it and redirect to login
-  //     router.push('/admin/login');
-  //   }
-  // }, [router]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Fetch the data with the selected filters
-        const response = await axios.get(`/api/admin/analytics?status=${selectedStatus}&type=${selectedType}`);
-        
-        // Update Pie Chart data
-        setPieData(prevData => ({
-          ...prevData,
-          datasets: [{
-            ...prevData.datasets[0],
-            data: [response.data.selectCount, response.data.notSelectCount],
-          }],
-        }));
-        
-        // Update Bar Chart data
-        setBarData(prevData => ({
-          ...prevData,
-          datasets: [{
-            ...prevData.datasets[0],
-            data: [response.data.totalScholarships],
-          }],
-        }));
-      } catch (error) {
-        console.error('Error fetching analytics data:', error);
-      }
-    };
-
-    fetchData();
-  }, [selectedStatus, selectedType]);
+  };
 
   const options = {
     responsive: true,
@@ -125,39 +148,18 @@ const Dashboard = () => {
         labels: {
           padding: 20,
           font: {
-            size: 14
-          }
-        }
+            size: 14,
+          },
+        },
       },
-      title: {
-        display: false,
-        text: 'Scholarship Status',
-        font: {
-          size: 16,
-          weight: 'bold'
-        }
-      }
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          color: 'rgba(0, 0, 0, 0.1)'
-        }
-      },
-      x: {
-        grid: {
-          color: 'rgba(0, 0, 0, 0.1)'
-        }
-      }
-    }
   };
 
   return (
     <div className="p-8">
+      {/* Filter Dropdowns */}
       <div className="mb-6 flex gap-4">
-        {/* Dropdown for selecting Status */}
-        <select 
+        <select
           className="px-4 py-2 border rounded-lg text-black"
           value={selectedStatus}
           onChange={(e) => setSelectedStatus(e.target.value)}
@@ -166,31 +168,73 @@ const Dashboard = () => {
           <option value="selected">Selected</option>
           <option value="notSelected">Not Selected</option>
         </select>
-        
-        {/* Dropdown for selecting Scholarship Type */}
-        <select 
+
+        <select
           className="px-4 py-2 border rounded-lg text-black"
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
         >
           <option value="all">All Types</option>
           {scholarshipTypes.map((type) => (
-            <option key={type._id} value={type._id}>{type.name}</option>
+            <option key={type} value={type}>
+              {type}
+            </option>
           ))}
         </select>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* Pie Chart showing selected vs not selected count */}
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-          <div className="h-[350px]">
-            <Pie data={pieData} options={{...options, aspectRatio: 1}} />
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-black">
+        <div className="bg-white p-6 rounded-xl shadow-lg flex items-center">
+          <FaUsers className="text-blue-500 text-4xl mr-4" />
+          <div>
+            <h4 className="text-lg font-bold">Total Scholarships</h4>
+            <p className="text-2xl font-semibold">{analytics.totalScholarships}</p>
           </div>
         </div>
-        
-        {/* Bar Chart showing total student count */}
+        <div className="bg-white p-6 rounded-xl shadow-lg flex items-center">
+          <FaCheckCircle className="text-green-500 text-4xl mr-4" />
+          <div>
+            <h4 className="text-lg font-bold">Selected Applications</h4>
+            <p className="text-2xl font-semibold">{analytics.selectCount}</p>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-xl shadow-lg flex items-center">
+          <FaTimesCircle className="text-red-500 text-4xl mr-4" />
+          <div>
+            <h4 className="text-lg font-bold">Not Selected Applications</h4>
+            <p className="text-2xl font-semibold">{analytics.notSelectCount}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Charts */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 text-black">
         <div className="bg-white p-6 rounded-xl shadow-lg">
+          <h3 className="text-center text-lg font-bold mb-4">Selected vs Not Selected</h3>
           <div className="h-[350px]">
-            <Bar data={barData} options={options} />
+            <Pie data={pieData} options={options} />
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-lg">
+          <h3 className="text-center text-lg font-bold mb-4">Gender Analytics</h3>
+          <div className="h-[350px]">
+            <Bar data={genderData} options={options} />
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-lg">
+          <h3 className="text-center text-lg font-bold mb-4">State-wise Applications</h3>
+          <div className="h-[350px]">
+            <Line data={stateData} options={options} />
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-xl shadow-lg">
+          <h3 className="text-center text-lg font-bold mb-4">Scholarship Analytics</h3>
+          <div className="h-[350px]">
+            <Bar data={scholarshipData} options={options} />
           </div>
         </div>
       </div>

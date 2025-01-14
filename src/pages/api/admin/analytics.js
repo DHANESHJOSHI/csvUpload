@@ -12,35 +12,64 @@ const userHandler = async (req, res, token) => {
     if (!token) {
       return res.status(401).json({ error: 'Not authenticated' });
     }
+
     // Connect to the database
-    await connectToDatabase(); // Establish connection to MongoDB
+    await connectToDatabase();
 
-    // Extract parameters from the query (scholarshipName, status)
-    const { scholarshipName, status } = req.query;
+    // Extract parameters from the query (type, status)
+    const { type, status } = req.query;
 
-    // Create a filter object for scholarshipName and status if provided
+    // Create a filter object for scholarshipName and status
     let filter = {};
-    if (scholarshipName) {
-      filter.scholarshipName = scholarshipName;
+
+    // Map 'type' to 'scholarshipName'
+    if (type && type !== 'all') {
+      filter.scholarshipName = type;
     }
-    if (status) {
-      filter.status = status;
+
+    // Map 'status' values to database values
+    if (status && status !== 'all') {
+      if (status === 'selected') {
+        filter.status = 'Selected';
+      } else if (status === 'notSelected') {
+        filter.status = 'Not Selected';
+      }
     }
+
+    // Get all unique scholarship names
+    const allScholarshipNames = await Scholarship.distinct('scholarshipName');
 
     // Fetch scholarship counts based on the filter
     const totalScholarshipCount = await Scholarship.countDocuments(filter);
     const selectCount = await Scholarship.countDocuments({ ...filter, status: 'Selected' });
     const notSelectCount = await Scholarship.countDocuments({ ...filter, status: 'Not Selected' });
 
-    // Gender-based analytics with the scholarshipName and status filter
+    // Gender-based analytics with the filter
     const maleApplications = await Scholarship.countDocuments({ ...filter, gender: 'male' });
     const femaleApplications = await Scholarship.countDocuments({ ...filter, gender: 'female' });
     const otherGenderApplications = await Scholarship.countDocuments({ ...filter, gender: 'other' });
 
-    // State-wise analytics with the scholarshipName and status filter
+    // State-wise analytics with the filter
     const stateWiseAnalytics = await Scholarship.aggregate([
       { $match: filter },
       { $group: { _id: '$state', count: { $sum: 1 } } },
+    ]);
+
+    // Scholarship-specific analytics
+    const scholarshipAnalytics = await Scholarship.aggregate([
+      { $match: filter },
+      {
+        $group: {
+          _id: '$scholarshipName',
+          total: { $sum: 1 },
+          selected: {
+            $sum: { $cond: [{ $eq: ['$status', 'Selected'] }, 1, 0] },
+          },
+          notSelected: {
+            $sum: { $cond: [{ $eq: ['$status', 'Not Selected'] }, 1, 0] },
+          },
+        },
+      },
     ]);
 
     // Response payload
@@ -48,12 +77,14 @@ const userHandler = async (req, res, token) => {
       totalScholarships: totalScholarshipCount,
       selectCount,
       notSelectCount,
+      allScholarshipNames,
       genderAnalytics: {
         maleApplications,
         femaleApplications,
         otherGenderApplications,
       },
-      stateWiseAnalytics, // Example: [{ _id: 'Gujarat', count: 50 }, { _id: 'Delhi', count: 30 }]
+      stateWiseAnalytics,
+      scholarshipAnalytics, // Added scholarship-specific analytics
     };
 
     // Return analytics
