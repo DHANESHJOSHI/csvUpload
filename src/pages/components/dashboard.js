@@ -14,6 +14,7 @@ import {
   ArcElement,
 } from 'chart.js';
 import { FaUsers, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 ChartJS.register(
   CategoryScale,
@@ -57,7 +58,6 @@ const Dashboard = () => {
     fetchData();
   }, [selectedStatus, selectedType]);
 
-  // Data for Pie Chart (Selected vs Not Selected)
   const pieData = {
     labels: ['Selected', 'Not Selected'],
     datasets: [
@@ -70,7 +70,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Data for Bar Chart (Gender Analytics)
   const genderData = {
     labels: ['Male', 'Female', 'Other'],
     datasets: [
@@ -96,7 +95,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Data for Line Chart (State-wise Analytics)
   const stateData = {
     labels: analytics.stateWiseAnalytics.map((item) => item._id),
     datasets: [
@@ -111,7 +109,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Data for Bar Chart (Scholarship-wise Analytics)
   const scholarshipData = {
     labels: analytics.scholarshipAnalytics.map((item) => item._id),
     datasets: [
@@ -153,14 +150,26 @@ const Dashboard = () => {
         },
       },
     },
+    animation: {
+      duration: 2000,
+      easing: 'easeInOutQuart'
+    }
   };
 
   return (
-    <div className="p-8">
-      {/* Filter Dropdowns */}
-      <div className="mb-6 flex gap-4">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="p-8"
+    >
+      <motion.div 
+        initial={{ y: -20 }}
+        animate={{ y: 0 }}
+        className="mb-6 flex gap-4"
+      >
         <select
-          className="px-4 py-2 border rounded-lg text-black"
+          className="px-4 py-2 border rounded-lg text-black bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300"
           value={selectedStatus}
           onChange={(e) => setSelectedStatus(e.target.value)}
         >
@@ -170,75 +179,104 @@ const Dashboard = () => {
         </select>
 
         <select
-          className="px-4 py-2 border rounded-lg text-black"
+          className="px-4 py-2 border rounded-lg text-black bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300"
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
         >
           <option value="all">All Types</option>
           {scholarshipTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
+            <option key={type} value={type}>{type}</option>
           ))}
         </select>
-      </div>
+      </motion.div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-black">
-        <div className="bg-white p-6 rounded-xl shadow-lg flex items-center">
+      <motion.div 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+      >
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-50 p-6 rounded-xl shadow-lg flex items-center transform transition-all duration-300 hover:shadow-2xl"
+        >
           <FaUsers className="text-blue-500 text-4xl mr-4" />
           <div>
-            <h4 className="text-lg font-bold">Total Scholarships</h4>
-            <p className="text-2xl font-semibold">{analytics.totalScholarships}</p>
+            <h4 className="text-lg font-bold text-gray-800">Total Scholarships</h4>
+            <p className="text-2xl font-semibold text-blue-600">{analytics.totalScholarships}</p>
           </div>
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-lg flex items-center">
+        </motion.div>
+
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-50 p-6 rounded-xl shadow-lg flex items-center transform transition-all duration-300 hover:shadow-2xl"
+        >
           <FaCheckCircle className="text-green-500 text-4xl mr-4" />
           <div>
-            <h4 className="text-lg font-bold">Selected Applications</h4>
-            <p className="text-2xl font-semibold">{analytics.selectCount}</p>
+            <h4 className="text-lg font-bold text-gray-800">Selected Applications</h4>
+            <p className="text-2xl font-semibold text-green-600">{analytics.selectCount}</p>
           </div>
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-lg flex items-center">
+        </motion.div>
+
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-50 p-6 rounded-xl shadow-lg flex items-center transform transition-all duration-300 hover:shadow-2xl"
+        >
           <FaTimesCircle className="text-red-500 text-4xl mr-4" />
           <div>
-            <h4 className="text-lg font-bold">Not Selected Applications</h4>
-            <p className="text-2xl font-semibold">{analytics.notSelectCount}</p>
+            <h4 className="text-lg font-bold text-gray-800">Not Selected Applications</h4>
+            <p className="text-2xl font-semibold text-red-600">{analytics.notSelectCount}</p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      {/* Charts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 text-black">
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-          <h3 className="text-center text-lg font-bold mb-4">Selected vs Not Selected</h3>
+      <motion.div 
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
+      >
+        <motion.div 
+          whileHover={{ scale: 1.01 }}
+          className="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+        >
+          <h3 className="text-center text-lg font-bold mb-4 text-gray-800">Selected vs Not Selected</h3>
           <div className="h-[350px]">
             <Pie data={pieData} options={options} />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-          <h3 className="text-center text-lg font-bold mb-4">Gender Analytics</h3>
+        <motion.div 
+          whileHover={{ scale: 1.01 }}
+          className="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+        >
+          <h3 className="text-center text-lg font-bold mb-4 text-gray-800">Gender Analytics</h3>
           <div className="h-[350px]">
             <Bar data={genderData} options={options} />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-          <h3 className="text-center text-lg font-bold mb-4">State-wise Applications</h3>
+        <motion.div 
+          whileHover={{ scale: 1.01 }}
+          className="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+        >
+          <h3 className="text-center text-lg font-bold mb-4 text-gray-800">State-wise Applications</h3>
           <div className="h-[350px]">
             <Line data={stateData} options={options} />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg">
-          <h3 className="text-center text-lg font-bold mb-4">Scholarship Analytics</h3>
-          <div className="h-[350px]"> 
+        <motion.div 
+          whileHover={{ scale: 1.01 }}
+          className="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300"
+        >
+          <h3 className="text-center text-lg font-bold mb-4 text-gray-800">Scholarship Analytics</h3>
+          <div className="h-[350px]">
             <Bar data={scholarshipData} options={options} />
           </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
