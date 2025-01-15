@@ -13,6 +13,10 @@ const IndiaMap = ({ geoUrl, stateWiseAnalytics, genderData, scholarshipData, sta
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
 
+  if (!stateWiseAnalytics || !Array.isArray(stateWiseAnalytics)) {
+    return <div>Loading...</div>;
+  }
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);

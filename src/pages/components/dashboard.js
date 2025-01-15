@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import Chart from './Chart';
 import IndiaMap from './IndiaMap';
-import { TotalScholarshipsCard, SelectedApplicationsCard, NotSelectedApplicationsCard } from './StatisticsCard';
+import { TotalScholarshipsCard, SelectedApplicationsCard, NotSelectedApplicationsCard } from '../../components/StatisticsCard';
 import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, Title, Tooltip, Legend, PointElement, LineElement, BarElement } from 'chart.js';
 
 // Register Chart.js elements

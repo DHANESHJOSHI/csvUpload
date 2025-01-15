@@ -1,5 +1,5 @@
 import authenticateToken from '@/lib/authMiddleware';
-import { connectToDatabase } from '../../../lib/db';
+import { connectToDatabase } from '@/lib/db';
 import Admin from '../../../models/Admin';
 
 const handler = async (req, res) => {

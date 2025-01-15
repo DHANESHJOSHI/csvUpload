@@ -1,3 +1,4 @@
+// components/StatisticsCard.js
 import { motion } from 'framer-motion';
 import { FaUsers, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
@@ -14,7 +15,7 @@ const StatisticsCard = ({ Icon, title, count, iconColor, textColor }) => (
   </motion.div>
 );
 
-export const TotalScholarshipsCard = ({ totalScholarships }) => (
+const TotalScholarshipsCard = ({ totalScholarships }) => (
   <StatisticsCard 
     Icon={FaUsers} 
     title="Total Scholarships" 
@@ -24,7 +25,7 @@ export const TotalScholarshipsCard = ({ totalScholarships }) => (
   />
 );
 
-export const SelectedApplicationsCard = ({ selectCount }) => (
+const SelectedApplicationsCard = ({ selectCount }) => (
   <StatisticsCard 
     Icon={FaCheckCircle} 
     title="Selected Applications" 
@@ -34,7 +35,7 @@ export const SelectedApplicationsCard = ({ selectCount }) => (
   />
 );
 
-export const NotSelectedApplicationsCard = ({ notSelectCount }) => (
+const NotSelectedApplicationsCard = ({ notSelectCount }) => (
   <StatisticsCard 
     Icon={FaTimesCircle} 
     title="Not Selected Applications" 
@@ -43,3 +44,5 @@ export const NotSelectedApplicationsCard = ({ notSelectCount }) => (
     textColor="text-red-600" 
   />
 );
+
+export { TotalScholarshipsCard, SelectedApplicationsCard, NotSelectedApplicationsCard };

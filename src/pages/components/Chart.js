@@ -2,6 +2,10 @@ import { Bar, Pie, Line } from 'react-chartjs-2';
 import { motion } from 'framer-motion';
 
 const Chart = ({ data, type, title, options }) => {
+  if (!data || !data.labels) {
+    return <div>Loading...</div>;
+  }
+
   let ChartComponent;
 
   switch (type) {
