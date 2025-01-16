@@ -3,13 +3,38 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import Chart from './Chart';
 import IndiaMap from './IndiaMap';
-import { TotalScholarshipsCard, SelectedApplicationsCard, NotSelectedApplicationsCard } from '../../components/StatisticsCard';
-import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, Title, Tooltip, Legend, PointElement, LineElement, BarElement } from 'chart.js';
+import {
+  TotalScholarshipsCard,
+  SelectedApplicationsCard,
+  NotSelectedApplicationsCard,
+} from '../../components/StatisticsCard';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LineElement,
+  BarElement,
+} from 'chart.js';
 
 // Register Chart.js elements
-ChartJS.register(ArcElement, CategoryScale, LinearScale, Title, Tooltip, Legend, PointElement, LineElement, BarElement);
+ChartJS.register(
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  Title,
+  Tooltip,
+  Legend,
+  PointElement,
+  LineElement,
+  BarElement
+);
 
-const geoUrl = "/india.json";
+const geoUrl = '/india.json';
 
 const Dashboard = () => {
   const [selectedStatus, setSelectedStatus] = useState('all');
@@ -20,7 +45,11 @@ const Dashboard = () => {
     selectCount: 0,
     notSelectCount: 0,
     allScholarshipNames: [],
-    genderAnalytics: { maleApplications: 0, femaleApplications: 0, otherGenderApplications: 0 },
+    genderAnalytics: {
+      maleApplications: 0,
+      femaleApplications: 0,
+      otherGenderApplications: 0,
+    },
     categoryWiseAnalytics: [],
     stateWiseAnalytics: [],
     scholarshipAnalytics: [],
@@ -28,7 +57,6 @@ const Dashboard = () => {
   });
   const [loading, setLoading] = useState(true);
   const [selectedStateAnalytics, setSelectedStateAnalytics] = useState(null);
-  const [selectedStateTypeAnalytics, setSelectedStateTypeAnalytics] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -37,10 +65,14 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`/api/admin/analytics?status=${selectedStatus}&type=${selectedType}`);
+      const response = await axios.get(
+        `/api/admin/analytics?status=${selectedStatus}&type=${selectedType}`
+      );
       setAnalytics(response.data);
 
-      const scholarshipResponse = await axios.get(`/api/admin/analytics?type=all`);
+      const scholarshipResponse = await axios.get(
+        `/api/admin/analytics?type=all`
+      );
       setScholarshipTypes(scholarshipResponse.data.allScholarshipNames || []);
     } catch (error) {
       console.error('Error fetching analytics data:', error);
@@ -108,14 +140,18 @@ const Dashboard = () => {
     datasets: [
       {
         label: 'Selected',
-        data: analytics.scholarshipAnalytics.map((scholarship) => scholarship.selected),
+        data: analytics.scholarshipAnalytics.map(
+          (scholarship) => scholarship.selected
+        ),
         backgroundColor: 'rgba(75, 192, 192, 0.8)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 2,
       },
       {
         label: 'Not Selected',
-        data: analytics.scholarshipAnalytics.map((scholarship) => scholarship.notSelected),
+        data: analytics.scholarshipAnalytics.map(
+          (scholarship) => scholarship.notSelected
+        ),
         backgroundColor: 'rgba(255, 99, 132, 0.8)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 2,
@@ -145,36 +181,36 @@ const Dashboard = () => {
 
   const handleStateClick = (stateCode) => {
     const stateAnalytics = analytics.stateWiseAnalytics.find(
-        (state) => state._id === stateCode
+      (state) => state._id === stateCode
     );
 
-    const stateTypeAnalytics = analytics.stateTypeWiseAnalytics.find(
-        (entry) => entry._id.state.trim().toLowerCase() === stateCode.trim().toLowerCase()
+    const stateTypeAnalytics = analytics.stateTypeWiseAnalytics?.find(
+      (entry) => entry._id.state.trim().toLowerCase() === stateCode.trim().toLowerCase()
     );
 
     const combinedAnalytics = {
-        ...stateAnalytics,
-        ...stateTypeAnalytics,
-        _id: stateCode,
+      ...stateAnalytics,
+      ...stateTypeAnalytics,
+      _id: stateCode,
     };
 
     setSelectedStateAnalytics(combinedAnalytics);
-};
+  };
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="p-8"
+      className="p-4 sm:p-6 md:p-8"
     >
-      <motion.div 
+      <motion.div
         initial={{ y: -20 }}
         animate={{ y: 0 }}
-        className="mb-6 flex gap-4"
+        className="mb-4 flex flex-wrap gap-2"
       >
         <select
-          className="px-4 py-2 border rounded-lg text-black bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300"
+          className="px-4 py-2 border rounded-lg text-black bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto"
           value={selectedStatus}
           onChange={(e) => setSelectedStatus(e.target.value)}
         >
@@ -184,137 +220,121 @@ const Dashboard = () => {
         </select>
 
         <select
-          className="px-4 py-2 border rounded-lg text-black bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300"
+          className="px-4 py-2 border rounded-lg text-black bg-gray-50 shadow-md hover:shadow-lg transition-shadow duration-300 w-full sm:w-auto"
           value={selectedType}
           onChange={(e) => setSelectedType(e.target.value)}
         >
           <option value="all">All Types</option>
           {scholarshipTypes.map((type) => (
-            <option key={type} value={type}>{type}</option>
+            <option key={type} value={type}>
+              {type}
+            </option>
           ))}
         </select>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="grid grid-cols-3 gap-8 mb-12"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
       >
         <TotalScholarshipsCard totalScholarships={analytics.totalScholarships} />
         <SelectedApplicationsCard selectCount={analytics.selectCount} />
         <NotSelectedApplicationsCard notSelectCount={analytics.notSelectCount} />
       </motion.div>
 
-            <motion.div>
-              {loading ? (
-                <div className="flex items-center justify-center h-64">
-                  <div className="relative w-24 h-24">
-                    <div className="absolute top-0 left-0 w-full h-full border-8 border-gray-200 rounded-full"></div>
-                    <div className="absolute top-0 left-0 w-full h-full border-8 border-blue-500 rounded-full border-t-transparent animate-spin"></div>
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
+      <div>
+        {loading ? (
+                  <div className="flex items-center justify-center min-h-[200px] w-full">
+                    <div className="relative inline-flex">
+                      <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
+                      <div className="w-8 h-8 bg-blue-500 rounded-full absolute top-0 left-0 animate-ping"></div>
+                      <div className="w-8 h-8 bg-blue-500 rounded-full absolute top-0 left-0 animate-pulse"></div>
                     </div>
-                  </div>
-                  <div className="ml-4">
-                    <div className="text-xl font-semibold text-gray-700">Loading</div>
-                    <div className="text-sm text-gray-500 animate-pulse">Please wait while we fetch your data...</div>
-                  </div>
-                </div>
-              ) : (
-                <motion.div 
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <motion.div 
-                    className="bg-white p-6 rounded-xl shadow-lg"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Chart data={pieData} type="pie" title="Scholarships Selected vs Not Selected" options={options} />
-                  </motion.div>
-                  <motion.div 
-                    className="bg-white p-6 rounded-xl shadow-lg"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Chart data={genderData} type="bar" title="Gender Analytics" options={options} />
-                  </motion.div>
-                  <motion.div 
-                    className="bg-white p-6 rounded-xl shadow-lg"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Chart data={stateWiseData} type="bar" title="State-Wise Applications" options={options} />
-                  </motion.div>
-                  <motion.div 
-                    className="bg-white p-6 rounded-xl shadow-lg"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Chart data={scholarshipWiseData} type="bar" title="Scholarship Analytics" options={options} />
-                  </motion.div>
-                </motion.div>
-              )}
+                    <span className="ml-4 text-xl font-semibold bg-gradient-to-r from-teal-500 to-blue-600 bg-clip-text  font-extrabold text-transparent">
+                      Loading analytics...
+                    </span>
+                  </div>        ) : (
+          <>
+            <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+              <Chart
+                data={pieData}
+                type="pie"
+                title="Scholarships Selected vs Not Selected"
+                options={options}
+              />
+              <Chart
+                data={genderData}
+                type="bar"
+                title="Gender Analytics"
+                options={options}
+              />
+              <Chart
+                data={stateWiseData}
+                type="bar"
+                title="State-Wise Applications"
+                options={options}
+              />
+              <Chart
+                data={scholarshipWiseData}
+                type="bar"
+                title="Scholarship Analytics"
+                options={options}
+              />
             </motion.div>
- <div className="flex">
-  
-  <IndiaMap 
-    geoUrl={geoUrl} 
-    stateWiseAnalytics={analytics.stateWiseAnalytics} 
-    stateTypeWiseAnalytics={analytics.stateTypeWiseAnalytics} 
-    genderData={analytics.genderAnalytics} 
-    scholarshipData={analytics.scholarshipAnalytics} 
-    onStateClick={handleStateClick} 
-  />
-          {selectedStateAnalytics && (
+            <IndiaMap
+              geoUrl={geoUrl}
+              stateWiseAnalytics={analytics.stateWiseAnalytics}
+              stateTypeWiseAnalytics={analytics.stateTypeWiseAnalytics} 
+              genderData={analytics.genderAnalytics} 
+              scholarshipData={analytics.scholarshipAnalytics} 
+              onStateClick={handleStateClick}
+            />
+            {selectedStateAnalytics && (
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="mt-12 p-4 md:p-6 bg-transparent rounded-xl shadow-2xl backdrop-blur-sm text-black font-semibold"
+              className="p-4 md:p-8 lg:p-10 rounded-xl shadow-2xl backdrop-blur-sm text-black font-medium w-full max-w-full overflow-x-auto"
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-black mb-6 border-b pb-3 border-gray-200">
-                <span className="bg-clip-text text-white">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-8 border-b pb-4 border-gray-200">
+                <span className="bg-clip-text text-white break-words">
                   {selectedStateAnalytics._id} Analytics
                 </span>
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <h4 className="text-base md:text-lg font-medium text-black font-semibold">Total Applications</h4>
-                  <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">{selectedStateAnalytics.total || 0}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+                <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+                  <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Total Applications</h4>
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent mt-2">{selectedStateAnalytics.total || 0}</p>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <h4 className="text-base md:text-lg font-medium text-black font-semibold">Selected</h4>
-                  <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent">{selectedStateAnalytics.selected || 0}</p>
+                <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+                  <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Selected</h4>
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-green-600 to-green-400 bg-clip-text text-transparent mt-2">{selectedStateAnalytics.selected || 0}</p>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <h4 className="text-base md:text-lg font-medium text-black font-semibold">Not Selected</h4>
-                  <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">{selectedStateAnalytics.notSelected || 0}</p>
+                <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+                  <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Not Selected</h4>
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent mt-2">{selectedStateAnalytics.notSelected || 0}</p>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <h4 className="text-base md:text-lg font-medium text-black font-semibold">Total Amount</h4>
-                  <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">₹{selectedStateAnalytics.totalAmount || 0}</p>
+                <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+                  <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Total Amount</h4>
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent mt-2">₹{selectedStateAnalytics.totalAmount || 0}</p>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <h4 className="text-base md:text-lg font-medium text-black font-semibold">Amount Disbursed</h4>
-                  <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent">₹{selectedStateAnalytics.amountDisbursed || 0}</p>
+                <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+                  <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Amount Disbursed</h4>
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent mt-2">₹{selectedStateAnalytics.amountDisbursed || 0}</p>
                 </div>
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h4 className="text-base md:text-lg font-medium text-black font-semibold">Gender Distribution</h4>
-                      <div className="flex gap-4 mt-2">
-                        <div>
-                          <span className="text-sm text-black">Male</span>
-                          <p className="text-xl md:text-2xl font-bold text-blue-600">{selectedStateAnalytics.male || 0}</p>
-                        </div>
-                        <div>
-                          <span className="text-sm text-black">Female</span>
-                          <p className="text-xl md:text-2xl font-bold text-pink-600">{selectedStateAnalytics.female || 0}</p>
-                        </div>
+                <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+                  <div className="flex flex-col space-y-4">
+                    <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Gender Distribution</h4>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="flex flex-col">
+                        <span className="text-sm md:text-base text-gray-600 mb-1">Male</span>
+                        <p className="text-xl md:text-2xl lg:text-3xl font-bold text-blue-600">{selectedStateAnalytics.male || 0}</p>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-sm md:text-base text-gray-600 mb-1">Female</span>
+                        <p className="text-xl md:text-2xl lg:text-3xl font-bold text-pink-600">{selectedStateAnalytics.female || 0}</p>
                       </div>
                     </div>
                   </div>
@@ -322,6 +342,8 @@ const Dashboard = () => {
               </div>
             </motion.div>
           )}
+          </>
+        )}
       </div>
     </motion.div>
   );
