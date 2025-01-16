@@ -5,6 +5,14 @@ import csv from 'csv-parser';
 import Scholarship from '@/models/Scholarship';
 import connectToDatabase from '@/lib/db';
 
+// Helper function to clean and cast to number
+const castToNumber = (value) => {
+  if (value === null || value === '' || value === 'null') return null;
+  const cleanedValue = value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters except dots
+  const number = parseFloat(cleanedValue);
+  return isNaN(number) ? null : number; // Return null if the value is not a valid number
+};
+
 // Multer configuration
 const upload = multer({
   storage: multer.diskStorage({
@@ -25,7 +33,6 @@ const upload = multer({
 const apiRoute = nextConnect({
   onError(error, req, res) {
     console.error('Error:', error.message);
-    console.log('Error:', error);
     res.status(500).json({ error: error.message });
   },
   onNoMatch(req, res) {
@@ -47,46 +54,62 @@ apiRoute.post(async (req, res) => {
     fs.createReadStream(req.file.path)
       .pipe(csv())
       .on('data', (data) => {
-        // Field validation
-        const { name, email, status, scholarshipName, gender, state } = data;
-        const errors = [];
+        const {
+          name,
+          email,
+          status,
+          scholarshipName,
+          gender,
+          state,
+          psychometricReport,
+          coachingName,
+          coachingState,
+          natureOfCoaching,
+          scholarshipID,
+          cseAttempts,
+          postGraduationCompleted,
+          fieldOfStudy,
+          graduationPercentage,
+          twelfthGradePercentage,
+          tenthGradePercentage,
+          familyAnnualIncome,
+          guardianOccupation,
+          category,
+          age,
+          contactNumber,
+        } = data;
 
-        if (!name) errors.push('Name is required');
-        if (!email || !email.includes('@') || !email.includes('.')) errors.push('Invalid email format');
-        if (!scholarshipName) errors.push('Scholarship Name is required');
-        if (!gender || !['male', 'female', 'other'].includes(gender.toLowerCase())) errors.push('Invalid gender');
-        if (!state) errors.push('State is required');
+        const record = {
+          name,
+          email,
+          status: status || 'Not Selected', 
+          scholarshipName,
+          gender: gender ? gender.toLowerCase() : '',
+          state,
+          psychometricReport, 
+          coachingName, 
+          coachingState,
+          natureOfCoaching,
+          scholarshipID, 
+          cseAttempts, 
+          postGraduationCompleted,
+          fieldOfStudy,
+          graduationPercentage,
+          twelfthGradePercentage, 
+          tenthGradePercentage, 
+          familyAnnualIncome, 
+          guardianOccupation, 
+          category, 
+          age, 
+          contactNumber,
+        };
 
-        if (errors.length > 0) {
-          results.push({ ...data, errors });
-        } else {
-          results.push({
-            name,
-            email,
-            status: status || 'Not Selected',
-            scholarshipName,
-            gender: gender.toLowerCase(),
-            state,
-          });
-        }
+        results.push(record);
       })
       .on('end', async () => {
         try {
-          for (const record of results) {
-            if (record.errors) continue; // Skip invalid records
-
-            const existing = await Scholarship.findOne({ email: record.email });
-            if (existing) {
-              // Update existing record if needed
-              Object.assign(existing, record);
-              await existing.save();
-            } else {
-              // Create new record
-              await Scholarship.create(record);
-            }
-          }
-
-          fs.unlinkSync(req.file.path); // Delete the uploaded file
+          await Scholarship.insertMany(results);
+          fs.unlinkSync(req.file.path);
           res.status(200).json({ message: 'Upload processed successfully', results });
         } catch (err) {
           console.error('Database Error:', err.message);
@@ -103,6 +126,6 @@ export default apiRoute;
 
 export const config = {
   api: {
-    bodyParser: false, // Disables body parsing, because we are handling file upload manually
+    bodyParser: false,
   },
 };

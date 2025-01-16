@@ -2,24 +2,24 @@ import mongoose from 'mongoose';
 
 const InstallmentSchema = new mongoose.Schema(
   {
-    installmentNumber: { type: Number, required: true },
+    installmentString: { type: String, required: false },
     status: {
       type: String,
       enum: ['pending', 'completed'],
       default: 'pending',
     },
     dateCompleted: { type: Date, default: null },
-    amount: { type: Number, default: 0 },
+    amount: { type: String, default: 0 },
   },
   { _id: false } // No need for each installment to have its own unique ID
 );
 
 const ScholarshipSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: false },
     email: { type: String, required: true },
-    contactNumber: { type: String, required: true },
-    age: { type: Number, required: true },
+    contactString: { type: String, required: false },
+    age: { type: String, required: false },
     status: {
       type: String,
       enum: ['Selected', 'Not Selected'],
@@ -30,35 +30,35 @@ const ScholarshipSchema = new mongoose.Schema(
     gender: {
       type: String,
       enum: ['male', 'female', 'other'],
-      required: true,
+      required: false,
     },
-    state: { type: String, required: true },
-    category: { type: String, required: true },
-    pwdPercentage: { type: Number, default: 0 }, // PWD percentage
+    state: { type: String, required: false },
+    category: { type: String, required: false },
+    pwdPercentage: { type: String, default: 0 }, // PWD percentage
     isMinority: { type: Boolean, default: false },
-    guardianOccupation: { type: String, required: true },
-    familyAnnualIncome: { type: Number, required: true },
-    tenthGradePercentage: { type: Number, required: true },
-    twelfthGradePercentage: { type: Number, required: true },
-    graduationPercentage: { type: Number, required: true },
-    fieldOfStudy: { type: String, required: true },
-    postGraduationCompleted: { type: Boolean, required: true },
-    cseAttempts: { type: Number, required: true },
+    guardianOccupation: { type: String, required: false },
+    familyAnnualIncome: { type: String, required: false },
+    tenthGradePercentage: { type: String, required: false },
+    twelfthGradePercentage: { type: String, required: false },
+    graduationPercentage: { type: String, required: false },
+    fieldOfStudy: { type: String, required: false },
+    postGraduationCompleted: { type: Boolean, required: false },
+    cseAttempts: { type: String, required: false },
     selectedForUPSCMains: { type: Boolean, default: false },
     selectedForUPSCInterviews: { type: Boolean, default: false },
-    scholarshipID: { type: String, required: true },
+    scholarshipID: { type: String, required: false },
     scholarshipAwarded: { type: Boolean, default: false },
-    totalAmount: { type: Number, default: 0 },
-    amountDisbursed: { type: Number, default: 0 },
+    totalAmount: { type: String, default: 0 },
+    amountDisbursed: { type: String, default: 0 },
     disbursementDate: { type: Date, default: null },
     installments: [InstallmentSchema], // Array to store installments
-    natureOfCoaching: { type: String, required: true },
-    coachingState: { type: String, required: true },
-    coachingName: { type: String, required: true },
-    psychometricReport: { type: String, required: true },
+    natureOfCoaching: { type: String, required: false },
+    coachingState: { type: String, required: false },
+    coachingName: { type: String, required: false },
+    psychometricReport: { type: String, required: false },
   },
   {
-    timestamps: true, // Adds createdAt and updatedAt fields
+    timestamps: false, // Adds createdAt and updatedAt fields
   }
 );
 

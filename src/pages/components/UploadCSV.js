@@ -17,7 +17,6 @@ import { CloudUpload } from '@mui/icons-material';
 const UploadCSV = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState('');
-  const [statusData, setStatusData] = useState('');
   const [errors, setErrors] = useState([]);
   const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
@@ -71,8 +70,7 @@ const UploadCSV = () => {
     } catch (error) {
       const errorMessage = error.response?.data?.error || 'Error uploading file.';
       const errorDetails = error.response?.data?.data || [];
-      setStatus(`Error in Row ${error.response?.data?.data?.['S.No']}: ${errorMessage}`);
-      setStatusData(`Error in Row ${error.response?.data?.data}`);
+      setStatus(errorMessage);
       setErrors(Array.isArray(errorDetails) ? errorDetails : []);
       setOpen(true);
     } finally {
@@ -132,34 +130,44 @@ const UploadCSV = () => {
           />
         )}
       </Paper>
+      {errors.length > 0 && (
         <Paper elevation={3} sx={{ p: 4, mt: 4, borderRadius: 2 }}>
           <Typography variant="h6" color="error" gutterBottom>
             Validation Errors:
           </Typography>
           <Box sx={{ textAlign: 'left' }}>
-            {status}
-            {errors.map((err, index) => (
-              <Box key={index} sx={{ mt: 1, p: 2, bgcolor: '#fff3f3', borderRadius: 1 }}>
-                <Typography color="error" fontWeight="bold">
-                  Row {err['S.No']}:
-                </Typography>
-                <Typography>
-                  Name: {err.name}<br/>
-                  Email: {err.email}<br/>
-                  Status: {err.status}<br/>
-                  Scholarship: {err.scholarshipName}
-                </Typography>
-              </Box>
-            ))}
+          {errors.length > 0 && (
+  <Paper elevation={3} sx={{ p: 4, mt: 4, borderRadius: 2 }}>
+    <Typography variant="h6" color="error" gutterBottom>
+      Validation Errors:
+    </Typography>
+    <Box sx={{ textAlign: 'left' }}>
+      {errors.map((err, index) => (
+        <Box key={index} sx={{ mt: 1, p: 2, bgcolor: '#fff3f3', borderRadius: 1 }}>
+          <Typography color="error" fontWeight="bold">
+            Row {err['S.No'] || 'N/A'}:
+          </Typography>
+          {/* Displaying all fields */}
+          {Object.entries(err).map(([key, value], idx) => (
+            <Typography key={idx}>
+              <span className="font-medium">{key}:</span> {value || 'N/A'}
+            </Typography>
+          ))}
+        </Box>
+      ))}
+    </Box>
+  </Paper>
+)}
+
           </Box>
         </Paper>
+      )}
       <Snackbar open={open} onClose={handleClose}>
-        
         <Alert
           onClose={handleClose}
-          severity={status.includes('Error') ? 'error' : 'success' || status.includes('details') ? 'error' : 'success'}
+          severity={status.includes('Error') ? 'error' : 'success'}
           sx={{ width: '100%' }}
-          >
+        >
           {status}
         </Alert>
       </Snackbar>
