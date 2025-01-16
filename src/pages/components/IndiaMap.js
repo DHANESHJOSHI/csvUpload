@@ -87,9 +87,6 @@ const IndiaMap = ({ geoUrl, stateWiseAnalytics = [], genderData = [], scholarshi
     return { x, y };
   };
   
-  if (!geoUrl, !stateWiseAnalytics, !genderData, !scholarshipData, !stateTypeWiseAnalytics, !onStateClick || data.length === 0) {
-    return <p>Loading...</p>;
-}
 
 
   const renderTooltipContent = (stateCode, analytics) => {
@@ -116,9 +113,7 @@ Scholarships & State Type
 🎓 Total Amount: ₹${scholarshipAmount.total || 0}
 ${stateTypeInfo.map((st) => `${st._id.scholarshipName}: ${st.total}`).join('\n') || 'No data available'}`;
   };
-  if (!data || !Array.isArray(data)) {
-    return <p>No data available</p>;
-}
+ 
 
   return (
     <motion.div
