@@ -8,7 +8,7 @@ const Geographies = dynamic(() => import('react-simple-maps').then((mod) => mod.
 const Geography = dynamic(() => import('react-simple-maps').then((mod) => mod.Geography), { ssr: false });
 const ZoomableGroup = dynamic(() => import('react-simple-maps').then((mod) => mod.ZoomableGroup), { ssr: false });
 
-const IndiaMap = ({ geoUrl, stateWiseAnalytics, genderData, scholarshipData, stateTypeWiseAnalytics, onStateClick }) => {
+const IndiaMap = ({ geoUrl, stateWiseAnalytics = [], genderData = [], scholarshipData = [], stateTypeWiseAnalytics = [], onStateClick }) => {
   const [tooltipContent, setTooltipContent] = useState('');
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
@@ -87,7 +87,10 @@ const IndiaMap = ({ geoUrl, stateWiseAnalytics, genderData, scholarshipData, sta
     return { x, y };
   };
   
-  
+  if (!geoUrl, !stateWiseAnalytics, !genderData, !scholarshipData, !stateTypeWiseAnalytics, !onStateClick || data.length === 0) {
+    return <p>Loading...</p>;
+}
+
 
   const renderTooltipContent = (stateCode, analytics) => {
     const genderInfo = analytics.genderInfo || {};
@@ -113,6 +116,9 @@ Scholarships & State Type
 🎓 Total Amount: ₹${scholarshipAmount.total || 0}
 ${stateTypeInfo.map((st) => `${st._id.scholarshipName}: ${st.total}`).join('\n') || 'No data available'}`;
   };
+  if (!data || !Array.isArray(data)) {
+    return <p>No data available</p>;
+}
 
   return (
     <motion.div
