@@ -50,7 +50,7 @@ const ScholarshipSchema = new mongoose.Schema(
     scholarshipAwarded: { type: Boolean, default: false },
     totalAmount: { type: Number, default: 0 },
     amountDisbursed: { type: Number, default: 0 },
-    disbursementDate: { type: Date, default: Date.now },
+    disbursementDate: { type: Date, default: null },
     installments: [InstallmentSchema], // Array to store installments
     natureOfCoaching: { type: String, required: true },
     coachingState: { type: String, required: true },

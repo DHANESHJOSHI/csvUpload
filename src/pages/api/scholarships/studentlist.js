@@ -16,33 +16,35 @@ const StudentsHandler = async (req, res) => {
 
         if (method === 'GET') {
             const { page = 1, limit = 5, search = "" } = query;
-      const skip = (page - 1) * limit;
+            const skip = (page - 1) * limit;
 
-      const filter = search
-        ? {
-            $or: [
-              { name: { $regex: search, $options: "i" } },
-              { email: { $regex: search, $options: "i" } },
-              { state: { $regex: search, $options: "i" } },
-            ],
-          }
-        : {};
+            const filter = search
+                ? {
+                      $or: [
+                          { name: { $regex: search, $options: "i" } },
+                          { email: { $regex: search, $options: "i" } },
+                          { state: { $regex: search, $options: "i" } },
+                          { scholarshipName: { $regex: search, $options: "i" } },
+                          { guardianOccupation: { $regex: search, $options: "i" } },
+                      ],
+                  }
+                : {};
 
-      const students = await Scholarship.find(filter)
-        .skip(skip)
-        .limit(parseInt(limit));
+            const students = await Scholarship.find(filter)
+                .skip(skip)
+                .limit(parseInt(limit));
 
-      const total = await Scholarship.countDocuments(filter);
+            const total = await Scholarship.countDocuments(filter);
 
-      res.status(200).json({
-        students,
-        pagination: {
-          currentPage: parseInt(page),
-          totalPages: Math.ceil(total / limit),
-          totalItems: total,
-          itemsPerPage: parseInt(limit),
-        },
-      });
+            res.status(200).json({
+                students,
+                pagination: {
+                    currentPage: parseInt(page),
+                    totalPages: Math.ceil(total / limit),
+                    totalItems: total,
+                    itemsPerPage: parseInt(limit),
+                },
+            });
         } else if (method === 'PUT') {
             if (!query.email) return res.status(400).json({ error: 'Email is required' });
 

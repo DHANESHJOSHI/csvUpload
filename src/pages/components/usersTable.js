@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import DataTable from "react-data-table-component";
-import { FaEdit, FaTrash, FaSave, FaTimes } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaSave, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const StudentsTable = () => {
   const [students, setStudents] = useState([]);
@@ -13,6 +13,82 @@ const StudentsTable = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(5);
+  const [expandedRows, setExpandedRows] = useState({});
+
+  const toggleRowExpanded = (row) => {
+    setExpandedRows({
+      ...expandedRows,
+      [row.email]: !expandedRows[row.email]
+    });
+  };
+
+  const EditableField = ({ 
+    label, 
+    value, 
+    onChange, 
+    type = "text",
+    className = ""
+  }) => (
+    <div className={`flex flex-col space-y-1 ${className}`}>
+      <label className="text-sm font-medium text-gray-700">{label}</label>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="px-2 py-1 border rounded focus:ring-2 focus:ring-indigo-300 text-sm"
+      />
+    </div>
+  );
+
+
+  const ExpandedComponent = ({ data }) => (
+    <div className="p-4 bg-gray-50 border-t border-gray-200">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div>
+          <h4 className="font-semibold text-gray-700 mb-3">Academic Details</h4>
+          <div className="space-y-3">
+           
+              <>
+                <p><span className="font-medium">Field of Study:</span> {data.fieldOfStudy}</p>
+                <p><span className="font-medium">10th Grade:</span> {data.tenthGradePercentage}%</p>
+                <p><span className="font-medium">12th Grade:</span> {data.twelfthGradePercentage}%</p>
+                <p><span className="font-medium">Graduation:</span> {data.graduationPercentage}%</p>
+              </>
+          </div>
+        </div>
+        <div>
+          <h4 className="font-semibold text-gray-700 mb-3">Personal Details</h4>
+          <div className="space-y-3">
+            
+              <>
+                <p><span className="font-medium">Contact:</span> {data.contactNumber}</p>
+                <p><span className="font-medium">Age:</span> {data.age}</p>
+                <p><span className="font-medium">PWD %:</span> {data.pwdPercentage}</p>
+                <p><span className="font-medium">Guardian:</span> {data.guardianOccupation}</p>
+              </>
+        </div>
+        </div>
+        <div>
+          <h4 className="font-semibold text-gray-700 mb-3">Scholarship Details</h4>
+          <div className="space-y-3">
+            
+              <>
+                <p><span className="font-medium">Name:</span> {data.scholarshipName}</p>
+                <p><span className="font-medium">Amount Disbursed:</span> ₹{data.amountDisbursed}</p>
+                <div className="mt-3">
+                  <h5 className="font-medium mb-2">Installments:</h5>
+                  {data.installments.map((inst, idx) => (
+                    <div key={idx} className="text-xs">
+                      #{inst.installmentNumber}: ₹{inst.amount} ({inst.status})
+                    </div>
+                  ))}
+                </div>
+              </>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   const columns = [
     {
@@ -70,42 +146,6 @@ const StudentsTable = () => {
           >
             {row.status}
           </span>
-        )      ),
-    },
-    {
-      name: "Scholarship Name",
-      selector: (row) => row.scholarshipName,
-      sortable: true,
-      cell: (row) => (
-        editingRow === row.email ? (
-          <input
-            type="text"
-            value={editedData.scholarshipName || row.scholarshipName}
-            onChange={(e) => setEditedData({ ...editedData, scholarshipName: e.target.value })}
-            className="w-full px-2 py-1 border rounded focus:ring-2 focus:ring-indigo-300"
-          />
-        ) : (
-          <div className="text-gray-800">{row.scholarshipName}</div>
-        )
-      ),
-    },
-    {
-      name: "Gender",
-      selector: (row) => row.gender,
-      sortable: true,
-      cell: (row) => (
-        editingRow === row.email ? (
-          <select
-            value={editedData.gender || row.gender}
-            onChange={(e) => setEditedData({ ...editedData, gender: e.target.value })}
-            className="px-2 py-1 border rounded focus:ring-2 focus:ring-indigo-300"
-          >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        ) : (
-          <div className="text-gray-800">{row.gender}</div>
         )
       ),
     },
@@ -125,6 +165,19 @@ const StudentsTable = () => {
           <div className="text-gray-800">{row.state}</div>
         )
       ),
+    },
+    {
+      name: "Details",
+      cell: (row) => (
+        <button
+          onClick={() => toggleRowExpanded(row)}
+          className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          {expandedRows[row.email] ? <FaChevronUp /> : <FaChevronDown />}
+        </button>
+      ),
+      width: "70px",
+      center: true,
     },
     {
       name: "Actions",
@@ -332,11 +385,6 @@ const StudentsTable = () => {
       <div className="w-16 h-16 border-t-4 border-b-4 border-indigo-500 rounded-full animate-spin"></div>
       <div className="mt-4 text-lg font-semibold text-indigo-600 animate-pulse">Loading Data...</div>
       <div className="mt-2 text-sm text-gray-500">Please wait while we fetch the latest information</div>
-      <div className="flex space-x-2 mt-4">
-        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce"></div>
-        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-        <div className="w-3 h-3 bg-indigo-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
-      </div>
     </div>
   );
 
@@ -363,8 +411,12 @@ const StudentsTable = () => {
         paginationTotalRows={totalRows}
         onChangeRowsPerPage={handleRowsPerPageChange}
         onChangePage={handlePageChange}
-        paginationPerPage={5}
+        paginationPerPage={perPage}
         paginationRowsPerPageOptions={[5, 10, 15, 20, 25]}
+        expandableRows
+        expandableRowsComponent={ExpandedComponent}
+        expandableRowExpanded={row => expandedRows[row.email]}
+        onRowExpandToggled={(expanded, row) => toggleRowExpanded(row)}
         fixedHeader
         fixedHeaderScrollHeight="450px"
         customStyles={{
@@ -390,6 +442,11 @@ const StudentsTable = () => {
             style: {
               padding: "16px",
               borderTop: "1px solid #e5e7eb",
+            },
+          },
+          expanderRow: {
+            style: {
+              backgroundColor: "#f9fafb",
             },
           },
         }}
