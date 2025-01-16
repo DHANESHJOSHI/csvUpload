@@ -13,6 +13,15 @@ const castToNumber = (value) => {
   return isNaN(number) ? null : number; // Return null if the value is not a valid number
 };
 
+// Helper function to cast to boolean
+const castToBoolean = (value) => {
+  if (value === null || value === '' || value === 'null') return null;
+  const cleanedValue = value.toString().toLowerCase();
+  if (cleanedValue === 'true' || cleanedValue === 'yes' || cleanedValue === '1') return true;
+  if (cleanedValue === 'false' || cleanedValue === 'no' || cleanedValue === '0') return false;
+  return null; // Return null for invalid boolean values
+};
+
 // Multer configuration
 const upload = multer({
   storage: multer.diskStorage({
@@ -51,6 +60,8 @@ apiRoute.post(async (req, res) => {
     await connectToDatabase();
 
     const results = [];
+    const invalidRecords = [];
+
     fs.createReadStream(req.file.path)
       .pipe(csv())
       .on('data', (data) => {
@@ -82,35 +93,40 @@ apiRoute.post(async (req, res) => {
         const record = {
           name,
           email,
-          status: status || 'Not Selected', 
+          status: status || 'Not Selected',
           scholarshipName,
           gender: gender ? gender.toLowerCase() : '',
           state,
-          psychometricReport, 
-          coachingName, 
+          psychometricReport,
+          coachingName,
           coachingState,
           natureOfCoaching,
-          scholarshipID, 
-          cseAttempts, 
-          postGraduationCompleted,
+          scholarshipID,
+          cseAttempts: castToNumber(cseAttempts),
+          postGraduationCompleted: castToBoolean(postGraduationCompleted),
           fieldOfStudy,
-          graduationPercentage,
-          twelfthGradePercentage, 
-          tenthGradePercentage, 
-          familyAnnualIncome, 
-          guardianOccupation, 
-          category, 
-          age, 
+          graduationPercentage: castToNumber(graduationPercentage),
+          twelfthGradePercentage: castToNumber(twelfthGradePercentage),
+          tenthGradePercentage: castToNumber(tenthGradePercentage),
+          familyAnnualIncome: castToNumber(familyAnnualIncome),
+          guardianOccupation,
+          category,
+          age: castToNumber(age),
           contactNumber,
         };
 
-        results.push(record);
+        // Validate record
+        if (!record.name || !record.email) {
+          invalidRecords.push({ record, error: 'Name and email are required fields' });
+        } else {
+          results.push(record);
+        }
       })
       .on('end', async () => {
         try {
           await Scholarship.insertMany(results);
           fs.unlinkSync(req.file.path);
-          res.status(200).json({ message: 'Upload processed successfully', results });
+          res.status(200).json({ message: 'Upload processed successfully', results, invalidRecords });
         } catch (err) {
           console.error('Database Error:', err.message);
           res.status(500).json({ error: 'Error saving data to the database' });

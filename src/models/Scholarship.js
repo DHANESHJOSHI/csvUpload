@@ -24,9 +24,9 @@ const ScholarshipSchema = new mongoose.Schema(
       type: String,
       enum: ['Selected', 'Not Selected'],
       default: 'Not Selected',
-      required: true,
+      required: false,
     },
-    scholarshipName: { type: String, required: true },
+    scholarshipName: { type: String, required: false },
     gender: {
       type: String,
       enum: ['male', 'female', 'other'],
@@ -35,19 +35,19 @@ const ScholarshipSchema = new mongoose.Schema(
     state: { type: String, required: false },
     category: { type: String, required: false },
     pwdPercentage: { type: String, default: 0 }, // PWD percentage
-    isMinority: { type: Boolean, default: false },
+    isMinority: { type: String, default: false },
     guardianOccupation: { type: String, required: false },
     familyAnnualIncome: { type: String, required: false },
     tenthGradePercentage: { type: String, required: false },
     twelfthGradePercentage: { type: String, required: false },
     graduationPercentage: { type: String, required: false },
     fieldOfStudy: { type: String, required: false },
-    postGraduationCompleted: { type: Boolean, required: false },
+    postGraduationCompleted: { type: String, required: false },
     cseAttempts: { type: String, required: false },
-    selectedForUPSCMains: { type: Boolean, default: false },
-    selectedForUPSCInterviews: { type: Boolean, default: false },
+    selectedForUPSCMains: { type: String, default: false },
+    selectedForUPSCInterviews: { type: String, default: false },
     scholarshipID: { type: String, required: false },
-    scholarshipAwarded: { type: Boolean, default: false },
+    scholarshipAwarded: { type: String, default: false },
     totalAmount: { type: String, default: 0 },
     amountDisbursed: { type: String, default: 0 },
     disbursementDate: { type: Date, default: null },
@@ -58,7 +58,7 @@ const ScholarshipSchema = new mongoose.Schema(
     psychometricReport: { type: String, required: false },
   },
   {
-    timestamps: false, // Adds createdAt and updatedAt fields
+    timestamps: true, // Adds createdAt and updatedAt fields
   }
 );
 
