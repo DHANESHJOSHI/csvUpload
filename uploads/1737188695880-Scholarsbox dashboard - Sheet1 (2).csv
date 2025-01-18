@@ -1,0 +1,417 @@
+scholarshipID,name,email,contactNumber,age,status,scholarshipName,gender,state,category,pwdPercentage,isMinority,guardianOccupation,familyAnnualIncome,tenthGradePercentage,twelfthGradePercentage,graduationPercentage,fieldOfStudy,postGraduationCompleted,cseAttempts,selectedForUPSCMains,selectedForUPSCInterviews,scholarshipAwarded,totalAmount,amountDisbursed,disbursementDate,installmentStatus,natureOfCoaching,coachingState,coachingName,psychometricReport
+HUPSC2078,Dhearya Mittal,dhearyam2610@gmail.com,8860745067,27,Selected,UPSC,Male,Uttar Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC524,Vikas Mahantesh Naroni,vikasnaroni7143@gmail.com,8975657143,27,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1335,Ugalmugale Shraddha Ravindra,ugalmugaleshraddha5@gmail.com,8788610301,22,Selected,UPSC,Female,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1961,Sahil Farhan,farhansahil2791@gmail.com,9044971973,24,Selected,UPSC,Male,Uttar Pradesh,Other,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC71,Riyanshu Rani,rrani8053@gmail.com,6206229439,25,Selected,UPSC,Female,Jharkhand,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1461,Viraj Vasant Baswant,virajbaswant4321@gmail.com,8451830430,26,Selected,UPSC,Male,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1665,Yashovardhini Kadari,yashovardhinithirupathaiah@gmail.com,8142055375,27,Selected,UPSC,Female,Telangana,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2200,Komal Pandurang Regude,regudekomal98@gmail.com,7888295253,28,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2464,Muthu Lakshmi C,lakshmichandran009@gmail.com,6385657579,26,Selected,UPSC,Female,Tamil Nadu,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2449,Anita Vilas Talkhe,anitatalkhe9@gmail.com,9607281005,34,Selected,UPSC,Female,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1080,Harshita Sharma,harshitasharma1423@gmail.com,9634329247,22,Selected,UPSC,Female,Uttar Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1379,Asmita Sunil Anerao,aneraoasmita2163@gmail.com,9370610120,23,Selected,UPSC,Female,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2444,Ankita Deepak Vadje,deepak.vadje1188@gmail.com,9168651555,29,Selected,UPSC,Female,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2068,Prashik Vilas Meshram,mprashik0910@gmail.com,7888202928,27,Selected,UPSC,Male,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1831,Somnath Suman,somnathsuman2002@gmail.com,7827508802,24,Selected,UPSC,Male,Uttar Pradesh,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1235,Abhishek Yadav,abh5425@gmail.com,7888330673,24,Selected,UPSC,Male,Punjab,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1521,Prabathyan Valmeeki,mersalarasan67@gmail.com,7550379099,25,Selected,UPSC,Male,Tamil Nadu,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC699,Vardhini B H,vardaiwath2007@gmail.com,6361293183,25,Selected,UPSC,Female,Karnataka,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC787,Archa K Biju,archakbijuarcha@gmail.com,8590391274,26,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2375,Taseen M,taseenmanzoor.999@gmail.com,9487268197,23,Selected,UPSC,Female,Tamil Nadu,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2119,Yuvasree R,yuvasreeramesh2002@gmail.com,9499935288,24,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1756,Ashutosh Ranjan,dbzten7@gmail.com,82929191407,22,Selected,UPSC,Male,Bihar,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC477,Mahesh Sandeep Mahale,maheshmahale04@gmail.com,8291093838,23,Selected,UPSC,Male,Maharashtra,ST,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1579,Dharani B,dharanibg10@gmail.com,8270220346,26,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC493,Rakoti Rajesh,rajeshrakoti3@gmail.com,8686126157,30,Selected,UPSC,Male,Andhra Pradesh,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1332,Snehaprabha N,snehaprabha2015@gmail.com,8075373062,29,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC789,Jyothika Jayaraj E,jyothikajayaraj880@gmail.com,8593924219,26,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2069,Dattatrya Suklal Dhangar,dhangardattatray6@gmail.com,7499224501,25,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC733,Princy Pk,princypk6@gmail.com,8714023475,29,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2494,Nitin Murlidhar Magar,nitinmagar901@gmail.com,7447324656,27,Selected,UPSC,Male,Maharashtra,SC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1990,Kansara Falaqnaaz Ashfaq,falaqnaazkansara@gmail.com,7096585560,23,Selected,UPSC,Female,Gujarat,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC592,Kalyani Dattatray Shinde,kalyanishinde327@gmail.com,8999012327,23,Selected,UPSC,Female,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1396,Arul Mervin I,arulmervinias349@gmail.com,9597616076,27,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1908,Nivrutti Kisan Mahale,mahalenivrutti12@gmail.com,9325233885,25,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC123,Aditya Kisan Pawar,adityapawar0217@gmail.com,9307689787,25,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC746,Pooja S Kumar,poojanair112@gmail.com,8921208584,28,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC797,Ancy Thomas S,ancythomasndd19@gmail.com,8943861844,24,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1906,Yerraballi Anjaneyulu,anjenayulu8@gmail.com,6281843075,34,Selected,UPSC,Male,Andhra Pradesh,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC36,Hemanth Prakash Kasula,prakashhemanthh7@gmail.com,8008936702,29,Selected,UPSC,Male,Andhra Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1976,Rohit Kumar,rohit56a@gmail.com,9682691887,26,Selected,UPSC,Male,Jammu and Kashmir,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1405,Shabnam Taj S,shabnamtaj72@gmail.com,9786712226,29,Selected,UPSC,Female,Tamil Nadu,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC747,Angitha V C,angithavc@gmail.com,8891067155,24,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2104,Mekhana Varghese,mekhanavarghese1999@gmail.com,9400677787,27,Selected,UPSC,Female,Kerala,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1770,Anand Nilu Ghodake,anandghodake7595@gmail.com,8390777595,27,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1681,Bhagyashri Pandurang Munde,bhagyashrimunde22@gmail.com,9021063090,26,Selected,UPSC,Female,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1874,Vaishnavi Dnyaneshwar Dawle,vaishnavidawle211@gmail.com,7020609118,25,Selected,UPSC,Female,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC357,Lakhan Ajit Chavan,lakhanchavan177@gmail.com,7499343437,24,Selected,UPSC,Male,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1717,Pranoti Dnyaneshwar Ingole,pranotiingole001@gmail.com,9960305651,25,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC386,Sumit Ravindra Patil,sumitpatil2939@gmail.com,7058496460,23,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC356,Santosh Dinkar Ghotale,santoshghotale2@gmail.com,9594107054,26,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1547,Musmade Dnyaneshwar Lahanu,dnyanesh1824@gmail.com,8551072361,29,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC344,Akshay Balu Ingle,akshayingle377@gmail.com,8317264574,27,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2288,Mangesh Laxmanrao Phad,m3516680@gmail.com,7447879493,30,Selected,UPSC,Male,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC598,Sourabh Sadashiv Desai,sorb.desai141@gmail.com,9322963081,30,Selected,UPSC,Male,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC453,Prasad Dattatray Deokar,prasaddeokar231@gmail.com,7083872465,26,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1507,Yogavignesh M K,yogavigneshmk@gmail.com,9360139882,25,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1771,Shivaji Ankush Yadav,yadavshivaji820@gmail.com,9011647560,31,Selected,UPSC,Male,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1705,Dhanashri Tanaji Pawale,dhanashripawale2003@gmail.com,9307250074,23,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1227,Arya Narayanan M K,aryanarayananmk@gmail.com,7012710811,24,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2081,Anuradha Sheshrao Gawhale,anuradhagawhale@gmail.com,9359947144,25,Selected,UPSC,Female,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1821,Sundar Balaji Nagargoje,sundarnagargoje622@gmail.com,9765655314,24,Selected,UPSC,Male,Maharashtra,ST,Yes,No,,,,,,,,,,,,,,,,,,,
+HUPSC2493,Amol Ashok Bhagat,amolkumar7083@gmail.com,9834444297,26,Selected,UPSC,Male,Maharashtra,SC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2244,Sunil Sanjay Dhumal,sunildhumal753@gmail.com,9322118020,25,Selected,UPSC,Male,Maharashtra,SC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1573,Aditya Shinde,adityashinde1274@gmail.com,9324581458,23,Selected,UPSC,Male,Maharashtra,General,Yes,No,,,,,,,,,,,,,,,,,,,
+HUPSC1556,Anjali Baburao Shende,anjalishende007@gmail.com,8669883411,30,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1522,Spoorthi K,spoorthikumarv15@gmail.com,8310182465,26,Selected,UPSC,Female,Karnataka,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1141,Swapnil Arjun Dhangar,saddy5177@gmail.com,9156225177,27,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC682,Pawar Onkar Balkrushna,pawaronkar84@gmail.com,9373573784,25,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1184,Shubham Choudhari,shubham.choudhari.9400@gmail.com,8459082994,28,Selected,UPSC,Male,Maharashtra,SC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1190,Nitin,nitinbodkhe15@gmail.com,7720996806,30,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1166,Dnyanraj Sudam Age,dnyanage@gmail.com,9665354728,36,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2362,Monica D,monicarthi@gmail.com,8838798812,29,Selected,UPSC,Female,Tamil Nadu,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2019,Shireesha Kumari Poola,shireeshakumaripoola@gmail.com,9110591002,27,Selected,UPSC,Female,Andhra Pradesh,ST,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC56,Sahil Bhardwaj,sahilbhardwaj74174@gmail.com,7417479842,28,Selected,UPSC,Male,Uttar Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC23,Rajkumar Dilipkumar Singh,rajkumardilipkumar3432@gmail.com,7005343512,24,Selected,UPSC,Male,Manipur,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1774,Md Dilkash Parvez,dilkash1209@gmail.com,9798419528,25,Selected,UPSC,Male,Bihar,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1383,Snehal Shripat Jadhav,snehalsjadhav777@gmail.com,9119585572,26,Selected,UPSC,Female,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC599,Reshma Devidas Jadhav,jadhavreshma895@gmail.com,09130626550,25,Selected,UPSC,Female,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2199,Vaibhav Bharat Kadam,kadamv618@gmail.com,8055181995,29,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1470,Kavinkumar K,metkavin@gmail.com,8973822578,29,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1046,Aman Rai,amanraiupsc@gmail.com,8210354521,24,Selected,UPSC,Male,Jharkhand,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC752,Ajay Martin,ajaymm4510@gmail.com,8590185554,24,Selected,UPSC,Male,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1256,Suhana Parveen S,parveens.dbc@gmail.com,8281685507,24,Selected,UPSC,Female,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2360,Hariharan D,hariharan.d.19msc@kongu.edu,6383747402,25,Selected,UPSC,Male,Tamil Nadu,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2403,Praveenkumar J,praveen2000j@gmail.com,7010411648,26,Selected,UPSC,Male,Tamil Nadu,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1122,Devanandana N,devanandanan2002@gmail.com,9745738614,24,Selected,UPSC,Female,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC369,Sachin Sheshmal Rathod,sachinrathod0606@gmail.com,8459369810,27,Selected,UPSC,Male,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC391,Abhijeet Ramesh Sangle,abhijeetsangle07@gmail.com,9423802183,36,Selected,UPSC,Male,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC736,Aathiradas S,radhasivadas82731@gmail.com,8078538530,23,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC469,Harshad Ramrav Sawant,harshad1055sawant@gmail.com,9970192108,29,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1568,Swapnil Namdev Kadu,kaduswapnil321@gmail.com,7709833511,30,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2538,Abhishek Chaudhary,abhishekchaudhary2424@gmail.com,8860707283,32,Selected,UPSC,Male,Uttar Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2177,Aditi Sharma,aditish9927@gmail.com,7505108150,23,Selected,UPSC,Female,Uttar Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1436,Mohammed Muzammil A,almuzammil919@gmail.com,9345606119,22,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC490,Nisha Umesh Shetty,shettynisha63@gmail.com,9324876352,26,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1950,Meer Akbar Ali,meerakbar1854@gmail.com,9867175462,25,Selected,UPSC,Male,Maharashtra,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC646,Gauri Pillai,gauripillai524@gmail.com,9137880052,23,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1991,Rotish Chavan,chavanrotish@gmail.com,9768929333,22,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC659,Pranay Srinivas Vasala,vasalapranay2000@gmail.com,7718098878,26,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC697,Priyanka,pg5527761@gmail.com,8928300083,24,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1920,Seema Sumersingh Kumpawat,seemkumpawat4@gmail.com,8928426034,22,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC630,Sajeet Paulselvan,sajeetss@gmail.com,7718023820,26,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1545,Suraj Sanjay Patil,suraj.college1799@gmail.com,8208105104,27,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC784,Sonu Suresh,sonusuresh267@gmail.com,8075892517,23,Selected,UPSC,Male,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1367,Aswathy M S,aswathysuresh276@gmail.com,7994192707,26,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1402,Gopalakrishnan M,sikkal.saiiyer@gmail.com,6380516806,25,Selected,UPSC,Male,Tamil Nadu,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC707,Ashutosh Avinash Nikam,ashutoshnikam19901@gmail.com,9767133622,25,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC689,Avej Shafik Ahemad Qureshi,avejqureshi@gmail.com,8788866099,28,Selected,UPSC,Male,Maharashtra,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1389,Bela Pandurang Sathe,belasathe77@gmail.com,9309238039,29,Selected,UPSC,Female,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2338,Habeeb Rahman A M,habihabeeb756@gmail.com,9188739792,26,Selected,UPSC,Male,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1408,Gugulothu Aruna,gugulothuaruna118@gmail.com,8341087393,30,Selected,UPSC,Female,Telangana,ST,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2099,Ashish Murlidhar Kendre,kendreashish03@gmail.com,9373678231,24,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC841,Adithya Subramanian,adityanadi34@gmail.com,8943728177,27,Selected,UPSC,Male,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2115,Meenalekha S,meenasiva692002@gmail.com,9150875032,24,Selected,UPSC,Female,Tamil Nadu,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1364,Mohanraj D,mohanrajdmr7@gmail.com,9344012983,24,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2476,Madhannath,madhannathmana@gmail.com,7550369281,24,Selected,UPSC,Male,Tamil Nadu,SC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1582,Rathod Sangeetha,sangeetharathod92@gmail.com,6301841401,25,Selected,UPSC,Female,Telangana,ST,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC403,Surajsinh Sambhajirao Mulik,surajsinh2002@gmail.com,9284184956,24,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1560,Eesarla Bhaskara Rao,baskarbaskar4362@gmail.com,8074502827,27,Selected,UPSC,Male,Andhra Pradesh,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2025,Sneha Kumari,snehakri9835@gmail.com,9507546865,23,Selected,UPSC,Female,Bihar,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2364,M Swetha,swethamunirathinam@gmail.com,9176509175,30,Selected,UPSC,Female,Tamil Nadu,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1455,Swapnil Birdev Narute,sbnarute4999@gmail.com,7218698772,27,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC522,Yashraj Bapu Waghmare,yashrajwaghmare2002@gmail.com,9607078099,24,Selected,UPSC,Male,Maharashtra,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1443,Neiranjan,neiranjan800005@gmail.com,9952647904,25,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1735,Reddi Siva Ramakrishna,sivaramreddi111@gmail.com,7660909027,27,Selected,UPSC,Male,Andhra Pradesh,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1787,Nithyanantham S,snithyananthamjudo@gmail.com,8608055064,28,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC678,Ashadas,ashadas240@gmail.com,8139885612,24,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1799,Amala Stanly,amalastanly1331@gmail.com,6238422013,23,Selected,UPSC,Female,Kerala,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2075,Shiva Bala Selvi R,shivabalaselviias@gmail.com,8695551437,25,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1706,Jakeer Surapur,jakeersurapur123@gmail.com,8792786141,25,Selected,UPSC,Male,Karnataka,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1173,Vaishali Somnath Gawade,gawadevaishali92@gmail.com,8888189481,26,Selected,UPSC,Female,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1563,Abhash Kumar Pandey,abhash052001@gmail.com,6391942253,23,Selected,UPSC,Male,Uttar Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2036,Rathod Priti Haridas,pritihr1234@gmail.com,8999676414,22,Selected,UPSC,Female,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2073,Vaishnavi Joshi,vaishnavisjoshi1510@gmail.com,9370797806,24,Selected,UPSC,Female,Maharashtra,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1550,Sibivarnan,vsvarnan98@gmail.com,9080599062,28,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC831,Anjaly Asokan,anjalyasokan094@gmail.com,9539940011,32,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1213,Dona Saji,donasaji93@gmail.com,9744707344,25,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC519,Kalpana Tanaji Munjewar,kalpanamunjewar44@gmail.com,7385891829,22,Selected,UPSC,Female,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2039,Dipansha Choudhary,dipansha.choudhary@gmail.com,8949117220,22,Selected,UPSC,Female,Rajasthan,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1299,Miruthula V,miruthulaceg@gmail.com,8925778944,24,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1845,Sj Sudhakaran,karansudha1273724@gmail.com,7904139504,25,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC948,Kailash Kumar,kailashanj02@gmail.com,8094600726,24,Selected,UPSC,Male,Rajasthan,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC847,Ruksana J,ruksanathaha6@gmail.com,9037911424,24,Selected,UPSC,Female,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1368,Monish A,monishanbu2002@gmail.com,9790231564,24,Selected,UPSC,Male,Tamil Nadu,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1451,Sharmilaa R K,sharmilaark1@gmail.com,9047999696,25,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC34,Pragnya Dutt Kasula,pragnyadutt@gmail.com,9502523890,29,Selected,UPSC,Female,Telangana,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1128,Kotanur Siddaram Shivaputra,siddaramkotanur@gmail.com,8793537393,26,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1727,Raksha Gupta,gupta.raksha98@gmail.com,9205840715,28,Selected,UPSC,Female,New Delhi,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC572,Sagar Ambadas Khedkar,sagarak9696@gmail.com,7057998396,28,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC843,Karthik V Nair,karthik.sreekala@outlook.com,7907578217,28,Selected,UPSC,Male,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1989,Idrisi Mustaq,idrishimustaq18@gmail.com,9594360781,21,Selected,UPSC,Male,Maharashtra,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC833,Abhinav Prakash,abhinavprakash132003@gmail.com,8105595402,23,Selected,UPSC,Male,Karnataka,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC190,Yogyata Jaiswal,yogyata55m@gmail.com,6265418321,26,Selected,UPSC,Female,Madhya Pradesh,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC264,Tanmay N Chavhan,tanmay11.chavhan@gmail.com,7709896674,26,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC975,Basant Modi,modibasant248@gmail.com,6200023525,23,Selected,UPSC,Male,Jharkhand,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC933,Gaurav Kumar,gaukumar495@gmail.com,9817860836,23,Selected,UPSC,Male,Haryana,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1465,Ankush Thapak,ankushthapak@yahoo.com,7427860177,24,Selected,UPSC,Male,Madhya Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1010,Wasi Hadi,wasihadi76@gmail.com,8477862797,26,Selected,UPSC,Male,Uttar Pradesh,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2129,Shubham Suresh Jadhav,shambhujadhav19@gmail.com,7620628218,28,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1723,Vicky Shantaram Khairnar,vskhairnar6@gmail.com,8623985737,26,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC127,Umesh Kolhe,umeshkolhe100@gmail.com,7058441873,24,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2000,Saeed Shabbir,ahmedsaeeds205@gmail.com,9321924359,21,Selected,UPSC,Male,Maharashtra,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1578,Abhilash Jaiswal,abhilashvjaiswal@gmail.com,9172442155,34,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1796,Kadam Nikita Subhashrao,nikitakadam755@gmail.com,7758982658,27,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2400,Rajarajan S,rajarajansenthilkumar2002@gmail.com,8056490629,24,Selected,UPSC,Male,Tamil Nadu,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1736,Mutaib Siddiqui,mutaibsiddiqui999@gmail.com,9622690973,28,Selected,UPSC,Male,Jammu and Kashmir,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1148,Ritik Tailor,masterritik@gmail.com,8769019233,26,Selected,UPSC,Male,Rajasthan,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1376,Srinivasan,vasu0147@gmail.com,9080885782,27,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2022,Prakhar Joshi,prsove@gmail.com,9650255906,27,Selected,UPSC,Male,New Delhi,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1492,Magesh Kanna S,mageshkanna.mk@gmail.com,8300622873,27,Selected,UPSC,Male,Tamil Nadu,OBC,Yes,No,,,,,,,,,,,,,,,,,,,
+HUPSC485,Devyani Prakash Patil,devyaniprakashpatil@gmail.com,8956618193,32,Selected,UPSC,Female,Maharashtra,General,Yes,No,,,,,,,,,,,,,,,,,,,
+HUPSC2526,Ravi Narendra Vadje,ravivadje0@gmail.com,9146373129,25,Selected,UPSC,Male,Maharashtra,OBC,Yes,No,,,,,,,,,,,,,,,,,,,
+HUPSC545,Chitralekha Pawar,chitrumpawar@gmail.com,8669392973,26,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC763,Balachandra P,balaamrut@gmail.com,9446480464,30,Selected,UPSC,Male,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1196,Anupama A S,iamanupama.as@gmail.com,9562657276,28,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC721,Hrudya Elizabeth Mathews,diamathews9061@gmail.com,9895671987,25,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC724,Manjula K R,manjularchandran26@gmail.com,7560877305,26,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC728,Seemati Bridget Savio,bridgetseemati@gmail.com,9400792663,25,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1219,Ankita Powar,meetankitapowar@gmail.com,8390710884,26,Selected,UPSC,Female,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC754,Adhithyan V D,adhithyanvdkodaly@gmail.com,8075883589,25,Selected,UPSC,Male,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1242,Pavithra Shaji,pavi94461@gmail.com,7356172927,24,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1503,Ponninselvam M,ponninselvam@gmail.com,9360290362,33,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC768,Anusha J S,anushajs2001@gmail.com,9037723724,25,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC769,Ainswetha Joseph,ainswethajoseph@gmail.com,9746266045,23,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC782,Henna Jahas,hennajahas@gmail.com,7736693690,24,Selected,UPSC,Female,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1672,George P,georgefernando33@gmail.com,8438220577,33,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1357,Shalini T,shaliniuma30@gmail.com,6379777361,24,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1384,Dharmasuriya M,dharmasuriya140398@gmail.com,9751566090,28,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1411,Christhu Raj J,christhuraj00@gmail.com,7010428431,28,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1413,Vaishnavi B,bvaishnavi2000@gmail.com,6383988303,26,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1420,Divyadharani Natarajan,divyadharanidd006@gmail.com,9384775341,26,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1474,Pavithra Devi,pavithradevi1432002@gmail.com,9361778283,24,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1489,Ramkumar R,ramarmy28@gmail.com,9677360078,28,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1581,Dhivya Senthilvel,dhivyasenthilvel@gmail.com,9342185714,23,Selected,UPSC,Female,Tamil Nadu,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1685,S Vinu Prashaath,svinuprashaath8888@gmail.com,9751796479,30,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1677,Selva Priya D,selvakousi16@gmail.com,9789737524,27,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1773,Janjerla Pravalika,janjerlapravalika2310@gmail.com,7093807656,31,Selected,UPSC,Female,Telangana,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1949,Kishore Swami Madagala D Nooka,dillepkishore24@gmail.com,7013691263,26,Selected,UPSC,Male,Andhra Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC680,Abhishek Hiwale,abhicoep15@gmail.com,8484026525,26,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1247,Nikhil Mane,manen4513@gmail.com,9404280652,25,Selected,UPSC,Male,Maharashtra,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1252,Sreejith S,sreejithsoman57@gmail.com,7356251616,27,Selected,UPSC,Male,Kerala,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1348,Manikandan Gurusamy,ermanikandan164@gmail.com,6379041521,25,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC665,Agnas George,agnesgeorge007@gmail.com,8136964416,29,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1361,Dinesh Kumar,dineshsgy07@gmail.com,7339507081,27,Selected,UPSC,Male,Tamil Nadu,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1377,Vennila Anbazhagan,vennilaanbazhagan93@gmail.com,7397351762,33,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2178,Deepak Singh,ds24098@gmail.com,8790672102,29,Selected,UPSC,Male,Telangana,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1400,Vignesh M,vigneshm102002@gmail.com,9025646468,24,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2537,Rohan Thakur,rohanrt00085@gmail.com,8219503725,23,Selected,UPSC,Male,Himachal Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC550,Abhishek Khandekar,abhishekbk07@gmail.com,9146420423,25,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC554,Shahinshah A Kokkorgundi,skokkorgundi@gmail.com,8892333637,32,Selected,UPSC,Male,Karnataka,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC741,Yadhusree Krishna T C,yadhusreekrishna@gmail.com,8590686369,24,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC757,Gopika P,golobelmanohar@gmail.com,9400903576,27,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1541,Nandikonda Karthik,nandikondakarthik275@gmail.com,8328440106,28,Selected,UPSC,Male,Telangana,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1571,Velu Sharmila,velusharmila2004@gmail.com,9025211182,22,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1639,Sankeerthana Mittapelli,sankeerthanamittapelly91@gmail.com,9581652413,26,Selected,UPSC,Female,Telangana,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1592,Mullangi Umadevi,r0843551@gmail.com,8096139013,29,Selected,UPSC,Female,Andhra Pradesh,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2139,Mohammed Afsal M P,worldunderu@gmail.com,9895266095,30,Selected,UPSC,Male,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2182,Ankush Prajapati,ankushprajapatiabp@gmail.com,9130218209,29,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1651,Amulraj M,amulraj.aeronaut@gmail.com,9962135112,30,Selected,UPSC,Male,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC762,Ansu Sara Thomas,ansusara128@gmail.com,9778106128,23,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1207,Janeesha A,janeeshaanew@gmail.com,7994083632,26,Selected,UPSC,Female,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC1391,Keerthana K,balakeerthana23@gmail.com,7418914788,23,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1656,Kavin Kumar M,kavinkumark54@gmail.com,6382110120,25,Selected,UPSC,Male,Tamil Nadu,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1584,Subbulakshmi Krish,subbulakshmikrish7@gmail.com,6384072886,23,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1664,Aanchal Jain,maanchal1234@gmail.com,9345796173,23,Selected,UPSC,Female,Tamil Nadu,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1249,Mohammad Midhlaj K,muhammadmidlaj3@gmail.com,9633749946,24,Selected,UPSC,Male,Kerala,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2187,Abinave P R,abinaveputhanpurayil@gmail.com,7558815332,27,Selected,UPSC,Male,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC793,Leethiya Neronha,leethiyaneronha03@gmail.com,8590301313,23,Selected,UPSC,Female,Kerala,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC840,Sreelakshmi Lakshman,sreelakshmilakshmanofcl@gmail.com,7902449769,26,Selected,UPSC,Female,Kerala,SC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1115,Akhila Asok,akhi212003@gmail.com,8089890698,23,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1794,Rohit Arya,rohitaryakbm40@gmail.com,9693827791,22,Selected,UPSC,Male,Bihar,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1130,Riya Roy,thressiyavarghese2001@gmail.com,7559078944,25,Selected,UPSC,Female,Kerala,General,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1459,Poojitha Bandari,bpoojitha2002@gmail.com,9346029110,24,Selected,UPSC,Female,Telangana,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1566,Abishek Ramalingam,abishekram9@gmail.com,8610274300,23,Selected,UPSC,Male,Tamil Nadu,Other,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC773,Mukesh Chavan,mukesh443322m@gmail.com,9717954738,25,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC897,Shaik Javeed,19555a2627@gmail.com,8328216923,29,Selected,UPSC,Male,Telangana,General,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC183,Ritu Kumari,kumariritu26ias@gmail.com,7488011183,29,Selected,UPSC,Female,Bihar,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1014,Swasti Kumari,swastikumari28092001@gmail.com,6206017897,25,Selected,UPSC,Female,Bihar,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC149,Prajay,mudavathprajay@gmail.com,9391738281,23,Selected,UPSC,Male,Telangana,ST,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC203,Deep Sahil Goyal,deepsilagoyal4912@gmail.com,8825159656,24,Selected,UPSC,Male,Jharkhand,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC998,Tirupathi Sai Ragini,sairagini3479@gmail.com,6300505332,26,Selected,UPSC,Female,Telangana,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC1099,Sanjna Dhal,sanjnadhal014@gmail.com,7854944215,23,Selected,UPSC,Female,Odisha,OBC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC934,Santanu Sahoo,sahoosantanu82@gmail.com,7846855138,24,Selected,UPSC,Male,Odisha,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC944,Kowsalya B,kowsikavin83@gmail.com,9148971261,29,Selected,UPSC,Female,Tamil Nadu,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HUPSC2107,Nainesh Meshram,meshramnainesh@gmail.com,8552814852,22,Selected,UPSC,Male,Maharashtra,SC,No,Yes,,,,,,,,,,,,,,,,,,,
+HUPSC2170,Ganesh Tandale,ganeshtandale1997@gmail.com,9156129279,29,Selected,UPSC,Male,Maharashtra,OBC,No,No,,,,,,,,,,,,,,,,,,,
+HCLAT394,Aman Kumar,amankumar35521@gmail.com,8210584188,20,Selected,CLAT,Male,Bihar,SC,No,No,Farmer,60000,86,,,,,,,,Yes,"19,000.00","19,000.00",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good
+HCLAT659,Avantika Khonde,connectavantikakhonde@gmail.com,9309909528,23,Selected,CLAT,Female,Maharashtra,OBC,No,No,Farmer,20000,96,,,,,,,,Yes,"18,500.50","18,500.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Top
+HCLAT575,Mohammad Husain Raza,husainrazaamu@gmail.com,9801640081,20,Selected,CLAT,Male,Chhattisgarh,OBC,No,Yes,Teacher,90000,93,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1351,Sonsi Yadav,sonsiyadav21@gmail.com,9811396000,19,Selected,CLAT,Female,Haryana,OBC,No,No,Businessman,300000,92.5,,,,,,,,No,"45,000.00",,,Installment 1 Pending,offline,Haryana,TIME,Average
+HCLAT1384,Tejas Modi,tejasmodi1503@gmail.com,8078650423,17,Selected,CLAT,Male,Rajasthan,General,No,No,Private job,300000,82.8,,,,,,,,Yes,"44,550.00","44,550.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Average
+HCLAT1403,Prachi Baghel,,9411989801,17,Selected,CLAT,Female,Uttar Pradesh,,No,No,,300000,67.2,,,,,,,,Yes,"31,447.00","31,447.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Global Career Centre ,Top Choice
+HCLAT330,Muralidhar .M,muralidhar.m.2005@gmail.com,7795361560,21,Selected,CLAT,Male,Karnataka,General,Yes,No,Teacher,300000,76,,,,,,,,Yes,"24,499.50","24,499.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT113,Sifat Parvin,sifatbirpur@gmail.com,8226977845,19,Selected,CLAT,Female,Bihar,OBC,No,Yes,Businessman,120000,86.8,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1345,Aatifa Tabassum,aatifatabassum07@gmail.com,8527979663,19,Selected,CLAT,Female,Delhi,General,No,Yes,Businessman,300000,78.2,,,,,,,,Yes,"40,000.00","40,000.00",04/01/2025,Full Amount Disbursed,offline,Delhi,TIME,Average
+HCLAT1357,Shailmanyu Diwan,gunjandiwan06@gmail.com,9540037371,19,Selected,CLAT,Male,Delhi,General,No,No,Advocate,300000,91,,,,,,,,Yes,"30,000.00","30,000.00",04/01/2025,Full Amount Disbursed,offline,Delhi,TIME,Good Choice
+HCLAT420,Sana Parween,roshanara293@gmail.com,7585899240,22,Selected,CLAT,Female,Jharkhand,General,No,Yes,Self-employed,300000,87.6,,,,,,,,Yes,"25,999.50","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1356,Rudhira,rudhirawakekar@gmail.com,9422257234,19,Selected,CLAT,Female,Maharashtra,OBC,No,No,Doctor,300000,84,,,,,,,,Yes,"30,500.00","30,500.00",04/01/2025,Full Amount Disbursed,offline,Maharashtra,TIME,Average
+HCLAT376,Soumya Ranjan Nayak,somu97781@gmail.com,9040360810,20,Selected,CLAT,Male,Delhi,OBC,No,No,Businessman,300000,87.2,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT844,Vaishnavi Yadav,vaishnaviyadav0217@gmail.com,8529419426,19,Selected,CLAT,Female,Rajasthan,OBC,No,No,Teacher,300000,83.2,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Good Choice
+HCLAT1398,Prisha Diwate,prishadiwate@gmail.com,9322290626,19,Selected,CLAT,Female,Maharashtra,General,No,No,Businessman,300000,91.3,,,,,,,,Yes,"25,500.00","25,500.00",04/01/2025,Full Amount Disbursed,offline,Maharashtra,TIME,Good Choice
+HCLAT99,Parth Goyal,parthgoyal341@gmail.com,7877849910,20,Selected,CLAT,Male,Delhi,General,No,No,Shopkeeper,300000,87.4,,,,,,,,Yes,"29,000.00","29,000.00",04/01/2025,Full Amount Disbursed,hybrid,Rajasthan,Law prep tutorial,Good Choice
+HCLAT1216,Shraddha Mishra,vijayshankermishra99@gmail.com,6394854184,20,Selected,CLAT,Female,Uttar Pradesh,General,No,No,Private job,168000,74,,,,,,,,Yes,"4,499.50","4,499.00",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT218,Ananya Gaur,gaurananya420@gmail.com,9212762360,19,Selected,CLAT,Female,Delhi,General,No,No,Private job,300000,86.6,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1404,Piyush Yadav,piyushyadav3980@gmail.com,9716679082,17,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,67.3,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,The Visionary Coaching Point ,Top Choice
+HCLAT1397,Onkar Rameshwar Chavan,chavanonkar76@gmail.com,7498749421,20,Selected,CLAT,Male,Maharashtra,ST,No,No,Teacher,300000,83.4,,,,,,,,No,"35,000.00",,,Installment 1 Pending,offline,Maharashtra,TIME,Good Choice
+HCLAT25,Yash Raj,robinyash9695@gmail.com,9695442253,19,Selected,CLAT,Male,Uttar Pradesh,OBC,No,No,Lab assistant,300000,85,,,,,,,,Yes,"18,750.00","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT662,Shreya Mangal,shreyamangal2007@gmail.com,7581024165,19,Selected,CLAT,Female,Uttar Pradesh,General,No,Yes,Businessman,300000,92.1,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1155,Malhar Pradeep Shinde,333malhar@gmail.com,9309907258,19,Selected,CLAT,Male,Maharashtra,SC,No,No,Farmer ,80000,80.6,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Maharashtra,IMS,Good Choice
+HCLAT628,Misba Khan,anjumkhan1094@gmail.com,9520029551,21,Selected,CLAT,Female,Uttar Pradesh,General,No,Yes,Businessman,140000,86.5,,,,,,,,Yes,"15,999.50","15,999.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT1395,Kavya Shankar Iyer,kavya111007@gmail.com,7358760022,19,Selected,CLAT,Female,Karnataka,General,No,No,Education consultant,300000,85.2,,,,,,,,No,"42,475.00",,,Installment 1 Pending,offline,Karnataka,TIME,Average
+HCLAT1159,Aryan Jain,aryanjainn0311@gmail.com,9644088221,20,Selected,CLAT,Male,Madhya Pradesh,General,No,No,Shopkeeper ,50000,69.6,,,,,,,,Yes,"37,499.50","37,499.50",04/01/2025,Full Amount Disbursed,hybrid,Madhya Pradesh,"Toprankers Edtech
+Solutions Pvt. Ltd. - legal edge",Good Choice
+HCLAT1405,Himanshu Yadav,himanshuroy13134@gmail.com,7088979896,18,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,60.8,,,,,,,,Yes,"31,447.00","31,447.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Global Career Centre ,Top Choice
+HCLAT1352,Sakshi Sharma,sakshisharmaxa32024@gmail.com,9079852683,19,Selected,CLAT,Female,Rajasthan,General,No,No,Private job,300000,89,,,,,,,,Yes,"20,000.00","20,000.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Good Choice
+HCLAT127,Anirban Das,dasarindom61@gmail.com,8388082133,26,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Private job,200000,77.5,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1406,Yuvraj Dubey,yd75530@gmail.com,9412397091,17,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,75.8,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,The Visionary Coaching Point ,Top Choice
+HCLAT1396,Priyal Gupta,pg9997246@gmail.com,9413905383,20,Selected,CLAT,Female,Rajasthan,General,No,No,Advocate,300000,92.5,,,,,,,,Yes,"10,000.00","10,000.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Average
+HCLAT1332,Nishant Yadav,nishantyadavthelegend@gmail.com,9971067625,18,Selected,CLAT,Male,Uttar Pradesh,OBC,No,No,Farmer,200000,90,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT602,Amardeep Kushwah,amardeepkushwah56213@gmail.com,6267648017,21,Selected,CLAT,Male,Odisha,OBC,No,No,Businessman,45000,83.6,,,,,,,,Yes,"17,999.50","17,999.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1347,Sureddi Lakshmi Nitya,lakshminityas@gmail.com,9392303030,19,Selected,CLAT,Female,Andhra Pradesh,General,No,No,Businessman,300000,92.6,,,,,,,,Yes,"23,000.00","23,000.00",04/01/2025,Full Amount Disbursed,offline,Andhra Pradesh,TIME,Average
+HCLAT1361,Sanyogita Meena,sanyogitameena707@gmail.com,9202193958,20,Selected,CLAT,Female,Madhya Pradesh,OBC,No,No,Farmer,40000,88.8,,,,,,,,Yes,"24,700.00","24,700.00",04/01/2025,Full Amount Disbursed,offline,Madhya Pradesh,TIME,Top Choice
+HCLAT256,Ankita Verma,ankitaverma92007@gmail.com,7266003696,19,Selected,CLAT,Female,Delhi,OBC,No,No,Farmer,100000,80.4,,,,,,,,Yes,"17,749.00","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1157,Shrushti Arun More,mshrushti14@gmail.com,8788139654,19,Selected,CLAT,Female,Maharashtra,General,No,No,,50000,92.2,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Maharashtra,IMS,Average
+HCLAT86,Suha Tarafdar,suhatarafdar18@gmail.com,7596986796,20,Selected,CLAT,Female,Maharashtra,General,No,Yes,Unemployed,80000,92.3,,,,,,,,Yes,"3,254.50","3,254.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT242,Akshat Sharma,akshu253m@gmail.com,9509267569,21,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Medical representative,100000,76.4,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1360,Vaanya Pasrija,pasrijavaanya@gmail.com,7206010412,20,Selected,CLAT,Female,Haryana,General,No,No,Private job,300000,85,,,,,,,,No,"20,000.00",,,Installment 1 Pending,offline,Haryana,TIME,Average
+HCLAT1152,Shreya,dddshreya@gmail.com,9210723062,18,Selected,CLAT,Female,Delhi,OBC ,No,No,,300000,77,,,,,,,,Yes,"32,500.00","32,500.00",04/01/2025,Full Amount Disbursed,offline,Delhi,Manu Law Classes,Good Choice
+HCLAT1390,Prachi Tiwari,ruchirtiwari99@gmail.com,9829214814,19,Selected,CLAT,Female,Rajasthan,General,No,No,Businessman,300000,93.2,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Good Choice
+HCLAT1387,Tanish Rajput,tanishlodhi148@gmail.com,8595101537,20,Selected,CLAT,Male,Delhi,OBC,No,Yes,Illiterate,96000,74.2,,,,,,,,Yes,"22,500.00","22,500.00",04/01/2025,Full Amount Disbursed,offline,Delhi,Manu Law Classes,Top Choice
+HCLAT1374,Mahika Bhatra,mahikabhatra@gmail.com,8290025779,21,Selected,CLAT,Female,Rajasthan,General,No,No,Chartered accountant,300000,83,,,,,,,,Yes,"22,500.00","22,500.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Good Choice
+HCLAT1407,Utkarsh,utkarshy5994@gmail.com ,8171070757,16,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,88.3,,,,,,,,Yes,"31,447.00","31,447.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Global Career Centre ,Top Choice
+HCLAT585,Divya Gupta,divyagupta.8401@gmail.com,9219244994,19,Selected,CLAT,Female,Delhi,OBC,No,No,Unemployed,72000,80.6,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1408,Gauri Gupta,deeptigupta1987@gmail.com,8938892957,19,Selected,CLAT,Female,Uttar Pradesh,,No,No,,300000,75.6,,,,,,,,Yes,"35,317.00","35,317.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Chetna Tutorials ,Top Choice
+HCLAT161,Nitu Verma,arvindverma805964@gmail.com,9034671533,20,Selected,CLAT,Female,Madhya Pradesh,OBC,No,No,Shopkeeper,300000,73.6,,,,,,,,No,"2,999.50","2,999.50",,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1363,Sanskriti,psanskriti950@gmail.com,9536293690,19,Selected,CLAT,Female,Haryana,General,No,No,LIC agent,72000,84,,,,,,,,No,"42,500.00",,,Installment 1 Pending,offline,Haryana,TIME,Average
+HCLAT250,Vipul Tarmali,vipul.9838280@gmail.com,7905788828,20,Selected,CLAT,Male,Rajasthan,SC,No,Yes,Farmer,34800,89,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT292,Kumar Harsh,rjhrsh298@gmail.com,6201553719,20,Selected,CLAT,Male,Madhya Pradesh,General,No,No,Medical representative,135000,72.4,,,,,,,,Yes,"16,296.00","16,296.00",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1409,Akansha Thakur,,6395318806,18,Selected,CLAT,Female,Uttar Pradesh,,No,No,,300000,82.8,,,,,,,,Yes,"31,447.00","31,447.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Global Career Centre ,Top Choice
+HCLAT1393,Saanvi Sara,sarasaanvi13@gmail.com,9686317073,20,Selected,CLAT,Female,Karnataka,General,No,No,HR professional,300000,75.8,,,,,,,,No,"42,475.00",,,Installment 1 Pending,offline,Karnataka,TIME,Top Choice
+HCLAT1364,Shreya Sushil,shreyasushil07@gmail.com,7406034999,19,Selected,CLAT,Female,Karnataka,General,No,No,Private job,300000,94.6,,,,,,,,No,"36,475.00",,,Installment 1 Pending,offline,Karnataka,TIME,Top Choice
+HCLAT824,Guru Lokhande,pokelokhande11@gmail.com,6264625810,19,Selected,CLAT,Male,Uttar Pradesh,SC,No,No,Self-employed,40000,82.5,,,,,,,,Yes,"19,924.00","19,924.00",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT682,Shaista,shaipark740@gmail.com,8360750410,20,Selected,CLAT,Female,Uttar Pradesh,OBC,No,Yes,Shopkeeper,100000,87.4,,,,,,,,Yes,"4,499.50","4,499.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1354,Chetanya Mahajan,chetansewa568@gmail.com,7722949387,20,Selected,CLAT,Male,Madhya Pradesh,General,No,No,Businessman,300000,66.4,,,,,,,,Yes,"17,700.00","17,700.00",04/01/2025,Full Amount Disbursed,offline,Madhya Pradesh,TIME,Top Choice
+HCLAT1371,Pratham Dixit,prathamdixit1708@gmail.com,9910437743,19,Selected,CLAT,Male,Haryana,General,No,No,Businessman,300000,93.4,,,,,,,,No,"40,500.00",,,Installment 1 Pending,offline,Haryana,TIME,Good Choice
+HCLAT1410,Subhay Gupta,subhaygupta7@gmail.com,9012458484,18,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,82,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,The Visionary Coaching Point ,Top Choice
+HCLAT93,Mohammad Adnan Shaikh,mohammadadnan1440@gmail.com,9561232347,22,Selected,CLAT,Male,Maharashtra,General,No,Yes,Scrap seller,150000,84,,,,,,,,Yes,"20,000.00","20,000.00",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT1341,Himanshi Khola,himanshi102005@gmail.com,9310386616,21,Selected,CLAT,Female,Haryana,OBC,No,No,IT ,300000,92.5,,,,,,,,No,"22,500.00",,,Installment 1 Pending,offline,Haryana,TIME,Top Choice
+HCLAT532,Kajal Tripathi,tripathikajal542@gmail.com,9301921480,19,Selected,CLAT,Female,Uttar Pradesh,General,No,No,Farmer,224000,92.6,,,,,,,,Yes,"17,499.50","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1382,Aditya Singh Rathore,rathore0991@gmail.com,9309073311,20,Selected,CLAT,Male,Rajasthan,General,No,No,Advocate,300000,90.3,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Average
+HCLAT622,Sonam Dhaiya,meenakshidahiya723@gmail.com,8708237049,19,Selected,CLAT,Female,Uttarakhand,General,No,No,Driver,120000,79.4,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT277,Shreya Yadav,shreyayadav4844stella@gmail.com,9838857667,19,Selected,CLAT,Female,Maharashtra,OBC,No,No,Medical representative,300000,87.8,,,,,,,,Yes,"16,499.50","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT30,Devang Pandey,devangpandey71@gmail.com,7804952981,20,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Private job,40000,87.4,,,,,,,,Yes,"12,500.00","12,500.00",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1367,Nishant Saxena,nishantbvbvpn0820@gmail.com,7014373267,20,Selected,CLAT,Male,Rajasthan,General,No,No,Private job,300000,96.8,,,,,,,,Yes,"27,500.00","27,500.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Top Choice
+HCLAT1411,Akshit Yadav,,9808922040,17,Selected,CLAT,Male,Uttar Pradesh,,No,No,Farmer,300000,82,,,,,,,,Yes,"35,317.00","35,317.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Chetna Tutorials ,Top Choice
+HCLAT542,Priyanshu Kumar,priyanshukumargautam1045@gmail.com,8252771045,19,Selected,CLAT,Male,Bihar,General,No,No,Farmer,250000,61.6,,,,,,,,Yes,"34,999.50","34,999.50",04/01/2025,Full Amount Disbursed,online,Bihar,Unacademy,Good Choice
+HCLAT168,Aditi Tiwari,ashokkumart21@gmail.com,9910603188,20,Selected,CLAT,Female,Maharashtra,General,No,No,Mechanic,300000,95.6,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1385,Khushi Kale,kalekhushi264@gmail.com,8855037892,20,Selected,CLAT,Female,Maharashtra,OBC,No,No,Private job,300000,95.8,,,,,,,,Yes,"17,000.00","17,000.00",04/01/2025,Full Amount Disbursed,offline,Maharashtra,TIME,Average
+HCLAT1383,Ronit Pawar,arpitpawar2005@gmail.com,9039895197,21,Selected,CLAT,Male,Madhya Pradesh,General,No,No,Medical retailer,300000,80.4,,,,,,,,Yes,"25,700.00","25,700.00",04/01/2025,Full Amount Disbursed,offline,Madhya Pradesh,TIME,Average
+HCLAT1350,Saumya Sharma,saumya2182006@gmail.com,9057531281/ 9001724848,20,Selected,CLAT,Female,Rajasthan,General,No,No,Journalist,300000,91.83,,,,,,,,Yes,"24,750.00","24,750.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Good Choice
+HCLAT551,Harshit Mishra,harshit8055mishra@gmail.com,6307213796,19,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Lawyer,60000,92.5,,,,,,,,No,"3,499.50","3,499.50",,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT673,Lucky None,lv280196@gmail.com,9462800152,20,Selected,CLAT,Male,Rajasthan,OBC,No,No,Clerk,200000,94.2,,,,,,,,Yes,"14,989.00","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1359,Tanisha Joshi,tanisha.joshi2306@gmail.com,9373840135,19,Selected,CLAT,Female,Maharashtra,General,No,No,Gym trainer,200000,71.6,,,,,,,,No,"35,000.00",,,Installment 1 Pending,offline,Maharashtra,TIME,Good Choice
+HCLAT286,Amit Chaurasiya,akchaurasiya653@gmail.com,9473699490,19,Selected,CLAT,Male,Rajasthan,OBC,No,No,Farmer,50000,83.5,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT303,Anuj Kumar Pandey,anujpandey9131@gmail.com,6204119131,21,Selected,CLAT,Male,Jharkhand,General,Yes,No,LIC agent,300000,74.6,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1353,Shubhangi Gautam,gautshubhangi22@gmail.com,6263682746,20,Selected,CLAT,Female,Madhya Pradesh,General,No,No,Private job,180000,68.8,,,,,,,,Yes,"20,200.00","20,200.00",04/01/2025,Full Amount Disbursed,offline,Madhya Pradesh,TIME,Average
+HCLAT711,Suryansh Nishad,suryanshnishad890@gmail.com,9319059365,18,Selected,CLAT,Male,Delhi,SC,No,No,Private job,230000,81.8,,,,,,,,Yes,"35,000.00","35,000.00",04/01/2025,Full Amount Disbursed,offline,Delhi,Manu Law Classes,Good Choice
+HCLAT1340,Diya Sharma,diyasha.0002@gmail.com,8708805537,19,Selected,CLAT,Female,Haryana,General,No,No,Businessman,300000,88.8,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Haryana,TIME,Good Choice
+HCLAT258,Anshuka Verma,anshukaverma0206@gmail.com,8874645811,19,Selected,CLAT,Female,Uttar Pradesh,OBC,No,No,Goldsmith,72000,94.1,,,,,,,,Yes,"15,864.50","15,864.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT709,Aryan Nishad,indaryan45@gmail.com,9319059365,18,Selected,CLAT,Male,Delhi,SC,No,Yes,Private job,260000,81,,,,,,,,Yes,"35,000.00","35,000.00",04/01/2025,Full Amount Disbursed,offline,Delhi,Manu Law Classes,Average
+HCLAT1366,Prajval R,rprajval26@gmail.com,9443451156,18,Selected,CLAT,Male,Karnataka,OBC,No,No,Private job,300000,91.6,,,,,,,,No,"35,475.00",,,Installment 1 Pending,offline,Karnataka,TIME,Top Choice
+HCLAT1381,Purvai Bansal,rkjnainwa@gmail.com,9413087742,19,Selected,CLAT,Female,Rajasthan,General,No,Yes,Government employee,300000,87.2,,,,,,,,Yes,"39,500.00","39,500.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Top Choice
+HCLAT1412,Nainsi Rajput,,7017889534,18,Selected,CLAT,Female,Uttar Pradesh,,No,No,,300000,72,,,,,,,,Yes,"31,447.00","31,447.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Global Career Centre ,Top Choice
+HCLAT1320,Bhabya Priya,bhabyapriya7@gmail.com,6202050735,20,Selected,CLAT,Female,Uttar Pradesh,General,No,No,Farmer,97000,79,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT884,Avneet Kaur Bamra,07avneetkb@gmail.com,9323713360,19,Selected,CLAT,Male,Maharashtra,OBC,No,Yes,Private job,300000,92.2,,,,,,,,Yes,"35,041.50","35,041.50",04/01/2025,Full Amount Disbursed,offline,Madhya Pradesh,IMS,Top Choice
+HCLAT135,Shavi Sharma,shavi747@gmail.com,9469776494,20,Selected,CLAT,Female,Bihar,General,No,No,Clerk ,300000,76.8,,,,,,,,Yes,"16,349.50","16,349.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1376,Shreya Singh,shreya1105singh@gmail.com,8854896246,21,Selected,CLAT,Female,Rajasthan,General,No,No,Self-employed,300000,80.3,,,,,,,,Yes,"20,000.00","20,000.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Average
+HCLAT1413,Satyam Yadav,,9917750383,18,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,63.5,,,,,,,,Yes,"35,317.00","35,317.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Chetna Tutorials,Top Choice
+HCLAT1414,Tanishka Jain,,9412573156,17,Selected,CLAT,Female,Uttar Pradesh,,No,No,,300000,64.5,,,,,,,,Yes,"35,317.00","35,317.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Chetna Tutorials,Top Choice
+HCLAT1267,Harshal Awasarmol,harshalawasarmol7@gmail.com,9730581847,19,Selected,CLAT,Male,Rajasthan,SC,No,No,Teacher,30000,72.4,,,,,,,,Yes,"3,999.50","3,999.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT232,Lakshita Tiwari,lakshitatiwari964@gmail.com,7417771466,20,Selected,CLAT,Female,Bihar,General,No,No,Farmer,72000,85.8,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT494,Harsh Chhimpa,harshchhimpa870@gmail.com,9024870804,20,Selected,CLAT,Male,Uttar Pradesh,OBC,No,No,Lawyer,300000,72,,,,,,,,Yes,"16,975.00","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1377,Sanjana Bhatt,sandhyasanjayjames@gmail.com,9740155477,20,Selected,CLAT,Female,Karnataka,General,No,No,IT,300000,89,,,,,,,,No,"42,475.00",,,Installment 1 Pending,offline,Karnataka,TIME,Average
+HCLAT671,Akhil Kumar,akhilnagpur07@gmail.com,7654804728,19,Selected,CLAT,Male,Maharashtra,General,No,No,Private job,135000,94,,,,,,,,Yes,"31,499.50","31,499.50",04/01/2025,Full Amount Disbursed,hybrid,Maharashtra,"Toprankers Edtech
+Solutions Pvt. Ltd. - legal edge",Good Choice
+HCLAT742,Shriastha Majumder,vershamajumder@gmail.com,9137068344,19,Selected,CLAT,Female,Maharashtra,General,No,No,Teacher,98000,94.3,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Maharashtra,IMS,Good Choice
+HCLAT1415,Vibhanshu Yadav,Vibhanshuyadav227@gmail.com,8273831568,17,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,61,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,The Visionary Coaching Point ,Top Choice
+HCLAT1416,Sauravi,,9917672855,20,Selected,CLAT,Female,Uttar Pradesh,,No,No,,300000,77.5,,,,,,,,Yes,"35,317.00","35,317.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,Chetna Tutorials,Top Choice
+HCLAT1369,Aviyanshi Vashistha,vashisthaaviyanshi@gmail.com,6375858678,19,Selected,CLAT,Female,Rajasthan,General,No,No,Advocate,100000,92.66,,,,,,,,Yes,"37,500.00","37,500.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Good Choice
+HCLAT574,Mohammad Arham,arham3340@gmail.com,7906110415,20,Selected,CLAT,Male,Maharashtra,OBC,No,Yes,Teacher ,300000,65.8,,,,,,,,Yes,"16,999.50","16,999.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT710,Deepanshi,deepanshijaswar39@gmail.com,9871727100,21,Selected,CLAT,Female,Delhi,General,No,No,Private job,240000,67,,,,,,,,Yes,"27,500.00","27,500.00",04/01/2025,Full Amount Disbursed,offline,Delhi,Manu Law Classes,Average
+HCLAT560,Sutanuka Sahu,sutanukasahu2004@gmail.com,9564756535,22,Selected,CLAT,Female,West Bengal,General,No,No,Businessman,180000,96,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1417,Shiv Kant,yshivkantyadav681@gmail.com,7037968088,17,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,67,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,The Visionary Coaching Point ,Top Choice
+HCLAT1378,Aayesha Jain,aayeshajain5507@gmail.com,9829531091,19,Selected,CLAT,Female,Rajasthan,General,No,Yes,Government employee,300000,91.8,,,,,,,,Yes,"37,500.00","37,500.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Average
+HCLAT1342,Kartik,kartik.69dl@gmail.com,8700939259,18,Selected,CLAT,Male,Delhi,General,No,No,Private job,120000,70.6,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Delhi,TIME,Good Choice
+HCLAT308,Arshpreet Singh,hulkxgamer@gmail.com,9928961036,20,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Teacher,180000,73.8,,,,,,,,Yes,"25,999.50","25,999.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT267,Tanisha Sahu,meowsahutanisha@gmail.com,9691313412,18,Selected,CLAT,Female,Delhi,OBC,No,No,Accountant,50000,86,,,,,,,,Yes,"17,499.50","13,500.00",04/01/2025,Installment 2 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1348,Vidheesha Sahal,vidheeshasahal@gmail.com,9983124167,19,Selected,CLAT,Female,Rajasthan,General,No,No,Teacher,300000,95.6,,,,,,,,Yes,"35,000.00","35,000.00",04/01/2025,Full Amount Disbursed,offline,Rajasthan,TIME,Good Choice
+HCLAT296,Prachi Suman,sumanprachi9562@gmail.com,9153506870,20,Selected,CLAT,Female,Uttar Pradesh,OBC,No,No,Self-employed,125000,94.3,,,,,,,,,"13,500.00",,,,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT1389,Harleen Kaur Toor,harleent16@gmail.com,7814474193,20,Selected,CLAT,Female,Punjab,General,No,Yes,Farmer,299549,89.4,,,,,,,,Yes,"36,000.00","36,000.00",04/01/2025,Full Amount Disbursed,offline,Punjab,TIME,Average
+HCLAT1418,Angel,arvindgautam7887@gmail.com,8445838430,17,Selected,CLAT,Female,Uttar Pradesh,,No,No,,300000,81,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,The Visionary Coaching Point ,Top Choice
+HCLAT1323,Vaniya Faheem,vaniyafaheem@gmail.com,7505935857,20,Selected,CLAT,Female,Gujarat,OBC,No,Yes,Lawyer,45000,79,,,,,,,,Yes,"3,249.50","3,249.50",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT03,Ramanjot Singh,ramanjot7901@gmail.com,7814595561,19,Selected,CLAT,Male,Delhi,OBC,No,Yes,Mason,300000,87.5,,,,,,,,Yes,"5,975.00","5,975.00",04/01/2025,Full Amount Disbursed,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1419,Vidit Pratap Singh,kumaratul181978@gmail.com,7037952999,18,Selected,CLAT,Male,Uttar Pradesh,,No,No,,300000,85.8,,,,,,,,Yes,"45,000.00","45,000.00",04/01/2025,Full Amount Disbursed,offline,Uttar Pradesh,The Visionary Coaching Point ,Top Choice
+HCLAT859,Salim Khan,salimserajkhan@gmail.com,7977615522,21,Selected,CLAT,Male,Maharashtra,General,No,Yes,Private job,190000,67.6,,,,,,,,No,"45,000.00",,,Installment 1 Pending,offline,Maharashtra,Siddhartha Logic,Top Choice
+HCLAT1164,Shivani Satish Kanojiya,ranikanojiya334@gmail.com,72660 16556,19,Selected,CLAT,Female,Maharashtra,General,No,No,Private job,180000,73.6,,,,,,,,No,"45,000.00",,,Installment 1 Pending,offline,Maharashtra,Siddhartha Logic,Top Choice
+HCLAT1165,Sidra Riyaz Khan,khansidra2109@gmail.com,9867952478,19,Selected,CLAT,Female,Maharashtra,General,No,Yes,Private job,210000,62,,,,,,,,No,"45,000.00",,,Installment 1 Pending,offline,Maharashtra,Siddhartha Logic,Top Choice
+HCLAT1198,Choudhary Javeriya Mohd Anees,javeriyachoudhary711@gmail.com,9152087257,21,Selected,CLAT,Female,Maharashtra,General,No,Yes,Private job,150000,63.8,,,,,,,,No,"45,000.00",,,Installment 1 Pending,offline,Maharashtra,Siddhartha Logic,Top Choice
+HCLAT823,Payal Jaiswar,jaiswarpayaljaiswar@gmail.com,7700049703,19,Selected,CLAT,Female,Maharashtra,General,No,No,Private job,180000,69.6,,,,,,,,No,"45,000.00",,,Installment 1 Pending,offline,Maharashtra,Siddhartha Logic,Top Choice
+HCLAT773,Sejal Anil Kumar Dubey,23205sejal@gmail.com,8105455728,21,Selected,CLAT,Female,Maharashtra,General,No,No,Unemployed,230000,77.2,,,,,,,,No,"45,000.00",,,Installment 1 Pending,offline,Maharashtra,Siddhartha Logic,Top Choice
+HCLAT1358,Aarohee Purohit,aaroheepurohit@gmail.com,9958572444,19,Selected,CLAT,Female,Delhi,General,No,No,Government employee,300000,88,,,,,,,,No,"36,000.00",,,Installment 1 Pending,offline,Delhi,TIME,Good Choice
+HCLAT1388,Sanidhya Gaur,sanidhyagaur764@gmail.com,7665015158,19,Selected,CLAT,Female,Rajasthan,General,No,No,Government employee,300000,93.3,,,,,,,,No,"40,000.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Top Choice
+HCLAT1391,Lakshya Ganeshiya,lakshyaganeshiya@gmail.com,8209179753,19,Selected,CLAT,Male,Rajasthan,General,No,No,Teacher,300000,94.5,,,,,,,,No,"38,000.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Average
+HCLAT866,Yasha Singh,smp.arvind@gmail.com,9987934709,19,Selected,CLAT,Female,Maharashtra,General,No,No,Private job,300000,64.8,,,,,,,,No,"19,733.00",,,Installment 1 Pending,online,Karnataka,Unacademy,Average
+HCLAT708,Harshada Devdatt Kharate,harshadadkharate@gmail.com,8767235298,20,Selected,CLAT,Female,Maharashtra,OBC,No,No,Private job,250000,95.2,,,,,,,,No,"34,338.00",,,Installment 1 Pending,offline,Maharashtra,IMS,Good Choice
+HCLAT1346,O Yognk,yugankojha4@gmail.com,9079172792,18,Selected,CLAT,Male,Rajasthan,SC,No,No,Fashion designer,300000,83.8,,,,,,,,No,"40,000.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Good Choice
+HCLAT78,Varsha Maurya,varshu.14.maurya@gmail.com,9279901195,20,Selected,CLAT,Female,Jharkhand,OBC,No,No,Property dealer,260000,60,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1365,Uppili Rajeev,uppili.cool@gmail.com,9845915658,19,Selected,CLAT,Male,Karnataka,General,No,Yes,Dentist,300000,87.33,,,,,,,,No,"26,475.00",,,Installment 1 Pending,offline,Karnataka,TIME,Top Choice
+HCLAT1392,Ayman Irfan,irfanayman2005@gmail.com,7852810224,20,Selected,CLAT,Female,Rajasthan,OBC,No,Yes,Businessman,300000,89.8,,,,,,,,No,"37,500.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Top Choice
+HCLAT339,Manu Vishwakarma,vishwakarmamanu69@gmail.com,8707604673,20,Selected,CLAT,Male,Uttar Pradesh,OBC,No,No,Farmer,200000,85.5,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT505,Hrishikesh Jadhav,rushi.b.j123@gmail.com,7083681500,20,Selected,CLAT,Male,Maharashtra,General,No,No,Farmer,100000,76,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1273,Abhinav Kumar Singh,singhabhinav9670@gmail.com,6307004131,19,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Private job,300000,64.1,,,,,,,,No,"17,999.50",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT639,Anushka Singh,theanushka010@gmail.com,7489088928,19,Selected,CLAT,Female,Chhattisgarh,General,No,No,Lawyer,300000,68,,,,,,,,No,,,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1370,Pallh Divya,diyapallath@gmail.com,8861352955,20,Selected,CLAT,Female,Kerala,OBC,No,No,Businessman,300000,94.8,,,,,,,,No,"27,975.00",,,Installment 1 Pending,offline,Kerala,TIME,Average
+HCLAT132,Aniket Sharma,aniketbhatt.s09@gmail.com,9341609397,19,Selected,CLAT,Male,Jharkhand,OBC,No,No,Farmer,98000,94.2,,,,,,,,No,,,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT545,Akash Patel,akashpw272007@gmail.com,+91 9993378823,19,Selected,CLAT,Male,Madhya Pradesh,OBC,No,No,Clerk,250000,86.83,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT189,Pratiksha Tiwari,shiwnathtiwari51@gmail.com,7347802236,19,Selected,CLAT,Female,Delhi,General,No,No,E-rickshaw driver,200000,75.6,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT521,Amandeep Kaur,amndeep601@gmail.com,7814993247,19,Selected,CLAT,Male,Punjab,General,No,Yes,Farmer,300000,92,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT111,Mridul Kumar Prajapati,mridulprajapati50@gmail.com,8787295417,20,Selected,CLAT,Male,Uttar Pradesh,OBC,No,No,Shop assistant,96000,63.83,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT158,Nishant Dangi,badshahdangi299@gmail.com,9105200248,20,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Farmer,180000,84,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT688,Harsh Raj,harshraj03122006@gmail.com,8340209088,20,Selected,CLAT,Male,Bihar,General,No,No,Teacher,300000,62,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT227,Kirti Vardhan Singh,kirtivardhansingh083@gmail.com,8736802497,20,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Private job,300000,83.4,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT316,Harshita Kshirsagar,kshirsagarmini@gmail.com,7441103597,20,Selected,CLAT,Female,Madhya Pradesh,OBC,No,No,Teacher,50000,89.3,,,,,,,,No,"20,499.50",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT620,Rana N,ranasenapathy.law@gmail.com,9944882729,19,Selected,CLAT,Female,Tamil Nadu,OBC,No,No,Lawyer,180000,80,,,,,,,,No,"19,000.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT174,Ranu Singh,ranusinghrajput109@gmail.com,7651812226,19,Selected,CLAT,Male,Uttar Pradesh,General,No,No,Farmer,48000,73.6,,,,,,,,No,"15,999.50",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1386,Manthan Gupta,gmanthan296@gmail.com,9166850536,19,Selected,CLAT,Male,Rajasthan,General,No,No,Mechanical engineer,300000,94.8,,,,,,,,No,"30,000.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Good Choice
+HCLAT1420,Vicky Yadav,vickyyadav9928@gmail.com,8302764541,18,Selected,CLAT,Male,Rajasthan,obc ,No,No,Farmer ,60000,92,,,,,,,,No,"34,000.00",,,Installment 1 Pending,offline,Rajasthan,Allen,Good Choice
+HCLAT1349,Saksham Goyal,sakshamgt2007@gmail.com,7696590295,19,Selected,CLAT,Male,Delhi,General,No,No,Businessman,300000,95.2,,,,,,,,No,"33,500.00",,,Installment 1 Pending,offline,Delhi,TIME,Average
+HCLAT491,Aayushmaan Nema,ayushnema2019@gmail.com,7898479930,20,Selected,CLAT,Male,Madhya Pradesh,OBC,No,No,Lawyer,180000,76.6,,,,,,,,No,,,,Installment 1 Pending,hybrid,Uttar Pradesh,"Toprankers Edtech
+Solutions Pvt. Ltd. - legal edge",Top Choice
+HCLAT48,Askandar Zullkarnain,askanderzulkarnain49@gmail.com,7808786448,19,Selected,CLAT,Male,Jharkhand,General,No,Yes,Lawyer,300000,83.2,,,,,,,,No,"19,250.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT01,Gaurv,kushagragauravgupta@gmail.com,9205548131,20,Selected,CLAT,Male,Bihar,OBC,No,No,Teacher,300000,94.4,,,,,,,,No,"16,749.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT1375,S Bhumi,sbhumi1910@gmail.com,9829206597,19,Selected,CLAT,Female,Rajasthan,General,No,No,Businessman,300000,97.2,,,,,,,,No,"31,500.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Top Choice
+HCLAT1399,Avsthi S,shivinavasthi9@gmail.com,8302971608,19,Selected,CLAT,Male,Rajasthan,General,No,No,Teacher,300000,91,,,,,,,,No,"32,500.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Average
+HCLAT1362,Niharika Rathore,nihu2410rathore@gmail.com,6377561570,20,Selected,CLAT,Female,Rajasthan,General,No,No,Manager,300000,96.4,,,,,,,,No,"20,000.00",,,Installment 1 Pending,offline,Rajasthan,TIME,Average
+HCLAT1421,Sunil Swami,swamisunil9783@gmail.com,8302499897,20,Selected,CLAT,Male,Rajasthan,,No,No,Farmer ,120000,86.2,,,,,,,,No,"33,750.00",,,Installment 1 Pending,offline,Rajasthan,Allen,Top Choice
+HCLAT1380,Himanshu,himanshak2507@gmail.com,8708910973,20,Selected,CLAT,Male,Haryana,SC,No,Yes,Private job,300000,83,,,,,,,,No,"42,500.00",,,Installment 1 Pending,offline,Haryana,TIME,Average
+HCLAT1422,Rahul Bagra,r7324788@gmail.com,8442062421,19,Selected,CLAT,Male,Rajasthan,,No,No,Farmer ,300000,56,,,,,,,,No,"30,400.00",,,Installment 1 Pending,offline,Rajasthan,Allen,Top Choice
+HCLAT1270,Adrito Jasu,adritojasu04122007@gmail.com,9007013077,19,Selected,CLAT,Male,West Bengal,General,No,No,Businessman,234610,70,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT143,Sarah Siddiquey,sarahsiddique588@gmail.com,8750886240,20,Selected,CLAT,Female,Delhi,General,No,Yes,Homemaker,90000,61,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT336,Astha Jha,asthajha82@gmail.com,7586057320,19,Selected,CLAT,Female,West Bengal,General,No,No,Private job,250000,73,,,,,,,,No,"13,500.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Average
+HCLAT1258,A Hazra,hazraashmit2004@gmail.com,8389855902,20,Selected,CLAT,Male,West Bengal,General,No,No,Lawyer,300000,86,,,,,,,,No,"19,296.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Good Choice
+HCLAT1401,Mohan Sain,mohansain4348@gmail.com,7410992058,20,Selected,CLAT,Male,Rajasthan,OBC,No,No,Saloon,300000,88,,,,,,,,No,"30,200.00",,,Installment 1 Pending,offline,Rajasthan,Allen,Average
+HCLAT35,Anushka Raj,rajanushka33@gmail.com,9430844111,20,Selected,CLAT,Female,Bihar,OBC,No,No,Private job,300000,91.8,,,,,,,,No,"5,692.00",,,Installment 1 Pending,online,Uttar Pradesh,Physics Wallah,Top Choice
+HCLAT1423,Anshika,,9410801185,17,Selected,CLAT,Female,Uttar Pradesh,,No,No,Private job,300000,83.7,,,,,,,,No,"31,447.00",,,Installment 1 Pending,offline,Uttar Pradesh,Global Career Centre ,Top Choice
+HCLAT1368,Khushi Wagh,khushiwagh2397@gmail.com,9284876154,19,Selected,CLAT,Female,Maharashtra,SC,No,No,Private job,300000,84,,,,,,,,No,"22,000.00",,,Installment 1 Pending,offline,Maharashtra,TIME,Good Choice

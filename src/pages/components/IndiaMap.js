@@ -172,7 +172,7 @@ ${stateTypeInfo.map((st) => `${st._id.scholarshipName}: ${st.total}`).join('\n')
       const stateCode = geo.properties.st_nm;
       const analytics = getStateAnalytics(stateCode);
       const fillColor = colorScale(analytics.count || 0);
-
+      console.log('Analytics for', stateCode, analytics);
       // Calculate centroid for positioning the text (assuming geo.properties.centroid is available)
       const centroid = geo.properties.centroid || [0, 0]; // Use centroid if available
 

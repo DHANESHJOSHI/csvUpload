@@ -156,6 +156,17 @@ const userHandler = async (req, res, token) => {
       { $sort: { count: -1 } }, // Sorting states by the total scholarship count
     ]);
 
+    // Get total amount disbursed
+    const totalAmountDisbursed = await Scholarship.aggregate([
+      { $match: filter },
+      {
+        $group: {
+          _id: null,
+          totalDisbursed: { $sum: '$amountDisbursed' }
+        }
+      }
+    ]);
+
     // Scholarship-specific analytics
     const scholarshipAnalytics = await Scholarship.aggregate([
       { $match: filter },
@@ -173,10 +184,17 @@ const userHandler = async (req, res, token) => {
       },
     ]);
 
-    // Financial and academic analytics
+    // Financial and academic analytics with state-wise total amount
     const financialAnalytics = await Scholarship.aggregate([
       { $match: filter },
-      { $group: { _id: null, totalIncome: { $sum: '$familyAnnualIncome' }, avgGrade: { $avg: '$graduationPercentage' } } },
+      { 
+        $group: { 
+          _id: '$state',
+          totalIncome: { $sum: '$familyAnnualIncome' }, 
+          avgGrade: { $avg: '$graduationPercentage' },
+          totalAmount: { $sum: '$totalAmount' }
+        } 
+      },
     ]);
 
     // Analytics by state, including gender and selected/not-selected counts
@@ -195,6 +213,8 @@ const userHandler = async (req, res, token) => {
           male: { $sum: { $cond: [{ $eq: ['$gender', 'male'] }, 1, 0] } },
           female: { $sum: { $cond: [{ $eq: ['$gender', 'female'] }, 1, 0] } },
           other: { $sum: { $cond: [{ $eq: ['$gender', 'other'] }, 1, 0] } },
+          totalAmount: { $sum: '$totalAmount' },
+          amountDisbursed: { $sum: '$amountDisbursed' }
         },
       },
       { $sort: { '_id.state': 1, '_id.scholarshipName': 1 } }, // Sort by state and scholarship type
@@ -206,6 +226,7 @@ const userHandler = async (req, res, token) => {
       selectCount,
       notSelectCount,
       allScholarshipNames,
+      totalAmountDisbursed: totalAmountDisbursed[0]?.totalDisbursed || 0,
       genderAnalytics: {
         maleApplications,
         femaleApplications,

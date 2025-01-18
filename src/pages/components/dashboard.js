@@ -194,6 +194,8 @@ const Dashboard = () => {
       _id: stateCode,
     };
 
+    console.log('Combined Analytics:', analytics);
+
     setSelectedStateAnalytics(combinedAnalytics);
   };
 

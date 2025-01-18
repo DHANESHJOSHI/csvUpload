@@ -8,10 +8,11 @@ import connectToDatabase from '@/lib/db';
 // Helper function to clean and cast to number
 const castToNumber = (value) => {
   if (value === null || value === '' || value === 'null') return null;
-  const cleanedValue = value.replace(/[^0-9.]/g, ''); // Remove non-numeric characters except dots
+  const cleanedValue = value.replace(/[^0-9.-]/g, ''); // Remove non-numeric characters except dots and minus sign
   const number = parseFloat(cleanedValue);
   return isNaN(number) ? null : number; // Return null if the value is not a valid number
 };
+
 
 // Helper function to cast to boolean
 const castToBoolean = (value) => {
@@ -61,72 +62,64 @@ apiRoute.post(async (req, res) => {
 
     const results = [];
     const invalidRecords = [];
+    const emailSet = new Set();
+
+    
 
     fs.createReadStream(req.file.path)
       .pipe(csv())
       .on('data', (data) => {
-        const {
-          name,
-          email,
-          status,
-          scholarshipName,
-          gender,
-          state,
-          psychometricReport,
-          coachingName,
-          coachingState,
-          natureOfCoaching,
-          scholarshipID,
-          cseAttempts,
-          postGraduationCompleted,
-          fieldOfStudy,
-          graduationPercentage,
-          twelfthGradePercentage,
-          tenthGradePercentage,
-          familyAnnualIncome,
-          guardianOccupation,
-          category,
-          age,
-          contactNumber,
-        } = data;
+        const record = {};
+        console.log('Data:', data);
 
-        const record = {
-          name,
-          email,
-          status: status || 'Not Selected',
-          scholarshipName,
-          gender: gender ? gender.toLowerCase() : '',
-          state,
-          psychometricReport,
-          coachingName,
-          coachingState,
-          natureOfCoaching,
-          scholarshipID,
-          cseAttempts: castToNumber(cseAttempts),
-          postGraduationCompleted: castToBoolean(postGraduationCompleted),
-          fieldOfStudy,
-          graduationPercentage: castToNumber(graduationPercentage),
-          twelfthGradePercentage: castToNumber(twelfthGradePercentage),
-          tenthGradePercentage: castToNumber(tenthGradePercentage),
-          familyAnnualIncome: castToNumber(familyAnnualIncome),
-          guardianOccupation,
-          category,
-          age: castToNumber(age),
-          contactNumber,
-        };
+        // Import all fields from Excel dynamically
+        Object.keys(data).forEach(key => {
+          if (['cseAttempts', 'graduationPercentage', 'twelfthGradePercentage', 'tenthGradePercentage', 'totalAmount', 'amountDisbursed', 'familyAnnualIncome', 'age'].includes(key)) {
+            record[key] = castToNumber(data[key]);
+          } else if (key === 'postGraduationCompleted') {
+            record[key] = castToBoolean(data[key]);
+          } else if (key === 'gender' && data[key]) {
+            record[key] = data[key].toLowerCase();
+          } else if (key === 'status') {
+            record[key] = data[key] || 'Not Selected';
+          } else {
+            record[key] = data[key];
+          }
+        });
 
         // Validate record
         if (!record.name || !record.email) {
           invalidRecords.push({ record, error: 'Name and email are required fields' });
+        } else if (emailSet.has(record.email)) {
+          invalidRecords.push({ record, error: 'Duplicate email found' });
         } else {
+          emailSet.add(record.email);
           results.push(record);
         }
       })
       .on('end', async () => {
         try {
+          // Check for existing emails in database
+          const existingEmails = await Scholarship.distinct('email', { 
+            email: { $in: Array.from(emailSet) } 
+          });
+
+          if (existingEmails.length > 0) {
+            return res.status(400).json({ 
+              error: 'Duplicate emails found in database', 
+              duplicateEmails: existingEmails 
+            });
+          }
+          
+          
+
           await Scholarship.insertMany(results);
           fs.unlinkSync(req.file.path);
-          res.status(200).json({ message: 'Upload processed successfully', results, invalidRecords });
+          res.status(200).json({ 
+            message: 'Upload processed successfully', 
+            results, 
+            invalidRecords 
+          });
         } catch (err) {
           console.error('Database Error:', err.message);
           res.status(500).json({ error: 'Error saving data to the database' });

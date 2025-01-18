@@ -48,8 +48,8 @@ const ScholarshipSchema = new mongoose.Schema(
     selectedForUPSCInterviews: { type: String, default: false },
     scholarshipID: { type: String, required: false },
     scholarshipAwarded: { type: String, default: false },
-    totalAmount: { type: String, default: 0 },
-    amountDisbursed: { type: String, default: 0 },
+    totalAmount: { type: Number, default: 0 },
+    amountDisbursed: { type: Number, default: 0 },
     disbursementDate: { type: Date, default: null },
     installments: [InstallmentSchema], // Array to store installments
     natureOfCoaching: { type: String, required: false },
