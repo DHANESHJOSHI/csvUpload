@@ -320,11 +320,11 @@ const Dashboard = () => {
                 </div>
                 <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
                   <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Total Amount</h4>
-                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent mt-2">₹{selectedStateAnalytics.totalAmount || 0}</p>
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent mt-2">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(selectedStateAnalytics.totalAmount || 0)}</p>
                 </div>
                 <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
                   <h4 className="text-base md:text-lg lg:text-xl font-semibold text-gray-800 break-words">Amount Disbursed</h4>
-                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent mt-2">₹{selectedStateAnalytics.amountDisbursed || 0}</p>
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent mt-2">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(selectedStateAnalytics.amountDisbursed || 0)}</p>
                 </div>
                 <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
                   <div className="flex flex-col space-y-4">

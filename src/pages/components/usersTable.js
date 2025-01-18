@@ -61,7 +61,7 @@ const StudentsTable = () => {
           <div className="space-y-3">
             
               <>
-                <p><span className="font-medium">Contact:</span> {data.contactNumber}</p>
+                {/* <p><span className="font-medium">Contact:</span> {data.contactNumber}</p> */}
                 <p><span className="font-medium">Age:</span> {data.age}</p>
                 <p><span className="font-medium">PWD %:</span> {data.pwdPercentage}</p>
                 <p><span className="font-medium">Guardian:</span> {data.guardianOccupation}</p>
@@ -74,15 +74,16 @@ const StudentsTable = () => {
             
               <>
                 <p><span className="font-medium">Name:</span> {data.scholarshipName}</p>
-                <p><span className="font-medium">Amount Disbursed:</span> ₹{data.amountDisbursed}</p>
-                <div className="mt-3">
+                <p><span className="font-medium">Amount Disbursed:</span> {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(data.amountDisbursed || 0)}</p>
+                <p><span className="font-medium">Amount Remaining:</span> {new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(data.totalAmount || 0)}</p>
+                {/* <div className="mt-3">
                   <h5 className="font-medium mb-2">Installments:</h5>
                   {data.installments.map((inst, idx) => (
                     <div key={idx} className="text-xs">
                       #{inst.installmentNumber}: ₹{inst.amount} ({inst.status})
                     </div>
                   ))}
-                </div>
+                </div> */}
               </>
           </div>
         </div>

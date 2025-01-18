@@ -111,8 +111,8 @@ Gender Distribution
 
 Scholarships & State Type
 ━━━━━━━━━━━━━━━━━━
-💰 Total Disbursed Amount: ₹ ${analytics.stateTypeInfo[0]?.amountDisbursed || 0}
-💰 Total Amount: ₹ ${analytics.stateTypeInfo[0]?.totalAmount || 0}
+💰 Total Disbursed Amount: ${new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(analytics.stateTypeInfo[0]?.amountDisbursed || 0)}
+💰 Total Amount: ${new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(analytics.stateTypeInfo[0]?.totalAmount || 0)}
   ${stateTypeInfo.map((st) => `🎓: ${st._id.scholarshipName}: ${st.total}`).join('\n') || 'No data available'}`;
   };
  
