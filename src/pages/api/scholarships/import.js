@@ -43,6 +43,9 @@ const upload = multer({
 const apiRoute = nextConnect({
   onError(error, req, res) {
     console.error('Error:', error.message);
+    if (req.file) {
+      fs.unlinkSync(req.file.path);
+    }
     res.status(500).json({ error: error.message });
   },
   onNoMatch(req, res) {
@@ -74,7 +77,7 @@ apiRoute.post(async (req, res) => {
 
         // Import all fields from Excel dynamically
         Object.keys(data).forEach(key => {
-          if (['cseAttempts', 'graduationPercentage', 'twelfthGradePercentage', 'tenthGradePercentage', 'totalAmount', 'amountDisbursed', 'familyAnnualIncome', 'age'].includes(key)) {
+          if (['cseAttempts', 'graduationPercentage', 'twelfthGradePercentage', 'tenthGradePercentage', 'totalAmount', 'familyAnnualIncome', 'age', 'amountDisbursed'].includes(key)) {
             record[key] = castToNumber(data[key]);
           } else if (key === 'postGraduationCompleted') {
             record[key] = castToBoolean(data[key]);
@@ -105,14 +108,13 @@ apiRoute.post(async (req, res) => {
           });
 
           if (existingEmails.length > 0) {
+            fs.unlinkSync(req.file.path);
             return res.status(400).json({ 
               error: 'Duplicate emails found in database', 
               duplicateEmails: existingEmails 
             });
           }
           
-          
-
           await Scholarship.insertMany(results);
           fs.unlinkSync(req.file.path);
           res.status(200).json({ 
@@ -122,11 +124,15 @@ apiRoute.post(async (req, res) => {
           });
         } catch (err) {
           console.error('Database Error:', err.message);
+          fs.unlinkSync(req.file.path);
           res.status(500).json({ error: 'Error saving data to the database' });
         }
       });
   } catch (error) {
     console.error('File Processing Error:', error.message);
+    if (req.file) {
+      fs.unlinkSync(req.file.path);
+    }
     res.status(500).json({ error: 'File processing failed' });
   }
 });
