@@ -66,8 +66,8 @@ apiRoute.post(async (req, res) => {
     const results = [];
     const invalidRecords = [];
     const emailSet = new Set();
-
-    
+    const updateOperations = [];
+    const newRecords = [];
 
     fs.createReadStream(req.file.path)
       .pipe(csv())
@@ -94,7 +94,7 @@ apiRoute.post(async (req, res) => {
         if (!record.name || !record.email) {
           invalidRecords.push({ record, error: 'Name and email are required fields' });
         } else if (emailSet.has(record.email)) {
-          invalidRecords.push({ record, error: 'Duplicate email found' });
+          invalidRecords.push({ record, error: 'Duplicate email found in CSV' });
         } else {
           emailSet.add(record.email);
           results.push(record);
@@ -102,24 +102,34 @@ apiRoute.post(async (req, res) => {
       })
       .on('end', async () => {
         try {
-          // Check for existing emails in database
-          const existingEmails = await Scholarship.distinct('email', { 
-            email: { $in: Array.from(emailSet) } 
-          });
-
-          if (existingEmails.length > 0) {
-            fs.unlinkSync(req.file.path);
-            return res.status(400).json({ 
-              error: 'Duplicate emails found in database', 
-              duplicateEmails: existingEmails 
-            });
+          // Check for existing emails and prepare update/insert operations
+          for (const record of results) {
+            const existingRecord = await Scholarship.findOne({ email: record.email });
+            if (existingRecord) {
+              updateOperations.push({
+                updateOne: {
+                  filter: { email: record.email },
+                  update: { $set: record }
+                }
+              });
+            } else {
+              newRecords.push(record);
+            }
           }
-          
-          await Scholarship.insertMany(results);
+
+          // Perform bulk operations
+          if (updateOperations.length > 0) {
+            await Scholarship.bulkWrite(updateOperations);
+          }
+          if (newRecords.length > 0) {
+            await Scholarship.insertMany(newRecords);
+          }
+
           fs.unlinkSync(req.file.path);
           res.status(200).json({ 
             message: 'Upload processed successfully', 
-            results, 
+            updated: updateOperations.length,
+            inserted: newRecords.length,
             invalidRecords 
           });
         } catch (err) {

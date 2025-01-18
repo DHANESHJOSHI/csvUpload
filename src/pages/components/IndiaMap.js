@@ -109,8 +109,8 @@ Gender Distribution
 
 Scholarships & State Type
 ━━━━━━━━━━━━━━━━━━
-🎓 Total: ${scholarshipInfo.total || 0}
-🎓 Total Amount: ₹${scholarshipAmount.total || 0}
+🎓 Total Disbursed Amount: ${analytics.stateTypeInfo[0]?.amountDisbursed || 0}
+🎓 Total Amount: ₹${analytics.stateTypeInfo[0]?.totalAmount || 0}
 ${stateTypeInfo.map((st) => `${st._id.scholarshipName}: ${st.total}`).join('\n') || 'No data available'}`;
   };
  
@@ -172,7 +172,7 @@ ${stateTypeInfo.map((st) => `${st._id.scholarshipName}: ${st.total}`).join('\n')
       const stateCode = geo.properties.st_nm;
       const analytics = getStateAnalytics(stateCode);
       const fillColor = colorScale(analytics.count || 0);
-      console.log('Analytics for', stateCode, analytics);
+      // console.log('Analytics for', stateCode, analytics);
       // Calculate centroid for positioning the text (assuming geo.properties.centroid is available)
       const centroid = geo.properties.centroid || [0, 0]; // Use centroid if available
 
