@@ -52,11 +52,11 @@ export default function AdminLogin() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success("Login successful!", { autoClose: 2000 });
+        toast.success("Login successful!", { autoClose: 1000 });
         console.log("Login successful:", data);
-
-        // Redirect to the dashboard after successful login
-        router.push("/admin/dashboard");
+        router.push("/admin/dashboard").then(() => {
+          router.reload();
+        });
       } else {
         toast.error(data.message || "Invalid email or password.");
       }
@@ -66,7 +66,6 @@ export default function AdminLogin() {
       setLoading(false);
     }
   };
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
