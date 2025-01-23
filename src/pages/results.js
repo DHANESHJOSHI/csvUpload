@@ -65,8 +65,14 @@ function Home() {
       });
       
       if (!response.ok) {
+        if (response.status === 404) {
+          setResult('Not Selected');
+          setIsLoading(false);
+          return;
+        }
         const errorText = await response.text(); 
         console.error('Error from API:', errorText);
+        
         toast.error('There was an error with your request. Please try again later.');
         setResult('error');
         setIsLoading(false);
