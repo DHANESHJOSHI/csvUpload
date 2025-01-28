@@ -35,7 +35,7 @@ const loginHandler = async (req, res) => {
 
     res.setHeader(
       'Set-Cookie',
-      `authToken=${token};  Max-Age=86400; Path=/;`
+      `authToken=${token}; HttpOnly; SameSite=strict; Max-Age=86400; Path=/;`
     );
     
 
