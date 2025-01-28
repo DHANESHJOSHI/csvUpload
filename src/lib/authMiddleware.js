@@ -11,7 +11,7 @@ const authenticateToken = (handler) => {
         return res.status(401).json({ message: 'Unauthorized. No cookies found.' });
       }
 
-      console.log('[Cookies]====>', req.cookies);
+      // console.log('[Cookies]====>', req.cookies);
 
       const token = req.cookies.authToken; // Extract the authToken from cookies
 

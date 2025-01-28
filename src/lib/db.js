@@ -21,9 +21,7 @@ const connectToDatabase = async () => {
 
   if (!cached.promise) {
 
-    cached.promise = mongoose.connect(process.env.MONGODB_URI, {
-      serverSelectionTimeoutMS: 30000,
-    })    
+    cached.promise = mongoose.connect(process.env.MONGODB_URI)
       .then((mongooseInstance) => mongooseInstance)
       .catch((error) => {
         console.error('Error connecting to MongoDB:', error);
