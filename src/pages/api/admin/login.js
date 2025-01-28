@@ -37,6 +37,7 @@ const loginHandler = async (req, res) => {
       'Set-Cookie',
       `authToken=${token}; HttpOnly; Secure; SameSite=Strict; Max-Age=86400; Path=/;`
     );
+    
 
     res.status(200).json({
       message: 'Login successful',
