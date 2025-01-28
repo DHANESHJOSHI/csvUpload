@@ -22,8 +22,6 @@ const connectToDatabase = async () => {
   if (!cached.promise) {
 
     cached.promise = mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       serverSelectionTimeoutMS: 30000,
     })    
       .then((mongooseInstance) => mongooseInstance)
