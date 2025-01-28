@@ -31,11 +31,18 @@ export default function Navigation({ children }) {
 
   const handleLogout = async() => {
     try {
+      // Remove cookies by setting them with a past expiration date
+      document.cookie.split(';').forEach((cookie) => {
+        const cookieName = cookie.split('=')[0].trim();
+        document.cookie = `authToken=;expires=${new Date(Date.now() + 10 * 60 * 1000).toUTCString()};path=/`;
+      });
+  
+      // Send the logout request to the server
       const response = await fetch('/api/admin/logout', {
         method: 'POST',
         credentials: 'same-origin',
       });
-
+  
       if (response.ok) {
         Swal.fire({
           icon: 'success',
@@ -59,6 +66,7 @@ export default function Navigation({ children }) {
         text: 'Something went wrong while logging out!'
       });
     }
+  
   };
 
   const navItems = [
